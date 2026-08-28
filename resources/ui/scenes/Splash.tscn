@@ -351,7 +351,7 @@ offset_right = 1073.0
 offset_bottom = 514.0
 theme_override_fonts/font = ExtResource("7_1bejb")
 theme_override_font_sizes/font_size = 40
-text = "игра"
+text = "игра от"
 
 [node name="Label" type="Label" parent="Control/Content/Text"]
 layout_mode = 0
