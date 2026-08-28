@@ -44,7 +44,7 @@ sync_resources.py          - перенос правок из work/extracted о�
 ```
 
 ## Правка перевода
-1. Запустите `./apply.sh`. Из экзешника будет вырезан pct и распакован в `work/extracted/`.
+1. Запустите `./apply.sh`. Из экзешника будет вырезан pck и распакован в `work/extracted/`.
 2. Правьте файлы:
    - диалоги: `work/extracted/dialogue_database/areas/*.gdf` (и `*.txt`)
    - интерфейс: `work/extracted/ui/**/*.tscn`, `mechanics_and_systems/**/*.tscn`, `globals/*.tscn`
