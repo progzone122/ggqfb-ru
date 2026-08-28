@@ -1,0 +1,73 @@
+# Gura
+bg: 82cfff
+txt: ffffff
+name: Гавр Гура
+
+# Watson
+bg: baac82
+txt: ffffff
+name: Амелия Ватсон
+
+# Ame
+bg: feff8e
+txt: ffffff
+name: Амелия Ватсон
+
+# Smol Ame
+bg: fff178
+txt: ffffff
+name: Маскот Малютки Ами
+
+# Calli
+bg: ab3286
+txt: ffffff
+name: Каллиопа Мори
+
+# Kiara
+bg: fc5e0a
+txt: ffffff
+name: Киара Таканаши
+
+# Ina
+bg: 6832a8
+txt: ffffff
+name: Ина с горы
+
+# Jeremy
+bg: 9265c7
+txt: ffffff
+name: Джереми
+
+# Chief Fish
+bg: 8293ff
+txt: ffffff
+name: Главная рыба
+
+# Gupper
+bg: E5554F
+txt: ffffff
+name: Гуппер
+
+# Miles
+bg: 5274e3
+txt: ffffff
+name: Майлз
+
+# Feesh
+bg: e352a4
+txt: ffffff
+name: Фиш
+
+# Cleo
+bg: 9f52e3
+txt: ffffff
+name: Клео
+
+#
+bg: 303030
+txt: ffffff
+
+# DoctorWatson
+bg: ba82b2
+txt: ffffff
+name: Доктор Ватсон
