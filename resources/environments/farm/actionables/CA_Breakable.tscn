@@ -1,0 +1,205 @@
+[gd_scene load_steps=14 format=3 uid="uid://f5ycl030f6bh"]
+
+[ext_resource type="PackedScene" uid="uid://duefb5j5ekxc0" path="res://environments/farm/actionables/ChickenActionableArea.tscn" id="1_x400t"]
+[ext_resource type="Material" uid="uid://bo71nx2lnohs2" path="res://addons/flexible_toon_shader/BaseMaterial.tres" id="2_fib1g"]
+[ext_resource type="Script" uid="uid://cikr2kkwlxbkh" path="res://environments/farm/actionables/ca_breakable.gd" id="2_flbku"]
+[ext_resource type="PackedScene" uid="uid://bmri4xojjfdpt" path="res://particles/Debris.tscn" id="3_1wjx1"]
+[ext_resource type="Script" uid="uid://dotlu6hk3j62u" path="res://addons/flexible_toon_shader/BaseMaterialOverride.gd" id="3_flbku"]
+[ext_resource type="PackedScene" uid="uid://c27gnaccho5e5" path="res://environments/farm/ChickenHook.tscn" id="4_1wjx1"]
+[ext_resource type="Script" uid="uid://djbu7axghncac" path="res://addons/shake/Shake.gd" id="5_criao"]
+[ext_resource type="AudioStream" uid="uid://c8tdjqboj534u" path="res://audio/sfx/farm/hook_boulder.ogg" id="7_1wjx1"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_flbku"]
+resource_local_to_scene = true
+radius = 5.36279
+
+[sub_resource type="Animation" id="Animation_fib1g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody3D/CollisionShape3D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Debris:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Model:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ffmem"]
+resource_name = "break"
+length = 1.9
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.133333, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"do_shake"
+}, {
+"args": [],
+"method": &"detatch_hooks"
+}, {
+"args": [],
+"method": &"disable"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StaticBody3D/CollisionShape3D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Debris:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Model:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath("AudioStreamPlayer3D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_1wjx1")
+}],
+"times": PackedFloat32Array(1)
+}
+tracks/4/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mg2b3"]
+_data = {
+&"RESET": SubResource("Animation_fib1g"),
+&"break": SubResource("Animation_ffmem")
+}
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rh850"]
+height = 3.56592
+radius = 1.73633
+
+[node name="CA_Breakable" node_paths=PackedStringArray("animation_player") instance=ExtResource("1_x400t")]
+script = ExtResource("2_flbku")
+animation_player = NodePath("AnimationPlayer")
+success_anim_name = "break"
+hook_retract_sfx = ExtResource("7_1wjx1")
+interaction_text = "сломать"
+
+[node name="Debris" parent="." index="0" instance=ExtResource("3_1wjx1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.750466, 0)
+
+[node name="Hooks" parent="." index="1"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+
+[node name="ChickenHook" parent="Hooks" index="0" instance=ExtResource("4_1wjx1")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0.707107, 0.958232, -0.707107)
+
+[node name="ChickenHook3" parent="Hooks" index="1" instance=ExtResource("4_1wjx1")]
+transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, 1, 0.958232, 5.96046e-08)
+
+[node name="ChickenHook2" parent="Hooks" index="2" instance=ExtResource("4_1wjx1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.958232, -1)
+
+[node name="InteractionArea" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.10236)
+
+[node name="CollisionShape3D" parent="InteractionArea" index="0"]
+shape = SubResource("CylinderShape3D_flbku")
+
+[node name="Model" type="Node3D" parent="." index="3"]
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Model" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.812967, 0)
+material_override = ExtResource("2_fib1g")
+instance_shader_parameters/do_override_color = true
+instance_shader_parameters/override_color = Color(0.27589, 0.226952, 0.234802, 1)
+radius = 2.0
+radial_segments = 6
+rings = 4
+script = ExtResource("3_flbku")
+color = Color(0.27589, 0.226952, 0.234802, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+libraries = {
+&"": SubResource("AnimationLibrary_mg2b3")
+}
+
+[node name="Shake" type="Node" parent="." index="5"]
+script = ExtResource("5_criao")
+base_strength = 0.2
+speed = 0.1
+damping_curve = 0.2
+metadata/_custom_type_script = "uid://djbu7axghncac"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="6"]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.782959, 0)
+shape = SubResource("CylinderShape3D_rh850")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="7"]
+unit_size = 5.0
+bus = &"Sound"
+attenuation_filter_cutoff_hz = 15696.0
+
+[editable path="InteractionArea"]

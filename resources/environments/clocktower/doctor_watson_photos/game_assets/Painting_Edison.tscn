@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://lilsgrhyi8g8"]
+
+[ext_resource type="PackedScene" uid="uid://bqhp7i5gsmy1n" path="res://environments/clocktower/scenes/Painting.tscn" id="1_k1slv"]
+[ext_resource type="Texture2D" uid="uid://dvd15pea1rcjn" path="res://environments/clocktower/doctor_watson_photos/game_assets/edison_render.png" id="2_k1slv"]
+
+[node name="Painting_Edison" instance=ExtResource("1_k1slv")]
+
+[node name="Sprite3D" parent="." index="0"]
+pixel_size = 0.0091
+texture = ExtResource("2_k1slv")
+
+[node name="CSGBox9" parent="." index="1"]
+size = Vector3(12.799805, 8.1801, 0.0448679)
+
+[node name="Window" parent="." index="2"]
+size = Vector3(13, 9.083, 0.898)
+
+[node name="CSGBox8" parent="Window" index="0"]
+size = Vector3(12.2, 8.18, 7.5)
+
+[node name="Placard" parent="." index="3"]
+visible = true
+size = Vector3(7.378662, 1.206543, 0.30688477)
+
+[node name="Label3D" parent="Placard" index="0"]
+text = "Доктор Ватсон и Томас Эдисон"

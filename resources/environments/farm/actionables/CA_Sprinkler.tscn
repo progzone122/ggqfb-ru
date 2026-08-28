@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://cv5liea6g4tkg"]
+
+[ext_resource type="PackedScene" uid="uid://duefb5j5ekxc0" path="res://environments/farm/actionables/ChickenActionableArea.tscn" id="1_e0x67"]
+[ext_resource type="Script" uid="uid://bd4d31te33141" path="res://environments/farm/actionables/ca_sprinkler.gd" id="2_nyr13"]
+[ext_resource type="PackedScene" uid="uid://c27gnaccho5e5" path="res://environments/farm/ChickenHook.tscn" id="2_w6wrk"]
+[ext_resource type="Material" uid="uid://bo71nx2lnohs2" path="res://addons/flexible_toon_shader/BaseMaterial.tres" id="3_nyr13"]
+[ext_resource type="Script" uid="uid://dotlu6hk3j62u" path="res://addons/flexible_toon_shader/BaseMaterialOverride.gd" id="4_w3i63"]
+[ext_resource type="PackedScene" uid="uid://drt0em0bx3dmn" path="res://environments/farm/FlowerBloomer.tscn" id="6_w6wrk"]
+[ext_resource type="AudioStream" uid="uid://t3mjxbe02yi8" path="res://audio/sfx/farm/sprinkler.ogg" id="7_nyr13"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nyr13"]
+resource_local_to_scene = true
+radius = 5.36279
+
+[node name="CA_Sprinkler" unique_id=1400265611 node_paths=PackedStringArray("flower_bloomers") instance=ExtResource("1_e0x67")]
+script = ExtResource("2_nyr13")
+flower_bloomers = [NodePath("FlowerBloomer"), NodePath("FlowerBloomer2"), NodePath("FlowerBloomer3")]
+chickens_required = 1
+interaction_text = "полить"
+
+[node name="ChickenHook" parent="Hooks" index="0" unique_id=1921100480 instance=ExtResource("2_w6wrk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.606477)
+
+[node name="InteractionArea" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.97680473, -1.6797068)
+
+[node name="CollisionShape3D" parent="InteractionArea" index="0"]
+shape = SubResource("CylinderShape3D_nyr13")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." index="2" unique_id=571223605]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+material_override = ExtResource("3_nyr13")
+instance_shader_parameters/do_override_color = true
+instance_shader_parameters/override_color = Color(0.421344, 0.646054, 0.974451, 1)
+use_collision = true
+radius = 1.25439
+height = 2.5
+script = ExtResource("4_w3i63")
+color = Color(0.421344, 0.646054, 0.974451, 1)
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="." index="3" unique_id=611544512]
+transform = Transform3D(-3.33988e-08, 4.37114e-08, 1, 0.764074, 0, 4.37114e-08, 0, 1, -4.37114e-08, 2.33444e-08, 0.715942, 0)
+material_override = ExtResource("3_nyr13")
+instance_shader_parameters/do_override_color = true
+instance_shader_parameters/override_color = Color(0.167875, 0.461348, 0.869703, 1)
+use_collision = true
+radius = 1.59131
+height = 0.389648
+sides = 12
+script = ExtResource("4_w3i63")
+color = Color(0.167875, 0.461348, 0.869703, 1)
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="." index="4" unique_id=1669056474]
+transform = Transform3D(1, 0, 0, 0, 0.642788, -0.766044, 0, 0.766044, 0.642788, 0, 0.81519, 0.906922)
+material_override = ExtResource("3_nyr13")
+instance_shader_parameters/do_override_color = true
+instance_shader_parameters/override_color = Color(0.599638, 0.739591, 0.961768, 1)
+radius = 0.442383
+height = 1.57129
+script = ExtResource("4_w3i63")
+color = Color(0.599638, 0.739591, 0.961768, 1)
+
+[node name="FlowerBloomer" parent="." index="5" unique_id=1781874809 instance=ExtResource("6_w6wrk")]
+
+[node name="FlowerBloomer2" parent="." index="6" unique_id=179589354 instance=ExtResource("6_w6wrk")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 0, 0, 0)
+
+[node name="FlowerBloomer3" parent="." index="7" unique_id=983338428 instance=ExtResource("6_w6wrk")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0, 0, 0)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="8" unique_id=1394601502]
+stream = ExtResource("7_nyr13")
+volume_db = -10.0
+unit_size = 12.0
+max_db = -12.0
+max_distance = 500.0
+attenuation_filter_cutoff_hz = 14604.0
+
+[editable path="InteractionArea"]

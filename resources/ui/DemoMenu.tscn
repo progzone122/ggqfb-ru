@@ -1,0 +1,937 @@
+[gd_scene load_steps=54 format=3 uid="uid://jsh4c463vqbt"]
+
+[ext_resource type="Script" uid="uid://berdyi2sf3edi" path="res://ui/scripts/DemoMenu.gd" id="1_d4h6u"]
+[ext_resource type="PackedScene" uid="uid://clwlkaoaun0hg" path="res://ui/scenes/Splash.tscn" id="2_7flcg"]
+[ext_resource type="AudioStream" uid="uid://dut1s4p4yuv62" path="res://audio/sfx/interface/dialogue_next.ogg" id="3_rvayf"]
+[ext_resource type="AudioStream" uid="uid://k0xxev3fp3jn" path="res://audio/bgm/ggqfb audio.mp3" id="4_gspeh"]
+[ext_resource type="Theme" uid="uid://cvscydthyenwa" path="res://ui/Theme.tres" id="5_cqfpn"]
+[ext_resource type="VideoStream" uid="uid://lnatyqsfhvf8" path="res://demo/gameplay_stitch.ogv" id="6_cvefd"]
+[ext_resource type="Shader" uid="uid://cm5qmsb3e3tw" path="res://rendering/shaders/Mix.gdshader" id="7_hntda"]
+[ext_resource type="Texture2D" uid="uid://brqjr2vg6snwa" path="res://ui/textures/Repeating_Tile_Lighter.png" id="8_epa0y"]
+[ext_resource type="Texture2D" uid="uid://b3eraqgot0sjh" path="res://rendering/textures/DemoBottomPanel.png" id="9_g2hhy"]
+[ext_resource type="Shader" uid="uid://blr52002dseoi" path="res://rendering/shaders/2D_outline.gdshader" id="10_y5tcy"]
+[ext_resource type="Environment" uid="uid://ccvw6cmvcrga7" path="res://environments/fish_town/E_FishTown.tres" id="11_340u7"]
+[ext_resource type="PackedScene" uid="uid://27sp5kgvrju7" path="res://entities/gura/models/Gura.gltf" id="12_22lhf"]
+[ext_resource type="Material" uid="uid://uhm62o3e6p47" path="res://entities/gura/materials/GuraClothes.tres" id="13_kjlbp"]
+[ext_resource type="Material" uid="uid://08be78od3m6" path="res://entities/gura/materials/GuraBase.tres" id="14_1v1pg"]
+[ext_resource type="Texture2D" uid="uid://dch3pgyjypqvv" path="res://entities/gura/textures/Gura Eyes.png" id="15_17jgc"]
+[ext_resource type="Material" uid="uid://sjg3wulfdy7f" path="res://entities/gura/materials/GuraMouth.tres" id="16_m8vy2"]
+[ext_resource type="Material" uid="uid://ck7xel73wk4v7" path="res://entities/gura/materials/GuraHead.tres" id="17_7flcg"]
+[ext_resource type="Texture2D" uid="uid://dvoh15hyxl6j5" path="res://ui/Title.png" id="17_73cms"]
+[ext_resource type="Texture2D" uid="uid://b40k4jx8vrkg4" path="res://ui/textures/Star.png" id="18_ehx6w"]
+[ext_resource type="Texture2D" uid="uid://nbt28bkl1ker" path="res://ui/textures/company_logos/Twitter Logo.png" id="19_gcskq"]
+[ext_resource type="FontFile" uid="uid://boyatljvhfeho" path="res://ui/fonts/Montserrat-Bold.ttf" id="20_qmahg"]
+[ext_resource type="StyleBox" uid="uid://cr8yuajwnly6d" path="res://ui/OutlinedShadowedPanel.tres" id="21_g30eq"]
+[ext_resource type="PackedScene" uid="uid://bsy1jisb87u0g" path="res://ui/scenes/TextButton.tscn" id="22_v7fhu"]
+[ext_resource type="Shader" uid="uid://y6b6palk5vol" path="res://rendering/shaders/2D_outline_better.tres" id="23_0rs0t"]
+[ext_resource type="Texture2D" uid="uid://c7fpo3qwsug6b" path="res://ui/textures/company_logos/Discord_white.png" id="24_cvefd"]
+[ext_resource type="PackedScene" uid="uid://cmta2j4w152qd" path="res://ui/scenes/IconButton.tscn" id="24_gspeh"]
+[ext_resource type="Texture2D" uid="uid://bus2ie2vos3pi" path="res://ui/textures/Shark Pin.png" id="24_nr2ua"]
+[ext_resource type="Texture2D" uid="uid://dxoudf6wa24n0" path="res://ui/textures/company_logos/Twitter Logo_white.png" id="25_hntda"]
+[ext_resource type="PackedScene" uid="uid://dtiw1unu4y2be" path="res://ui/scenes/Settings.tscn" id="25_u7n2f"]
+[ext_resource type="PackedScene" uid="uid://bjfbdfym2m4e" path="res://ui/scenes/FeedbackButton.tscn" id="26_hss5j"]
+[ext_resource type="Script" uid="uid://bhvtrfqfitebr" path="res://ui/version_text.gd" id="27_rvayf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4uhft"]
+shader = ExtResource("7_hntda")
+shader_parameter/mix_texture = ExtResource("8_epa0y")
+shader_parameter/color_black = Color(0, 0.160784, 0.231373, 1)
+shader_parameter/color_white = Color(0.027451, 0.152941, 0.235294, 1)
+shader_parameter/texture_scale = 1.003
+shader_parameter/scroll_speed = Vector2(-0.1, 0.05)
+
+[sub_resource type="Animation" id="Animation_v6oo0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 827)]
+}
+
+[sub_resource type="Animation" id="Animation_3f0o7"]
+resource_name = "loop"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 827), Vector2(-321, 827)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_53lms"]
+_data = {
+&"RESET": SubResource("Animation_v6oo0"),
+&"loop": SubResource("Animation_3f0o7")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bvrrn"]
+shader = ExtResource("10_y5tcy")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 5.0
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/alpha = 1.0
+
+[sub_resource type="World3D" id="World3D_hqbkd"]
+environment = ExtResource("11_340u7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xghlj"]
+render_priority = 1
+blend_mode = 3
+shading_mode = 0
+albedo_texture = ExtResource("15_17jgc")
+uv1_offset = Vector3(0.75, 0.25, 0)
+
+[sub_resource type="Animation" id="Animation_fj83u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_c0fmi"]
+resource_name = "wiggle"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [-0.0349066, 0.0174533]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_86k4p"]
+_data = {
+&"RESET": SubResource("Animation_fj83u"),
+&"wiggle": SubResource("Animation_c0fmi")
+}
+
+[sub_resource type="Animation" id="Animation_gnoxy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.0872665]
+}
+
+[sub_resource type="Animation" id="Animation_m6gry"]
+resource_name = "twinkle"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [-0.0872665, 0.0872665]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lkwsd"]
+_data = {
+&"RESET": SubResource("Animation_gnoxy"),
+&"twinkle": SubResource("Animation_m6gry")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2468a"]
+bg_color = Color(1, 0.329412, 0.32549, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+shadow_color = Color(0.129412, 0.0196078, 0.0196078, 1)
+shadow_size = 1
+shadow_offset = Vector2(10.75, 11.59)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5tx1a"]
+bg_color = Color(0.0117647, 0.027451, 0.0784314, 1)
+skew = Vector2(0.595, 0)
+
+[sub_resource type="Animation" id="Animation_1g8ip"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jc1ye"]
+resource_name = "fade"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(2.63902, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.156863), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ed1dc"]
+_data = {
+&"RESET": SubResource("Animation_1g8ip"),
+&"fade": SubResource("Animation_jc1ye")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fnkmm"]
+shader = ExtResource("23_0rs0t")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 4.24
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="Animation" id="Animation_lukcc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_8g871"]
+resource_name = "open"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(0.482968, 0.482968, 0.482968),
+"update": 0,
+"values": [0.0, -0.00872665, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vdos4"]
+_data = {
+&"RESET": SubResource("Animation_lukcc"),
+&"open": SubResource("Animation_8g871")
+}
+
+[node name="DemoMenu" type="Node"]
+script = ExtResource("1_d4h6u")
+splash_scene = ExtResource("2_7flcg")
+scene_to_go_to = 16
+open_menu_sfx = ExtResource("3_rvayf")
+area = 18
+default_bgm = ExtResource("4_gspeh")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+theme = ExtResource("5_cqfpn")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 101.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("6_cvefd")
+autoplay = true
+expand = true
+loop = true
+
+[node name="DummyButton" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = -366.0
+offset_top = -172.0
+offset_right = -326.0
+offset_bottom = -132.0
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 146.0
+offset_top = -183.0
+offset_right = 186.0
+offset_bottom = -143.0
+rotation = 0.411876
+
+[node name="e" type="TextureRect" parent="UI/Control"]
+material = SubResource("ShaderMaterial_4uhft")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 827.0
+offset_right = 4272.0
+offset_bottom = 2231.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.82421, 1.82421)
+texture = ExtResource("9_g2hhy")
+stretch_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Control/e"]
+libraries = {
+&"": SubResource("AnimationLibrary_53lms")
+}
+autoplay = "loop"
+speed_scale = -0.3
+
+[node name="Control2" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = -389.0
+offset_top = 280.0
+offset_right = -349.0
+offset_bottom = 320.0
+rotation = 0.411876
+scale = Vector2(1, -1)
+
+[node name="e" type="TextureRect" parent="UI/Control2"]
+material = SubResource("ShaderMaterial_4uhft")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 827.0
+offset_right = 4272.0
+offset_bottom = 1991.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.82421, 1.82421)
+texture = ExtResource("9_g2hhy")
+stretch_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Control2/e"]
+libraries = {
+&"": SubResource("AnimationLibrary_53lms")
+}
+autoplay = "loop"
+speed_scale = 0.3
+
+[node name="GuraViewport" type="SubViewportContainer" parent="UI"]
+material = SubResource("ShaderMaterial_bvrrn")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -789.0
+offset_top = 280.0
+offset_right = -789.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="UI/GuraViewport"]
+world_3d = SubResource("World3D_hqbkd")
+transparent_bg = true
+handle_input_locally = false
+msaa_3d = 1
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="UI/GuraViewport/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.99863, 0.052336, 0, -0.052336, 0.99863, 0, -21.1726, 3.22021)
+cull_mask = 1
+fov = 40.4
+
+[node name="Gura" parent="UI/GuraViewport/SubViewport" instance=ExtResource("12_22lhf")]
+transform = Transform3D(0.874628, 0, 0.484795, 0, 1, 0, -0.484795, 0, 0.874628, 0, -22.3085, 0)
+
+[node name="Gura_Arms" parent="UI/GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("13_kjlbp")
+
+[node name="Gura_Bangs" parent="UI/GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="1"]
+surface_material_override/0 = ExtResource("14_1v1pg")
+
+[node name="Gura_Body" parent="UI/GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="2"]
+surface_material_override/0 = ExtResource("13_kjlbp")
+
+[node name="Gura_Collar" parent="UI/GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="3"]
+surface_material_override/0 = ExtResource("14_1v1pg")
+
+[node name="Gura_Eyes" parent="UI/GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_xghlj")
+
+[node name="Gura_Hair" parent="UI/GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="5"]
+surface_material_override/0 = ExtResource("14_1v1pg")
+
+[node name="Gura_Head" parent="UI/GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="6"]
+surface_material_override/0 = ExtResource("14_1v1pg")
+
+[node name="Gura_Hood" parent="UI/GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="7"]
+surface_material_override/0 = ExtResource("13_kjlbp")
+
+[node name="Gura_Legs" parent="UI/GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="8"]
+surface_material_override/0 = ExtResource("14_1v1pg")
+
+[node name="Gura_Mouth" parent="UI/GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="9"]
+surface_material_override/0 = ExtResource("16_m8vy2")
+
+[node name="Gura_Neck" parent="UI/GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="10"]
+surface_material_override/0 = ExtResource("14_1v1pg")
+
+[node name="Gura_String_Left" parent="UI/GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="11"]
+surface_material_override/0 = ExtResource("14_1v1pg")
+
+[node name="Gura_String_Right" parent="UI/GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="12"]
+surface_material_override/0 = ExtResource("14_1v1pg")
+
+[node name="Gura_Tail" parent="UI/GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="13"]
+surface_material_override/0 = ExtResource("14_1v1pg")
+
+[node name="Gura_TwinTails" parent="UI/GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="14"]
+surface_material_override/0 = ExtResource("17_7flcg")
+
+[node name="AnimationPlayer" parent="UI/GuraViewport/SubViewport/Gura" index="1"]
+autoplay = "Happy"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="UI/GuraViewport/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.911297, -19.9689, 1.28754)
+light_color = Color(1, 0.858824, 0.780392, 1)
+light_energy = 2.325
+
+[node name="Title" type="TextureRect" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 37.9999
+offset_top = -731.0
+offset_right = 1262.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.374957, 0.374957)
+pivot_offset = Vector2(654.407, 242.014)
+texture = ExtResource("17_73cms")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Title"]
+libraries = {
+&"": SubResource("AnimationLibrary_86k4p")
+}
+autoplay = "wiggle"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/Title"]
+clip_contents = false
+layout_mode = 0
+offset_left = 1181.38
+offset_top = 212.64
+offset_right = 1465.38
+offset_bottom = 330.64
+rotation = -0.0872665
+pivot_offset = Vector2(87.7339, 21.1809)
+theme_override_font_sizes/normal_font_size = 39
+text = "ДЕМО!"
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="UI/Title/RichTextLabel"]
+libraries = {
+&"": SubResource("AnimationLibrary_lkwsd")
+}
+autoplay = "twinkle"
+speed_scale = 0.8
+
+[node name="TextureRect" type="TextureRect" parent="UI/Title/RichTextLabel"]
+visible = false
+self_modulate = Color(1, 0.811765, 0.12549, 1)
+layout_mode = 0
+offset_left = 119.683
+offset_top = -21.8366
+offset_right = 170.683
+offset_bottom = 29.1634
+rotation = -0.0872665
+pivot_offset = Vector2(25.2046, 26.2818)
+texture = ExtResource("18_ehx6w")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="UI/Title/RichTextLabel/TextureRect"]
+self_modulate = Color(1, 0.6, 0.12549, 1)
+show_behind_parent = true
+layout_mode = 0
+offset_left = -0.760658
+offset_top = 6.91255
+offset_right = 39.2393
+offset_bottom = 46.9126
+rotation = 0.785398
+pivot_offset = Vector2(25.2046, 26.2818)
+texture = ExtResource("18_ehx6w")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Title/RichTextLabel/TextureRect"]
+libraries = {
+&"": SubResource("AnimationLibrary_lkwsd")
+}
+speed_scale = 1.2
+
+[node name="TextureRect2" type="TextureRect" parent="UI/Title/RichTextLabel"]
+visible = false
+self_modulate = Color(1, 0.811765, 0.12549, 1)
+layout_mode = 0
+offset_left = -47.1598
+offset_top = 24.1806
+offset_right = 3.84023
+offset_bottom = 75.1806
+rotation = -0.0735575
+pivot_offset = Vector2(24.6207, 25.1702)
+texture = ExtResource("18_ehx6w")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect3" type="Panel" parent="UI/Title/RichTextLabel"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -43.4526
+offset_top = -16.9126
+offset_right = 149.547
+offset_bottom = 52.0874
+theme_override_styles/panel = SubResource("StyleBoxFlat_2468a")
+
+[node name="BottomBar" type="ColorRect" parent="UI"]
+self_modulate = Color(0.298039, 0.4, 0.431373, 0)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Credits2" type="Label" parent="UI/BottomBar"]
+visible = false
+modulate = Color(0.333333, 0.333333, 0.333333, 1)
+layout_mode = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -39.0
+offset_right = 327.0
+offset_bottom = -9.0
+grow_vertical = 0
+text = "Фан-игра Kenny Park"
+
+[node name="Credits" type="Label" parent="UI/BottomBar"]
+visible = false
+layout_mode = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -41.0
+offset_right = 327.0
+offset_bottom = -11.0
+grow_vertical = 0
+text = "Фан-игра Kenny Park"
+
+[node name="TwitterHandle2" type="Label" parent="UI/BottomBar"]
+visible = false
+modulate = Color(0.333333, 0.333333, 0.333333, 1)
+layout_mode = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 382.0
+offset_top = -39.0
+offset_right = 577.0
+offset_bottom = -9.0
+grow_vertical = 0
+text = "@kennyparkpark"
+
+[node name="TwitterHandle" type="Label" parent="UI/BottomBar"]
+visible = false
+layout_mode = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 382.0
+offset_top = -41.0
+offset_right = 577.0
+offset_bottom = -11.0
+grow_vertical = 0
+text = "@kennyparkpark"
+
+[node name="TwitterIcon" type="TextureRect" parent="UI/BottomBar/TwitterHandle"]
+layout_mode = 0
+offset_left = -34.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = 34.0
+texture = ExtResource("19_gcskq")
+expand_mode = 2
+
+[node name="Trademark2" type="Label" parent="UI/BottomBar"]
+modulate = Color(0.333333, 0.333333, 0.333333, 1)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -627.0
+offset_top = -55.0
+offset_right = -4.0
+offset_bottom = -6.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "© COVER © CCMC Corp."
+horizontal_alignment = 2
+
+[node name="Trademark" type="Label" parent="UI/BottomBar"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -627.0
+offset_top = -57.0
+offset_right = -4.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "© COVER © CCMC Corp."
+horizontal_alignment = 2
+
+[node name="Panel" type="Panel" parent="UI"]
+layout_mode = 0
+offset_left = 385.0
+offset_top = 930.0
+offset_right = 788.0
+offset_bottom = 1046.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_5tx1a")
+
+[node name="GrabController" type="Label" parent="UI"]
+self_modulate = Color(1, 0.796078, 0.180392, 1)
+layout_mode = 0
+offset_left = 433.0
+offset_top = 950.0
+offset_right = 752.0
+offset_bottom = 981.0
+theme_override_fonts/font = ExtResource("20_qmahg")
+theme_override_font_sizes/font_size = 18
+text = "Эй, ты! Бери геймпад и"
+
+[node name="GrabKeyboard" type="Label" parent="UI"]
+self_modulate = Color(1, 0.796078, 0.180392, 1)
+layout_mode = 0
+offset_left = 433.0
+offset_top = 950.0
+offset_right = 752.0
+offset_bottom = 981.0
+theme_override_fonts/font = ExtResource("20_qmahg")
+theme_override_font_sizes/font_size = 18
+text = "Эй, ты! Бери клавиатуру и"
+
+[node name="PressStart" type="RichTextLabel" parent="UI"]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 968.0
+offset_right = 749.0
+offset_bottom = 1039.0
+theme_override_fonts/normal_font = ExtResource("20_qmahg")
+theme_override_font_sizes/normal_font_size = 52
+bbcode_enabled = true
+text = "[wave]Жми Start!"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/PressStart"]
+libraries = {
+&"": SubResource("AnimationLibrary_ed1dc")
+}
+autoplay = "fade"
+
+[node name="PressEnter" type="RichTextLabel" parent="UI"]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 968.0
+offset_right = 749.0
+offset_bottom = 1039.0
+theme_override_fonts/normal_font = ExtResource("20_qmahg")
+theme_override_font_sizes/normal_font_size = 52
+bbcode_enabled = true
+text = "[wave]Жми Enter!"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/PressEnter"]
+libraries = {
+&"": SubResource("AnimationLibrary_ed1dc")
+}
+autoplay = "fade"
+
+[node name="OptionPanel" type="ColorRect" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.545098)
+
+[node name="Panel" type="Panel" parent="UI/OptionPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -272.0
+offset_top = -231.0
+offset_right = 272.0
+offset_bottom = 231.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(-1414, 182)
+theme_override_styles/panel = ExtResource("21_g30eq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/OptionPanel/Panel"]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 97.0
+offset_right = 445.0
+offset_bottom = 346.0
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="StartButton" parent="UI/OptionPanel/Panel/VBoxContainer" instance=ExtResource("22_v7fhu")]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../SteamButton")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+text = "ИГРАТЬ ДЕМО!"
+
+[node name="SteamButton" parent="UI/OptionPanel/Panel/VBoxContainer" instance=ExtResource("22_v7fhu")]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../Socials/DiscordButton")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+theme_override_font_sizes/font_size = 36
+text = "В ВИШЛИСТ STEAM"
+font_size = 36
+default_color = Color(0.24325025, 0.6813626, 0.87870777, 1)
+
+[node name="Socials" type="HBoxContainer" parent="UI/OptionPanel/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="DiscordButton" parent="UI/OptionPanel/Panel/VBoxContainer/Socials" instance=ExtResource("24_gspeh")]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../SteamButton")
+focus_neighbor_right = NodePath("../TwitterButton")
+focus_neighbor_bottom = NodePath("../../Settings")
+icon = ExtResource("24_cvefd")
+
+[node name="TwitterButton" parent="UI/OptionPanel/Panel/VBoxContainer/Socials" instance=ExtResource("24_gspeh")]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../DiscordButton")
+focus_neighbor_top = NodePath("../../SteamButton")
+focus_neighbor_right = NodePath("../BskyButton")
+focus_neighbor_bottom = NodePath("../../Settings")
+icon = ExtResource("25_hntda")
+
+[node name="BskyButton" parent="UI/OptionPanel/Panel/VBoxContainer/Socials" instance=ExtResource("24_gspeh")]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../TwitterButton")
+focus_neighbor_top = NodePath("../../SteamButton")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../Settings")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/OptionPanel/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 60
+
+[node name="Settings" parent="UI/OptionPanel/Panel/VBoxContainer" instance=ExtResource("22_v7fhu")]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../Socials/DiscordButton")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../QuitButton")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+theme_override_font_sizes/font_size = 36
+text = "НАСТРОЙКИ"
+font_size = 36
+
+[node name="QuitButton" parent="UI/OptionPanel/Panel/VBoxContainer" instance=ExtResource("22_v7fhu")]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../Settings")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+theme_override_font_sizes/font_size = 36
+text = "ВЫХОД"
+font_size = 36
+
+[node name="TextureRect" type="TextureRect" parent="UI/OptionPanel/Panel"]
+material = SubResource("ShaderMaterial_fnkmm")
+layout_mode = 0
+offset_left = 439.0
+offset_top = 22.0
+offset_right = 519.0
+offset_bottom = 160.0
+rotation = -0.613948
+texture = ExtResource("24_nr2ua")
+
+[node name="ColorRect" type="ColorRect" parent="UI/OptionPanel/Panel/TextureRect"]
+visible = false
+layout_mode = 0
+offset_left = 10.6164
+offset_top = 61.3131
+offset_right = 60.6164
+offset_bottom = 74.3131
+rotation = 0.138291
+color = Color(0.203922, 0.6, 0.74902, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/OptionPanel"]
+libraries = {
+&"": SubResource("AnimationLibrary_vdos4")
+}
+
+[node name="SettingsMenu" parent="UI" instance=ExtResource("25_u7n2f")]
+visible = false
+layout_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="UI/SettingsMenu"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1926.0
+offset_top = -856.0
+offset_right = 1926.0
+offset_bottom = 856.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.662745)
+
+[node name="VersionText" type="Label" parent="UI"]
+modulate = Color(1, 1, 1, 0.52156866)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -634.0
+offset_top = -74.0
+offset_right = -11.0
+offset_bottom = -25.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "v00.00.00"
+horizontal_alignment = 2
+script = ExtResource("27_rvayf")
+
+[node name="FeedbackButton" parent="." instance=ExtResource("26_hss5j")]
+offset_left = -1892.0
+offset_top = -1054.0
+offset_right = -1252.0
+offset_bottom = -1002.0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[editable path="UI/GuraViewport/SubViewport/Gura"]

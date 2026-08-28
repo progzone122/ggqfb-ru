@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqhp7i5gsmy1n"]
+
+[ext_resource type="Texture2D" uid="uid://dqjcp3ahmc7ta" path="res://environments/clocktower/wall_decor/ame_magnifying.png" id="1_3ji1n"]
+[ext_resource type="Material" uid="uid://bvyy4l3dwo2r1" path="res://environments/clocktower/materials/Trim.tres" id="2_wd5g1"]
+[ext_resource type="Material" uid="uid://ca8lwk04crsuv" path="res://environments/clocktower/materials/Gold.tres" id="3_4suad"]
+[ext_resource type="FontFile" uid="uid://16i6ni3a6hty" path="res://ui/fonts/Chapaza.ttf" id="4_a667i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m5d26"]
+
+[node name="Painting" type="Node3D"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.184042)
+modulate = Color(0.592157, 0.592157, 0.592157, 1)
+pixel_size = 0.0071
+texture = ExtResource("1_3ji1n")
+
+[node name="CSGBox9" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.143816)
+operation = 2
+size = Vector3(8.20197, 8.1801, 0.0448679)
+material = SubResource("StandardMaterial3D_m5d26")
+
+[node name="Window" type="CSGBox3D" parent="."]
+use_collision = true
+size = Vector3(9.00906, 9.08261, 0.898111)
+material = ExtResource("2_wd5g1")
+
+[node name="CSGBox8" type="CSGBox3D" parent="Window"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+operation = 2
+size = Vector3(8.20197, 8.1801, 7.5)
+material = ExtResource("2_wd5g1")
+
+[node name="Placard" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, 1, 0, -5.8021336, 0)
+visible = false
+size = Vector3(10.668945, 1.206543, 0.30688477)
+material = ExtResource("3_4suad")
+
+[node name="Label3D" type="Label3D" parent="Placard"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4901161e-08, 0, 0.1707887)
+text = "Доктор Ватсон объясняет Исааку Ньютону преломление света."
+font = ExtResource("4_a667i")
+font_size = 74
+outline_size = 0

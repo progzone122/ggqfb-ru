@@ -1,0 +1,420 @@
+[gd_scene load_steps=47 format=3 uid="uid://rsgp60b360ch"]
+
+[ext_resource type="PackedScene" uid="uid://1agttj56lak1" path="res://entities/chicken/Chicken.glb" id="1"]
+[ext_resource type="AudioStream" uid="uid://bhv5vx2cygs5u" path="res://audio/sfx/farm/chicken_call.ogg" id="3_ngj7a"]
+[ext_resource type="PackedScene" uid="uid://biwx1smtkk8my" path="res://entities/Entity.tscn" id="4"]
+[ext_resource type="ArrayMesh" uid="uid://cl5wjpjc7cbyx" path="res://environments/fish_town/characters/Hat.obj" id="4_3b48g"]
+[ext_resource type="AudioStream" uid="uid://c5d1bbkbmyapw" path="res://audio/sfx/farm/chicken_whistle.ogg" id="4_ynyqh"]
+[ext_resource type="Material" uid="uid://7dhb0y47undf" path="res://rendering/TestMaterial.tres" id="5_h1frn"]
+[ext_resource type="Script" uid="uid://8maen004e3ox" path="res://entities/chicken/Chicken.gd" id="6"]
+[ext_resource type="Script" uid="uid://ca4l6vqnmop26" path="res://entities/chicken/ChickenStateMachine.gd" id="6_3h1mk"]
+[ext_resource type="Material" uid="uid://bo71nx2lnohs2" path="res://addons/flexible_toon_shader/BaseMaterial.tres" id="6_caw6a"]
+[ext_resource type="PackedScene" uid="uid://caoha00ly2nba" path="res://mechanics_and_systems/camera/CamGimbal.tscn" id="7"]
+[ext_resource type="Script" uid="uid://dotlu6hk3j62u" path="res://addons/flexible_toon_shader/BaseMaterialOverride.gd" id="7_48ybk"]
+[ext_resource type="Texture2D" uid="uid://dlbvwfusuj486" path="res://ui/textures/Pointer.png" id="8"]
+[ext_resource type="Script" uid="uid://bevbk8a2pua6i" path="res://entities/gura/ChickenDash.gd" id="9"]
+[ext_resource type="Script" uid="uid://cuh4h3g7ecy66" path="res://entities/gura/ChickenRide.gd" id="10"]
+[ext_resource type="Script" uid="uid://cbyh1oqrfr8pi" path="res://entities/gura/ChickenFall.gd" id="11"]
+[ext_resource type="Script" uid="uid://dwy6py56j1awy" path="res://entities/gura/ChickenJump.gd" id="12"]
+[ext_resource type="AudioStream" uid="uid://cie04y4rd5kxl" path="res://audio/sfx/farm/chicken_jump.ogg" id="12_yn8rx"]
+[ext_resource type="PackedScene" uid="uid://3b5c6k7br4ej" path="res://mechanics_and_systems/combat/Hurtbox.tscn" id="13"]
+[ext_resource type="PackedScene" uid="uid://d128y6wt1xn5f" path="res://mechanics_and_systems/combat/Damageable.tscn" id="14"]
+[ext_resource type="Script" uid="uid://dbynh027nguj4" path="res://entities/enemies/states/DoNothing.gd" id="17"]
+[ext_resource type="Script" uid="uid://tqe1b5l1qgfk" path="res://entities/gura/CameraOperator.gd" id="18"]
+[ext_resource type="Material" uid="uid://cqgax326iike7" path="res://entities/chicken/ChickenManager.tres" id="18_c5yri"]
+[ext_resource type="Script" uid="uid://6oaal5n78uy4" path="res://mechanics_and_systems/interactables/Interactable.gd" id="19"]
+[ext_resource type="PackedScene" uid="uid://bryl72emoy41w" path="res://mechanics_and_systems/Shadow.tscn" id="19_m0k8s"]
+[ext_resource type="PackedScene" uid="uid://dj14lddcei02o" path="res://entities/NPC.tscn" id="20"]
+[ext_resource type="AudioStream" uid="uid://bn5xcp2ygejia" path="res://audio/sfx/farm/chicken_flap_loop.ogg" id="23_qc5nq"]
+[ext_resource type="Texture2D" uid="uid://dr4cgtbytir3u" path="res://ui/textures/honk.png" id="25_dle3m"]
+[ext_resource type="Script" uid="uid://83on14lstd27" path="res://entities/gura/SurfaceChecker.gd" id="27_sk2ts"]
+[ext_resource type="PackedScene" uid="uid://c8sdpysjithag" path="res://mechanics_and_systems/combat/DamageHitbox.tscn" id="29_ofdhi"]
+
+[sub_resource type="CanvasItemMaterial" id="15"]
+
+[sub_resource type="CapsuleShape3D" id="27"]
+radius = 0.291603
+height = 0.583206
+
+[sub_resource type="AnimationNodeAnimation" id="9"]
+animation = &"Glide"
+
+[sub_resource type="AnimationNodeAnimation" id="10"]
+animation = &"Jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l8rc0"]
+animation = &"Flap"
+
+[sub_resource type="AnimationNodeAnimation" id="6"]
+animation = &"Dash"
+
+[sub_resource type="AnimationNodeAnimation" id="24"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="25"]
+animation = &"Run"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="13"]
+blend_point_0/node = SubResource("24")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("25")
+blend_point_1/pos = 1.0
+min_space = 0.0
+
+[sub_resource type="AnimationNodeTransition" id="14"]
+xfade_time = 0.1
+input_0/name = "free_move"
+input_0/auto_advance = false
+input_0/break_loop_at_end = false
+input_0/reset = true
+input_1/name = "dash"
+input_1/auto_advance = false
+input_1/break_loop_at_end = false
+input_1/reset = true
+input_2/name = "jump"
+input_2/auto_advance = false
+input_2/break_loop_at_end = false
+input_2/reset = true
+input_3/name = "flap"
+input_3/auto_advance = false
+input_3/break_loop_at_end = false
+input_3/reset = true
+input_4/name = "glide"
+input_4/auto_advance = false
+input_4/break_loop_at_end = false
+input_4/reset = true
+
+[sub_resource type="AnimationNodeBlendTree" id="26"]
+graph_offset = Vector2(-391.356, 249.634)
+nodes/Animation/node = SubResource("6")
+nodes/Animation/position = Vector2(-360, 300)
+"nodes/Animation 2/node" = SubResource("9")
+"nodes/Animation 2/position" = Vector2(-160, 600)
+"nodes/Animation 3/node" = SubResource("10")
+"nodes/Animation 3/position" = Vector2(-220, 400)
+"nodes/Animation 4/node" = SubResource("AnimationNodeAnimation_l8rc0")
+"nodes/Animation 4/position" = Vector2(-320, 540)
+nodes/movement/node = SubResource("13")
+nodes/movement/position = Vector2(-220, 180)
+nodes/movement_state/node = SubResource("14")
+nodes/movement_state/position = Vector2(100, 280)
+nodes/output/position = Vector2(340, 260)
+node_connections = [&"movement_state", 0, &"movement", &"movement_state", 1, &"Animation", &"movement_state", 2, &"Animation 3", &"movement_state", 3, &"Animation 4", &"movement_state", 4, &"Animation 2", &"output", 0, &"movement_state"]
+
+[sub_resource type="Animation" id="Animation_ynyqh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chicken:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_hiqs0"]
+resource_name = "whistle"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chicken:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.266667),
+"transitions": PackedFloat32Array(0.406126, 2.73208, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.737, 1.103, 0.737), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dle3m"]
+_data = {
+&"RESET": SubResource("Animation_ynyqh"),
+&"whistle": SubResource("Animation_hiqs0")
+}
+
+[sub_resource type="CapsuleShape3D" id="23"]
+radius = 0.611
+height = 1.42147
+
+[sub_resource type="SphereMesh" id="29"]
+radius = 1.2
+height = 2.4
+radial_segments = 16
+rings = 8
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vyafa"]
+radius = 0.92
+
+[node name="Chicken" node_paths=PackedStringArray("guraParent", "floor_raycast") instance=ExtResource("4")]
+collision_layer = 130
+collision_mask = 28929
+floor_block_on_wall = false
+script = ExtResource("6")
+dash_delay = 1.0
+gura_offset = Vector3(0, 1, 0.8)
+guraParent = NodePath("LowerBody/GuraParent")
+caller_sfx = ExtResource("3_ngj7a")
+whistle_sfx = ExtResource("4_ynyqh")
+weight_mult = 1.5
+respawn_state = "ChickenRide"
+floor_raycast = NodePath("SurfaceChecker")
+
+[node name="TargetIndicator" type="Control" parent="." index="0"]
+modulate = Color(1, 0.878431, 0.0901961, 1)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 41.0
+offset_bottom = 41.0
+
+[node name="TextureRect" type="TextureRect" parent="TargetIndicator" index="0"]
+material = SubResource("15")
+layout_mode = 0
+offset_left = -23.0
+offset_top = -40.0
+offset_right = 20.0
+offset_bottom = -2.0
+texture = ExtResource("8")
+
+[node name="LowerBody" type="Node3D" parent="." index="1"]
+transform = Transform3D(-1, -2.17174e-08, -1.49567e-07, -6.08479e-18, 1.03806, -0.137243, 1.50996e-07, -0.143828, -0.990538, -1.03398e-25, 0.279612, 1.56126e-32)
+
+[node name="GuraParent" type="Node3D" parent="LowerBody" index="0"]
+transform = Transform3D(-1, -2.04084e-08, 8.50073e-08, 0, 0.97237, 0.233445, -8.74228e-08, 0.233445, -0.97237, 0, 0.794, -0.832)
+
+[node name="UpperBody" type="Node3D" parent="." index="2"]
+transform = Transform3D(-0.916057, -0.0808727, 0.39281, 0.0377645, 1.00403, 0.294782, -0.400221, 0.260056, -0.879798, -1.04822e-08, 0.780646, -0.0694204)
+
+[node name="Hat" type="MeshInstance3D" parent="UpperBody" index="0"]
+transform = Transform3D(-0.122809, -0.172787, -0.04707, -0.1519, 0.127058, -0.0909972, 0.10084, -0.0190369, -0.194397, -0.331057, 0.501746, 0.0210269)
+visible = false
+mesh = ExtResource("4_3b48g")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("5_h1frn")
+surface_material_override/1 = ExtResource("5_h1frn")
+
+[node name="Eyebrows" type="Node3D" parent="UpperBody" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.93, 0.335)
+visible = false
+
+[node name="CSGBox3D" type="CSGBox3D" parent="UpperBody/Eyebrows" index="0"]
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, -0.30419, 1.34966, 0)
+material_override = ExtResource("6_caw6a")
+instance_shader_parameters/do_override_color = true
+instance_shader_parameters/override_color = Color(0, 0, 0, 1)
+size = Vector3(0.5, 0.1, 0.1)
+script = ExtResource("7_48ybk")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="UpperBody/Eyebrows" index="1"]
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 0.304, 1.35, 0)
+material_override = ExtResource("6_caw6a")
+instance_shader_parameters/do_override_color = true
+instance_shader_parameters/override_color = Color(0, 0, 0, 1)
+size = Vector3(0.5, 0.1, 0.1)
+script = ExtResource("7_48ybk")
+
+[node name="Damageable" parent="." index="3" instance=ExtResource("14")]
+state_machine_np = NodePath("../StateMachine")
+mesh_instance_nps = Array[NodePath]([NodePath("../Model/Chicken/Chicken/Skeleton3D/Mesh")])
+god_mode = true
+
+[node name="Hurtbox" parent="Damageable" index="1" instance=ExtResource("13")]
+collision_layer = 6
+
+[node name="CollisionShape3D" parent="Damageable/Hurtbox" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.734281, -4.01793e-09)
+shape = SubResource("27")
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="4"]
+root_node = NodePath("../Model/Chicken")
+tree_root = SubResource("26")
+anim_player = NodePath("../Model/Chicken/AnimationPlayer")
+parameters/movement/blend_position = -0.0487805
+parameters/movement_state/current_state = "free_move"
+parameters/movement_state/transition_request = ""
+parameters/movement_state/current_index = 0
+
+[node name="StateMachine" type="Node" parent="." index="5"]
+script = ExtResource("6_3h1mk")
+initial_state_name = "ChickenRide"
+animation_tree_node_path = NodePath("../AnimationTree")
+ground_ray_pivot_np = NodePath("../GroundRayPivot")
+print_state_changes = true
+
+[node name="DoNothing" type="Node" parent="StateMachine" index="0"]
+script = ExtResource("17")
+
+[node name="ChickenRide" type="Node" parent="StateMachine" index="1"]
+script = ExtResource("10")
+ROTATE_SPEED = 7.0
+MAX_SPEED = 8.0
+has_animations = true
+
+[node name="ChickenJump" type="Node" parent="StateMachine" index="2"]
+script = ExtResource("12")
+JUMP_VEL = 8.0
+jump_num = 0
+grounded_exit_state_name = "ChickenRide"
+MAX_SPEED = 10.0
+ACCELERATION = 0.5
+no_snap = true
+audio_clips = Array[AudioStream]([ExtResource("12_yn8rx")])
+
+[node name="ChickenDash" type="Node" parent="StateMachine" index="3" node_paths=PackedStringArray("roll_hitbox")]
+script = ExtResource("9")
+attack_delay = 0.5
+invul_time = 0.3
+hurtbox_np = NodePath("../../Damageable/Hurtbox")
+roll_hitbox = NodePath("../../DamageHitbox")
+easing = 0.63728
+exit_time = 0.3
+ignore_floor_angle = true
+MAX_SPEED = 40.0
+ACCELERATION = 4.0
+use_gravity = false
+
+[node name="ChickenFall" type="Node" parent="StateMachine" index="4" node_paths=PackedStringArray("flapping_audio_player")]
+script = ExtResource("11")
+flapping_audio_player = NodePath("../../FlapAudioStream")
+ROTATE_SPEED = 2.0
+MAX_SPEED = 10.0
+ACCELERATION = 0.2
+no_snap = true
+
+[node name="Camera" type="Node" parent="." index="6"]
+script = ExtResource("18")
+cam_y_offset = 1.0
+
+[node name="CamGimbal" parent="Camera" index="0" instance=ExtResource("7")]
+
+[node name="Interactable" parent="." index="7" instance=ExtResource("20")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, 0)
+script = ExtResource("19")
+interaction_text = "Сесть"
+
+[node name="Targetable" parent="Interactable" index="2"]
+enabled = false
+
+[node name="Chicken" parent="Model" index="0" instance=ExtResource("1")]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Model/Chicken/ChickenModel" index="0"]
+bones/1/position = Vector3(1.03398e-25, 0.279612, 5.47908e-43)
+bones/1/scale = Vector3(1, 1.04798, 1)
+bones/2/rotation = Quaternion(-0.206213, -0.204861, 0.00189031, 0.95682)
+bones/3/rotation = Quaternion(0.983692, -0.0904831, -0.145205, 0.0554823)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(0.983692, 0.0904831, 0.145205, 0.0554823)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(0.999991, -0.00304484, -0.00304488, -9.36387e-06)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(0.0146057, 0.00300005, -0.00308901, 0.999884)
+bones/8/position = Vector3(-0.210007, 0.423697, 3.69454e-08)
+bones/8/rotation = Quaternion(0.999991, 0.00304484, 0.00304488, -9.36387e-06)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(0.0146057, -0.00300005, 0.00308901, 0.999884)
+
+[node name="Mesh" parent="Model/Chicken/ChickenModel/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("18_c5yri")
+
+[node name="LowerBodyBone" type="BoneAttachment3D" parent="Model/Chicken/ChickenModel/Skeleton3D" index="1"]
+transform = Transform3D(1, 5.55412e-18, -6.08479e-18, -6.08479e-18, 1.03806, -0.137243, 5.29984e-18, 0.143828, 0.990538, 1.03398e-25, 0.279612, 5.47908e-43)
+bone_name = "Body_Lower"
+bone_idx = 1
+
+[node name="LowerBodyRT" type="RemoteTransform3D" parent="Model/Chicken/ChickenModel/Skeleton3D/LowerBodyBone" index="0"]
+remote_path = NodePath("../../../../../../LowerBody")
+
+[node name="UpperBodyBone" type="BoneAttachment3D" parent="Model/Chicken/ChickenModel/Skeleton3D" index="2"]
+transform = Transform3D(0.916057, 0.0808728, -0.39281, 0.0377645, 1.00403, 0.294782, 0.400221, -0.260056, 0.879798, 2.68077e-18, 0.780646, 0.0694204)
+bone_name = "Body_Upper"
+bone_idx = 2
+
+[node name="UpperBodyRT" type="RemoteTransform3D" parent="Model/Chicken/ChickenModel/Skeleton3D/UpperBodyBone" index="0"]
+remote_path = NodePath("../../../../../../UpperBody")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Model" index="1"]
+libraries = {
+&"": SubResource("AnimationLibrary_dle3m")
+}
+
+[node name="Sprite3D" type="Sprite3D" parent="Model" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.400845, 0)
+visible = false
+offset = Vector2(25.195, 35.7)
+modulate = Color(1, 0.72, 0.72, 1)
+pixel_size = 0.0185
+billboard = 1
+texture = ExtResource("25_dle3m")
+
+[node name="Shadow" parent="." index="9" instance=ExtResource("19_m0k8s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0133199, 0)
+size = Vector3(0.6, 8, 0.6)
+
+[node name="CollisionShape3D" parent="." index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.73304, 0)
+shape = SubResource("23")
+
+[node name="WalkParticles" parent="." index="11"]
+draw_pass_1 = SubResource("29")
+
+[node name="Targetable" parent="." index="12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65193, 0)
+
+[node name="FlapAudioStream" type="AudioStreamPlayer3D" parent="." index="15"]
+stream = ExtResource("23_qc5nq")
+volume_db = -50.0
+autoplay = true
+bus = &"Sound"
+
+[node name="JumpRay" type="RayCast3D" parent="." index="16"]
+transform = Transform3D(1, 0, 0, 0, 0.915606, -0.402076, 0, 0.402076, 0.915606, 0, 0.606, -0.062)
+target_position = Vector3(0, 0, -1)
+
+[node name="SurfaceChecker" type="RayCast3D" parent="." index="17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.128469, 0)
+collision_mask = 4223233
+script = ExtResource("27_sk2ts")
+
+[node name="DamageHitbox" parent="." index="18" instance=ExtResource("29_ofdhi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.839117, -0.285703)
+
+[node name="CollisionShape3D" parent="DamageHitbox" index="0"]
+shape = SubResource("SphereShape3D_vyafa")
+
+[editable path="Damageable/Hurtbox"]
+[editable path="Camera/CamGimbal"]
+[editable path="Interactable"]
+[editable path="Model/Chicken"]
+[editable path="DamageHitbox"]

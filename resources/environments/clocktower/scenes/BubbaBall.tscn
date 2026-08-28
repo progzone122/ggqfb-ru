@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://bf6a5nmh7roe2"]
+
+[ext_resource type="Script" uid="uid://csqdeqk556n5l" path="res://environments/clocktower/scenes/BubbaBall.gd" id="1_14ale"]
+[ext_resource type="Shader" uid="uid://d0n6sydhxbe2u" path="res://addons/flexible_toon_shader/flexible_toon.gdshader" id="1_ma8m1"]
+[ext_resource type="Texture2D" uid="uid://ctbog407guwjy" path="res://ui/textures/patterns/moroccan-flower.png" id="3_u3rt2"]
+[ext_resource type="Texture2D" uid="uid://dndyj6wbokwab" path="res://rendering/gradients/FishTownRamp.tres" id="4_6tvey"]
+[ext_resource type="ArrayMesh" uid="uid://xs7ix3ax1lke" path="res://environments/clocktower/bubba/bubba.obj" id="6_1kta3"]
+[ext_resource type="Texture2D" uid="uid://n1mk01ghxpik" path="res://environments/clocktower/bubba/bubbaclothes.png" id="7_6qpjr"]
+[ext_resource type="Texture2D" uid="uid://cqti3kba2hi5x" path="res://environments/clocktower/bubba/BUBBATRIM.png" id="8_5r5yq"]
+[ext_resource type="PackedScene" uid="uid://dj14lddcei02o" path="res://entities/NPC.tscn" id="9_2c328"]
+[ext_resource type="Script" uid="uid://6oaal5n78uy4" path="res://mechanics_and_systems/interactables/Interactable.gd" id="10_ggmtt"]
+[ext_resource type="Script" uid="uid://csuywysuraode" path="res://environments/fortress/StickPlayerToSurface.gd" id="11_kffm0"]
+[ext_resource type="PackedScene" uid="uid://c8sdpysjithag" path="res://mechanics_and_systems/combat/DamageHitbox.tscn" id="11_q7usj"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_55s8r"]
+rough = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_crbrt"]
+radius = 1.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ra08h"]
+render_priority = 0
+shader = ExtResource("1_ma8m1")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/emission = Color(0.313726, 0.192157, 0, 1)
+shader_parameter/albedo_texture = ExtResource("7_6qpjr")
+shader_parameter/use_emission_tex = false
+shader_parameter/texture_scale = 1.0
+shader_parameter/emission_strength = 0.0
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/unlit = false
+shader_parameter/cuts = 1
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = false
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = false
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/ramp = ExtResource("4_6tvey")
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
+shader_parameter/overlay_texture = ExtResource("3_u3rt2")
+shader_parameter/overlay_strength = 0.0
+shader_parameter/overlay_scale = 0.003
+shader_parameter/do_distance_fade = false
+shader_parameter/distance_fade_min = 0.0
+shader_parameter/distance_fade_max = 2.0
+shader_parameter/flash = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n7yww"]
+render_priority = 0
+shader = ExtResource("1_ma8m1")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/emission = Color(0.282353, 0.172549, 0, 1)
+shader_parameter/albedo_texture = ExtResource("8_5r5yq")
+shader_parameter/use_emission_tex = false
+shader_parameter/texture_scale = 1.0
+shader_parameter/emission_strength = 0.0
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/unlit = false
+shader_parameter/cuts = 1
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = false
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = false
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/ramp = ExtResource("4_6tvey")
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
+shader_parameter/overlay_texture = ExtResource("3_u3rt2")
+shader_parameter/overlay_strength = 0.0
+shader_parameter/overlay_scale = 0.003
+shader_parameter/do_distance_fade = false
+shader_parameter/distance_fade_min = 0.0
+shader_parameter/distance_fade_max = 2.0
+shader_parameter/flash = false
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_34ykr"]
+radius = 2.5977497
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kffm0"]
+resource_local_to_scene = true
+radius = 2.50136
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ytyak"]
+size = Vector3(2, 0.258, 2)
+
+[node name="BubbaBall" type="RigidBody3D" unique_id=427241457]
+collision_layer = 65792
+collision_mask = 257
+mass = 50.0
+physics_material_override = SubResource("PhysicsMaterial_55s8r")
+gravity_scale = 1.5
+can_sleep = false
+continuous_cd = true
+angular_damp = 0.5
+script = ExtResource("1_14ale")
+torque_amount = 90000.0
+gura_y_offset = 2.2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1365099182]
+shape = SubResource("SphereShape3D_crbrt")
+
+[node name="Model" type="Node3D" parent="." unique_id=89085302]
+
+[node name="Bubba" type="MeshInstance3D" parent="Model" unique_id=2140108134]
+transform = Transform3D(0.7005, 0, 0, 0, 0.7005, 0, 0, 0, 0.7005, 0, 0.5257305, 0.97044456)
+mesh = ExtResource("6_1kta3")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_ra08h")
+surface_material_override/1 = SubResource("ShaderMaterial_n7yww")
+
+[node name="Interactable" parent="." unique_id=307563285 instance=ExtResource("9_2c328")]
+script = ExtResource("10_ggmtt")
+interaction_text = "Сесть"
+
+[node name="CollisionShape3D" parent="Interactable/InteractionArea" index="0"]
+shape = SubResource("SphereShape3D_34ykr")
+
+[node name="Targetable" parent="Interactable" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+enabled = false
+
+[node name="DamageHitbox" parent="." unique_id=916100209 instance=ExtResource("11_q7usj")]
+damage = 50.0
+disable_on_start = false
+dont_append_hurtboxes = true
+
+[node name="CollisionShape3D" parent="DamageHitbox" index="0"]
+shape = SubResource("SphereShape3D_kffm0")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1015644525]
+collision_mask = 2
+script = ExtResource("11_kffm0")
+y_offset = 0.16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1780508814]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23642498, 0)
+shape = SubResource("BoxShape3D_ytyak")
+disabled = true
+
+[editable path="Interactable"]
+[editable path="Interactable/InteractionArea"]
+[editable path="DamageHitbox"]

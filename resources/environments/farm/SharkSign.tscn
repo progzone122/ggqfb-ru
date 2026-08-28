@@ -1,0 +1,123 @@
+[gd_scene load_steps=14 format=3 uid="uid://dsphjxi6yuaso"]
+
+[ext_resource type="Script" uid="uid://dpsan5s53nvj6" path="res://environments/farm/shark_sign.gd" id="1_2sm5x"]
+[ext_resource type="Material" uid="uid://bo71nx2lnohs2" path="res://addons/flexible_toon_shader/BaseMaterial.tres" id="1_q7y5w"]
+[ext_resource type="Script" uid="uid://dotlu6hk3j62u" path="res://addons/flexible_toon_shader/BaseMaterialOverride.gd" id="2_vgpng"]
+[ext_resource type="FontFile" uid="uid://c7vyxtjva11vq" path="res://ui/fonts/theboldfont.ttf" id="3_cxqhh"]
+[ext_resource type="Texture2D" uid="uid://b5olkr48u2t4v" path="res://environments/farm/map_shark.png" id="3_vgpng"]
+[ext_resource type="PackedScene" uid="uid://d128y6wt1xn5f" path="res://mechanics_and_systems/combat/Damageable.tscn" id="5_d8sga"]
+[ext_resource type="PackedScene" uid="uid://3b5c6k7br4ej" path="res://mechanics_and_systems/combat/Hurtbox.tscn" id="6_8icwx"]
+[ext_resource type="PackedScene" uid="uid://d2d1tw8x2sr7" path="res://ui/scripts/Targetable.tscn" id="8_0bpea"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2sm5x"]
+size = Vector3(1.44824, 1.48596, 0.248047)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0bpea"]
+size = Vector3(0.323975, 1.26367, 0.248047)
+
+[sub_resource type="Animation" id="Animation_af2c6"]
+resource_name = "hit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.33137, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_v1aa4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vkjss"]
+_data = {
+&"RESET": SubResource("Animation_v1aa4"),
+&"hit": SubResource("Animation_af2c6")
+}
+
+[node name="SharkSign" type="Node3D"]
+script = ExtResource("1_2sm5x")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Damageable" parent="Pivot" instance=ExtResource("5_d8sga")]
+god_mode = true
+
+[node name="Hurtbox" parent="Pivot/Damageable" instance=ExtResource("6_8icwx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.29119, 0)
+
+[node name="CollisionShape3D" parent="Pivot/Damageable/Hurtbox" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00750732, 0)
+shape = SubResource("BoxShape3D_2sm5x")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Pivot/Damageable/Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.41827, 0)
+shape = SubResource("BoxShape3D_0bpea")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Pivot"]
+transform = Transform3D(0.999771, 0.0213787, 0, -0.0213787, 0.999771, 0, 0, 0, 1, 0.0180989, 1.58376, 0)
+material_override = ExtResource("1_q7y5w")
+instance_shader_parameters/do_override_color = true
+instance_shader_parameters/override_color = Color(0.517381, 0.353922, 0.263376, 1)
+use_collision = true
+size = Vector3(0.108398, 3.16791, 0.1)
+script = ExtResource("2_vgpng")
+color = Color(0.517381, 0.353922, 0.263376, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Pivot"]
+transform = Transform3D(0.999554, -0.0298756, 0, 0.0298756, 0.999554, 0, 0, 0, 1, 0, 2.23827, 0.0835986)
+material_override = ExtResource("1_q7y5w")
+instance_shader_parameters/do_override_color = true
+instance_shader_parameters/override_color = Color(1, 0.7, 0, 1)
+use_collision = true
+size = Vector3(1.41992, 1.31079, 0.0791016)
+script = ExtResource("2_vgpng")
+color = Color(1, 0.7, 0, 1)
+
+[node name="Label3D" type="Label3D" parent="Pivot/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45783, 0.0840225)
+shaded = true
+modulate = Color(0.136826, 0.136826, 0.136826, 1)
+text = "КУПАТЬСЯ ЗАПРЕЩЕНО"
+font = ExtResource("3_cxqhh")
+font_size = 39
+outline_size = 0
+
+[node name="Label3D2" type="Label3D" parent="Pivot/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.457385, 0.0840225)
+shaded = true
+modulate = Color(0.136826, 0.136826, 0.136826, 1)
+text = "НАСТОЯЩИЕ АКУЛЫ"
+font = ExtResource("3_cxqhh")
+font_size = 44
+outline_size = 0
+
+[node name="Sprite3D" type="Sprite3D" parent="Pivot/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0556462)
+texture = ExtResource("3_vgpng")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vkjss")
+}
+
+[node name="Targetable" parent="." instance=ExtResource("8_0bpea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.94489, 0)
+
+[editable path="Pivot/Damageable/Hurtbox"]

@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://c43fehjc1isay"]
+
+[ext_resource type="Script" uid="uid://883gxjyfmvxg" path="res://environments/ice_cave/insult_paper.gd" id="1_hdx8u"]
+[ext_resource type="Shader" uid="uid://d0n6sydhxbe2u" path="res://addons/flexible_toon_shader/flexible_toon.gdshader" id="2_0oqpq"]
+[ext_resource type="PackedScene" uid="uid://cr6d4aec7b6sc" path="res://mechanics_and_systems/interactables/InteractionArea.tscn" id="2_klkga"]
+[ext_resource type="Texture2D" uid="uid://bo2xbkossxmhw" path="res://environments/ice_cave/crumpled_paper.jpg" id="3_hvkqj"]
+[ext_resource type="Texture2D" uid="uid://bduvbh3h57dqb" path="res://rendering/gradients/FortressRamp.tres" id="4_4at3k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_58tb3"]
+render_priority = 0
+shader = ExtResource("2_0oqpq")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/emission = Color(0, 0, 0, 0)
+shader_parameter/albedo_texture = ExtResource("3_hvkqj")
+shader_parameter/use_emission_tex = false
+shader_parameter/texture_scale = 0.697
+shader_parameter/emission_strength = 1.0
+shader_parameter/clamp_diffuse_to_max = true
+shader_parameter/unlit = false
+shader_parameter/cuts = 1
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = false
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = false
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/ramp = ExtResource("4_4at3k")
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
+shader_parameter/overlay_strength = 0.0
+shader_parameter/overlay_scale = 0.0
+shader_parameter/do_distance_fade = false
+shader_parameter/distance_fade_min = 1.0
+shader_parameter/distance_fade_max = 2.0
+shader_parameter/flash = false
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3450x"]
+radius = 0.4
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kjalv"]
+radius = 0.3
+
+[node name="InsultPaper" type="RigidBody3D" unique_id=1628207052]
+gravity_scale = 3.0
+linear_damp = 0.7
+angular_damp = 0.3
+script = ExtResource("1_hdx8u")
+interaction_text = "Прочитать"
+
+[node name="Model" type="CSGSphere3D" parent="." unique_id=426051919]
+layers = 131072
+radius = 0.4
+radial_segments = 7
+rings = 4
+material = SubResource("ShaderMaterial_58tb3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=878465624]
+shape = SubResource("SphereShape3D_3450x")
+
+[node name="InteractionArea" parent="." unique_id=574908732 instance=ExtResource("2_klkga")]
+
+[node name="CollisionShape3D" parent="InteractionArea" index="0"]
+shape = SubResource("SphereShape3D_kjalv")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=906447900]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.864845, 0)
+top_level = true
+light_energy = 10.0
+light_cull_mask = 4294836223
+omni_range = 3.755
+
+[editable path="InteractionArea"]

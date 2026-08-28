@@ -1,0 +1,302 @@
+[gd_scene format=3 uid="uid://h8ltxsp2kfqh"]
+
+[ext_resource type="Theme" uid="uid://cvscydthyenwa" path="res://ui/Theme.tres" id="1_e0638"]
+[ext_resource type="Script" uid="uid://da0lpxn8cc6dj" path="res://addons/ggs/control_rebinding/controls_ui.gd" id="2_tbl48"]
+[ext_resource type="PackedScene" uid="uid://bhjo26hcdi1hm" path="res://addons/ggs/control_rebinding/rebindable_control_button.tscn" id="4_nhjpd"]
+[ext_resource type="PackedScene" uid="uid://ds06mwhee8ygm" path="res://game_settings/components/slider/slider.tscn" id="4_vqi5i"]
+[ext_resource type="Resource" uid="uid://cfd42ltlfy6m6" path="res://game_settings/settings/main/mouse_sensitivity.tres" id="5_o03tj"]
+[ext_resource type="PackedScene" uid="uid://bsy1jisb87u0g" path="res://ui/scenes/TextButton.tscn" id="6_bu2dp"]
+[ext_resource type="Resource" uid="uid://bnvcqtx05vc5b" path="res://game_settings/settings/main/controller_sensitivity.tres" id="6_wvnmf"]
+[ext_resource type="PackedScene" uid="uid://cha8xesfthpfk" path="res://game_settings/components/switch/switch.tscn" id="7_vfnt6"]
+[ext_resource type="Resource" uid="uid://d30e4q3g3nn43" path="res://game_settings/settings/main/invert_x.tres" id="8_uju4b"]
+[ext_resource type="Resource" uid="uid://cd7urbi6rfgg3" path="res://game_settings/settings/main/invert_y.tres" id="9_qjioo"]
+
+[node name="ControlsUI" type="Control" unique_id=670610150 node_paths=PackedStringArray("control_list_parent", "reset_to_defaults_button", "awaiting_input_panel", "current_binding_label", "top_rebindable_button_focus")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_e0638")
+script = ExtResource("2_tbl48")
+control_list_parent = NodePath("Panel/VBoxContainer3/ControlList")
+rebindable_control_button_scene = ExtResource("4_nhjpd")
+reset_to_defaults_button = NodePath("Panel/VBoxContainer3/ResetToDefaultsButton")
+awaiting_input_panel = NodePath("AwaitingInputPanel")
+current_binding_label = NodePath("AwaitingInputPanel/Panel/ActionName")
+top_rebindable_button_focus = NodePath("Panel/VBoxContainer3/ControlsContainer/InvertY/Btn")
+default_focus_control = NodePath("Panel/VBoxContainer3/ResetToDefaultsButton")
+close_button = NodePath("Panel/CloseButton")
+
+[node name="Panel" type="Panel" parent="." unique_id=1187840079]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -341.0
+offset_top = -430.0
+offset_right = 341.0
+offset_bottom = 430.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel5" type="Label" parent="Panel" unique_id=1329258131]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -262.0
+offset_top = 71.0
+offset_right = 133.0
+offset_bottom = 131.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 60
+text = "переназначить управление"
+
+[node name="TitleLabel6" type="Label" parent="Panel" unique_id=1950811888]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 45.0
+offset_right = 249.0
+offset_bottom = 105.0
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath("/root/@EditorNode@20427/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/SettingsMenu/TitleLabel5")
+focus_neighbor_right = NodePath("/root/@EditorNode@20427/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/SettingsMenu/TitleLabel5")
+theme_override_font_sizes/font_size = 60
+text = "управление"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Panel" unique_id=1136224628]
+layout_mode = 0
+offset_left = 47.5
+offset_top = 128.0
+offset_right = 640.0
+offset_bottom = 451.0
+focus_neighbor_left = NodePath("/root/@EditorNode@20427/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/SettingsMenu/VBoxContainer/MarginContainer/VBoxContainer3")
+focus_neighbor_right = NodePath("/root/@EditorNode@20427/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/SettingsMenu/VBoxContainer/MarginContainer/VBoxContainer3")
+
+[node name="ControlsContainer" type="VBoxContainer" parent="Panel/VBoxContainer3" unique_id=996082745]
+layout_mode = 2
+size_flags_horizontal = 5
+focus_neighbor_left = NodePath("/root/@EditorNode@20427/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/SettingsMenu/VBoxContainer/MarginContainer/VBoxContainer3/GameplayContainer")
+focus_neighbor_right = NodePath("/root/@EditorNode@20427/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/SettingsMenu/VBoxContainer/MarginContainer/VBoxContainer3/GameplayContainer")
+alignment = 1
+
+[node name="TitleLabel3" type="Label" parent="Panel/VBoxContainer3/ControlsContainer" unique_id=1811418985]
+self_modulate = Color(0.117647, 0.756863, 1, 1)
+layout_mode = 2
+focus_neighbor_left = NodePath("/root/@EditorNode@20427/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/SettingsMenu/VBoxContainer/MarginContainer/VBoxContainer3/GameplayContainer/TitleLabel3")
+focus_neighbor_right = NodePath("/root/@EditorNode@20427/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/SettingsMenu/VBoxContainer/MarginContainer/VBoxContainer3/GameplayContainer/TitleLabel3")
+theme_override_font_sizes/font_size = 32
+text = "настройки управления"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer3/ControlsContainer" unique_id=1058138174]
+layout_mode = 2
+focus_neighbor_left = NodePath("/root/@EditorNode@20427/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/SettingsMenu/VBoxContainer/MarginContainer/VBoxContainer3/GameplayContainer/HBoxContainer")
+focus_neighbor_right = NodePath("/root/@EditorNode@20427/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/SettingsMenu/VBoxContainer/MarginContainer/VBoxContainer3/GameplayContainer/HBoxContainer")
+
+[node name="SubtitleLabel4" type="Label" parent="Panel/VBoxContainer3/ControlsContainer/HBoxContainer" unique_id=640416449]
+self_modulate = Color(0.72156864, 0.72156864, 0.72156864, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath("/root/@EditorNode@20427/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/SettingsMenu/VBoxContainer/MarginContainer/VBoxContainer3/GameplayContainer/HBoxContainer/SubtitleLabel4")
+focus_neighbor_right = NodePath("/root/@EditorNode@20427/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/SettingsMenu/VBoxContainer/MarginContainer/VBoxContainer3/GameplayContainer/HBoxContainer/SubtitleLabel4")
+text = "чувствительность мыши"
+
+[node name="MouseSlider" parent="Panel/VBoxContainer3/ControlsContainer/HBoxContainer" unique_id=919389561 instance=ExtResource("4_vqi5i")]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 9
+focus_neighbor_left = NodePath("/root/@EditorNode@20427/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/SettingsMenu/VBoxContainer/MarginContainer/VBoxContainer3/GameplayContainer/HBoxContainer/MouseSlider")
+focus_neighbor_right = NodePath("/root/@EditorNode@20427/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/SettingsMenu/VBoxContainer/MarginContainer/VBoxContainer3/GameplayContainer/HBoxContainer/MouseSlider")
+setting = ExtResource("5_o03tj")
+apply_on_change = true
+
+[node name="Slider" parent="Panel/VBoxContainer3/ControlsContainer/HBoxContainer/MouseSlider" index="0"]
+size_flags_vertical = 9
+focus_neighbor_left = NodePath("/root/@EditorNode@20427/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/SettingsMenu/VBoxContainer/MarginContainer/VBoxContainer3/GameplayContainer/HBoxContainer/MouseSlider/Slider")
+focus_neighbor_right = NodePath("/root/@EditorNode@20427/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/SettingsMenu/VBoxContainer/MarginContainer/VBoxContainer3/GameplayContainer/HBoxContainer/MouseSlider/Slider")
+focus_neighbor_bottom = NodePath("../../../HBoxContainer2/ControllerSlider/Slider")
+step = 10.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer3/ControlsContainer" unique_id=1615520070]
+layout_mode = 2
+focus_neighbor_left = NodePath("/root/@EditorNode@20427/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/SettingsMenu/VBoxContainer/MarginContainer/VBoxContainer3/GameplayContainer/HBoxContainer2")
+focus_neighbor_right = NodePath("/root/@EditorNode@20427/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/SettingsMenu/VBoxContainer/MarginContainer/VBoxContainer3/GameplayContainer/HBoxContainer2")
+
+[node name="SubtitleLabel5" type="Label" parent="Panel/VBoxContainer3/ControlsContainer/HBoxContainer2" unique_id=243840856]
+self_modulate = Color(0.72156864, 0.72156864, 0.72156864, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath("/root/@EditorNode@20427/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/SettingsMenu/VBoxContainer/MarginContainer/VBoxContainer3/GameplayContainer/HBoxContainer2/SubtitleLabel5")
+focus_neighbor_right = NodePath("/root/@EditorNode@20427/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/SettingsMenu/VBoxContainer/MarginContainer/VBoxContainer3/GameplayContainer/HBoxContainer2/SubtitleLabel5")
+text = "чувствительность геймпада"
+
+[node name="ControllerSlider" parent="Panel/VBoxContainer3/ControlsContainer/HBoxContainer2" unique_id=1939820428 instance=ExtResource("4_vqi5i")]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 9
+focus_neighbor_left = NodePath("/root/@EditorNode@20427/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/SettingsMenu/VBoxContainer/MarginContainer/VBoxContainer3/GameplayContainer/HBoxContainer2/ControllerSlider")
+focus_neighbor_right = NodePath("/root/@EditorNode@20427/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/SettingsMenu/VBoxContainer/MarginContainer/VBoxContainer3/GameplayContainer/HBoxContainer2/ControllerSlider")
+setting = ExtResource("6_wvnmf")
+apply_on_change = true
+
+[node name="Slider" parent="Panel/VBoxContainer3/ControlsContainer/HBoxContainer2/ControllerSlider" index="0"]
+focus_neighbor_left = NodePath("/root/@EditorNode@20427/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/SettingsMenu/VBoxContainer/MarginContainer/VBoxContainer3/GameplayContainer/HBoxContainer2/ControllerSlider/Slider")
+focus_neighbor_top = NodePath("../../../HBoxContainer/MouseSlider/Slider")
+focus_neighbor_right = NodePath("/root/@EditorNode@20427/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/SettingsMenu/VBoxContainer/MarginContainer/VBoxContainer3/GameplayContainer/HBoxContainer2/ControllerSlider/Slider")
+focus_previous = NodePath("../../../HBoxContainer/MouseSlider/Slider")
+step = 10.0
+
+[node name="InvertX" parent="Panel/VBoxContainer3/ControlsContainer" unique_id=196488575 instance=ExtResource("7_vfnt6")]
+layout_mode = 2
+tooltip_text = "awdawdawd"
+focus_neighbor_left = NodePath("../../VideoContainer/Vsync2/root/@EditorNode@20427/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/SettingsMenu/VBoxContainer/MarginContainer/VBoxContainer3/VideoContainer/Vsync")
+focus_neighbor_right = NodePath("../../VideoContainer/Vsync2/root/@EditorNode@20427/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/SettingsMenu/VBoxContainer/MarginContainer/VBoxContainer3/VideoContainer/Vsync")
+setting = ExtResource("8_uju4b")
+apply_on_change = true
+
+[node name="Btn" parent="Panel/VBoxContainer3/ControlsContainer/InvertX" index="0"]
+focus_neighbor_left = NodePath("../../../VideoContainer/Vsync2/Btn/root/@EditorNode@20427/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/SettingsMenu/VBoxContainer/MarginContainer/VBoxContainer3/VideoContainer/Vsync/Btn")
+focus_neighbor_right = NodePath("../../../VideoContainer/Vsync2/Btn/root/@EditorNode@20427/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/SettingsMenu/VBoxContainer/MarginContainer/VBoxContainer3/VideoContainer/Vsync/Btn")
+text = "инвертировать X"
+
+[node name="InvertY" parent="Panel/VBoxContainer3/ControlsContainer" unique_id=1076597101 instance=ExtResource("7_vfnt6")]
+layout_mode = 2
+tooltip_text = "awdawdawd"
+focus_neighbor_left = NodePath("../../VideoContainer/Vsync2/root/@EditorNode@20427/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/SettingsMenu/VBoxContainer/MarginContainer/VBoxContainer3/VideoContainer/Vsync")
+focus_neighbor_right = NodePath("../../VideoContainer/Vsync2/root/@EditorNode@20427/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/SettingsMenu/VBoxContainer/MarginContainer/VBoxContainer3/VideoContainer/Vsync")
+setting = ExtResource("9_qjioo")
+apply_on_change = true
+
+[node name="Btn" parent="Panel/VBoxContainer3/ControlsContainer/InvertY" index="0"]
+focus_neighbor_left = NodePath("../../../VideoContainer/Vsync2/Btn/root/@EditorNode@20427/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/SettingsMenu/VBoxContainer/MarginContainer/VBoxContainer3/VideoContainer/Vsync/Btn")
+focus_neighbor_right = NodePath("../../../VideoContainer/Vsync2/Btn/root/@EditorNode@20427/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/SettingsMenu/VBoxContainer/MarginContainer/VBoxContainer3/VideoContainer/Vsync/Btn")
+text = "инвертировать Y"
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer3" unique_id=574484464]
+layout_mode = 2
+theme_override_constants/margin_top = 34
+
+[node name="TitleLabel3" type="Label" parent="Panel/VBoxContainer3" unique_id=906040238]
+self_modulate = Color(0.117647, 0.756863, 1, 1)
+layout_mode = 2
+focus_neighbor_left = NodePath("/root/@EditorNode@20427/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/SettingsMenu/VBoxContainer/MarginContainer/VBoxContainer3/GameplayContainer/TitleLabel3")
+focus_neighbor_right = NodePath("/root/@EditorNode@20427/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/SettingsMenu/VBoxContainer/MarginContainer/VBoxContainer3/GameplayContainer/TitleLabel3")
+theme_override_font_sizes/font_size = 32
+text = "переназначить управление"
+
+[node name="ControlList" type="VBoxContainer" parent="Panel/VBoxContainer3" unique_id=693379330]
+process_mode = 3
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="ResetToDefaultsButton" parent="Panel/VBoxContainer3" unique_id=1008587308 instance=ExtResource("6_bu2dp")]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../CloseButton")
+focus_next = NodePath("../../CloseButton")
+theme_override_font_sizes/font_size = 28
+text = "сбросить раскладку"
+font_size = 28
+
+[node name="CloseButton" parent="Panel" unique_id=970139917 instance=ExtResource("6_bu2dp")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -283.0
+offset_top = -77.0
+offset_right = 283.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../VBoxContainer3/ResetToDefaultsButton")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath("../VBoxContainer3/ResetToDefaultsButton")
+theme_override_font_sizes/font_size = 36
+text = "закрыть"
+font_size = 36
+
+[node name="AwaitingInputPanel" type="Control" parent="." unique_id=1255371257]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="ColorRect" type="ColorRect" parent="AwaitingInputPanel" unique_id=1799283352]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.392157)
+
+[node name="Panel" type="Panel" parent="AwaitingInputPanel" unique_id=1853714365]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -223.0
+offset_top = -87.0
+offset_right = 214.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="ActionName" type="Label" parent="AwaitingInputPanel/Panel" unique_id=2143617995]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -162.0
+offset_top = 22.0
+offset_right = 162.0
+offset_bottom = 82.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 50
+text = "атака"
+horizontal_alignment = 1
+
+[node name="TitleLabel5" type="Label" parent="AwaitingInputPanel/Panel" unique_id=1161361105]
+self_modulate = Color(0.701563, 0.701563, 0.701563, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -162.0
+offset_top = 74.0
+offset_right = 162.0
+offset_bottom = 134.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "ожидание ввода"
+horizontal_alignment = 1
+
+[editable path="Panel/VBoxContainer3/ControlsContainer/HBoxContainer/MouseSlider"]
+[editable path="Panel/VBoxContainer3/ControlsContainer/HBoxContainer2/ControllerSlider"]
+[editable path="Panel/VBoxContainer3/ControlsContainer/InvertX"]
+[editable path="Panel/VBoxContainer3/ControlsContainer/InvertY"]

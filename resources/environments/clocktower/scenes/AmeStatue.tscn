@@ -1,0 +1,134 @@
+[gd_scene load_steps=8 format=3 uid="uid://b6r1sd7o4xv3i"]
+
+[ext_resource type="Texture2D" uid="uid://drkaf5n70xei5" path="res://textures/t_rock_2.png" id="1_cecoe"]
+[ext_resource type="Texture2D" uid="uid://bmir08pewwdn1" path="res://ui/textures/patterns/repeating_syringe_mag.png" id="2_fuv33"]
+[ext_resource type="FontFile" uid="uid://16i6ni3a6hty" path="res://ui/fonts/Chapaza.ttf" id="4_pfds0"]
+[ext_resource type="PackedScene" uid="uid://dha4n8kv8lp0f" path="res://entities/gura/models/AmeModel.tscn" id="4_pus7s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_237ah"]
+cull_mode = 2
+albedo_color = Color(0.603922, 0.670588, 0.705882, 1)
+albedo_texture = ExtResource("1_cecoe")
+roughness = 0.92
+roughness_texture = ExtResource("1_cecoe")
+clearcoat_roughness = 1.0
+uv1_scale = Vector3(0.641, 0.641, 0.641)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_odmtc"]
+albedo_color = Color(0.992157, 0.976471, 0.87451, 1)
+roughness = 0.14
+emission_energy_multiplier = 0.01
+emission_texture = ExtResource("2_fuv33")
+uv1_triplanar = true
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3mm0t"]
+radius = 0.863214
+height = 5.38808
+
+[node name="AmeStatue" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+use_collision = true
+size = Vector3(2.5, 1.5, 2)
+material = SubResource("StandardMaterial3D_237ah")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 1.001)
+visible = false
+size = Vector3(1.93891, 0.75, 0.031)
+material = SubResource("StandardMaterial3D_odmtc")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.440242, 0)
+shape = SubResource("CapsuleShape3D_3mm0t")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.975133, 1.02703)
+modulate = Color(0, 0, 0, 0.647059)
+text = "АМЕЛИЯ ВАТСОН"
+font = ExtResource("4_pfds0")
+font_size = 46
+outline_size = 0
+
+[node name="Label3D2" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.819016, 1.02703)
+modulate = Color(0, 0, 0, 0.647059)
+text = "УЧЁНАЯ.
+ПРОВИДИЦА.
+ВОЗЛЮБЛЕННАЯ."
+font = ExtResource("4_pfds0")
+outline_size = 0
+vertical_alignment = 0
+
+[node name="Ame" parent="." instance=ExtResource("4_pus7s")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.50131, 0)
+
+[node name="Skeleton3D" parent="Ame/AmeModel" index="1"]
+bones/1/rotation = Quaternion(0.999933, 0.00233592, -0.00127267, 0.0112381)
+bones/2/rotation = Quaternion(0.0274593, -0.00338468, 0.00231357, 0.999615)
+bones/3/rotation = Quaternion(0.999933, -0.00233593, 0.00127269, 0.0112381)
+bones/4/rotation = Quaternion(0.0274593, 0.00338468, -0.00231357, 0.999615)
+bones/6/rotation = Quaternion(-0.0605388, 0, 1.34423e-17, 0.998166)
+bones/7/rotation = Quaternion(-0.0341945, 1.88144e-27, -1.01032e-24, 0.999415)
+bones/8/rotation = Quaternion(0.511735, 0.499862, 0.499862, -0.488265)
+bones/9/rotation = Quaternion(-0.363556, 0.554101, -0.0241509, 0.748476)
+bones/10/rotation = Quaternion(-0.208701, -0.319309, -0.509809, 0.771091)
+bones/12/rotation = Quaternion(0.511735, -0.499862, -0.499862, -0.488265)
+bones/13/rotation = Quaternion(-0.363556, -0.554101, 0.0241509, 0.748476)
+bones/14/rotation = Quaternion(-0.208701, 0.319309, 0.509809, 0.771091)
+bones/15/rotation = Quaternion(-0.00515568, -2.36691e-08, 5.31607e-05, 0.999987)
+bones/16/rotation = Quaternion(0.707096, 0.00397844, 0.00397844, 0.707096)
+bones/17/position = Vector3(0.125944, 0.0255472, -0.00185615)
+bones/17/rotation = Quaternion(-0.5, -0.5, 0.5, 0.5)
+bones/18/position = Vector3(-6.02174e-08, 2.32831e-09, 2.79703e-09)
+bones/18/rotation = Quaternion(0.70711, 0, 0.707104, 0)
+bones/19/rotation = Quaternion(0.707096, -0.00397844, -0.00397844, 0.707096)
+bones/20/position = Vector3(-0.125944, 0.0255472, -0.00185615)
+bones/20/rotation = Quaternion(0.5, -0.5, 0.5, -0.5)
+bones/21/position = Vector3(6.02174e-08, 2.32831e-09, 2.79703e-09)
+bones/21/rotation = Quaternion(0.70711, 0, -0.707104, 0)
+
+[node name="Ame_Arms" parent="Ame/AmeModel/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_237ah")
+
+[node name="Ame_Body" parent="Ame/AmeModel/Skeleton3D" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_237ah")
+
+[node name="Ame_Coat_Bottom" parent="Ame/AmeModel/Skeleton3D" index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_237ah")
+
+[node name="Ame_Coat_Top" parent="Ame/AmeModel/Skeleton3D" index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_237ah")
+
+[node name="Ame_Eyes" parent="Ame/AmeModel/Skeleton3D" index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_237ah")
+
+[node name="Ame_Hair" parent="Ame/AmeModel/Skeleton3D" index="5"]
+surface_material_override/0 = SubResource("StandardMaterial3D_237ah")
+
+[node name="Ame_Hat" parent="Ame/AmeModel/Skeleton3D" index="6"]
+surface_material_override/0 = SubResource("StandardMaterial3D_237ah")
+
+[node name="Ame_Head" parent="Ame/AmeModel/Skeleton3D" index="7"]
+surface_material_override/0 = SubResource("StandardMaterial3D_237ah")
+
+[node name="Ame_Legs" parent="Ame/AmeModel/Skeleton3D" index="8"]
+surface_material_override/0 = SubResource("StandardMaterial3D_237ah")
+
+[node name="Ame_Monocle" parent="Ame/AmeModel/Skeleton3D" index="9"]
+surface_material_override/0 = SubResource("StandardMaterial3D_237ah")
+
+[node name="Ame_Mouth" parent="Ame/AmeModel/Skeleton3D" index="10"]
+surface_material_override/0 = SubResource("StandardMaterial3D_237ah")
+
+[node name="Ame_Tie" parent="Ame/AmeModel/Skeleton3D" index="11"]
+surface_material_override/0 = SubResource("StandardMaterial3D_237ah")
+
+[node name="AnimationPlayer" parent="Ame" index="1"]
+speed_scale = 0.0
+
+[editable path="Ame"]

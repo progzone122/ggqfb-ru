@@ -1,0 +1,253 @@
+[gd_scene format=3 uid="uid://g2p2b6rx8tea"]
+
+[ext_resource type="Material" uid="uid://us10q6jej0iv" path="res://environments/clocktower/materials/Gray.tres" id="1_7cgns"]
+[ext_resource type="Script" uid="uid://dnvx6lqhqdlvi" path="res://environments/clocktower/scenes/Elevator.gd" id="1_mxe6f"]
+[ext_resource type="Texture2D" uid="uid://bwblvn6cvjh0b" path="res://environments/clocktower/TrianglePattern.png" id="1_n3nyc"]
+[ext_resource type="FontFile" uid="uid://cw3o2fal6hm8h" path="res://ui/fonts/VCR_OSD_MONO_1.001.ttf" id="1_rmklt"]
+[ext_resource type="PackedScene" uid="uid://bypmxum7byvmy" path="res://environments/clocktower/elevator.glb" id="2_wjhhb"]
+[ext_resource type="AudioStream" uid="uid://bc6dybfx4722d" path="res://audio/sfx/clocktower/elevator_enter.ogg" id="3_cq5mp"]
+[ext_resource type="Material" uid="uid://q4wb0aw0be4" path="res://environments/clocktower/materials/Copper.tres" id="3_hev21"]
+[ext_resource type="FontFile" uid="uid://16i6ni3a6hty" path="res://ui/fonts/Chapaza.ttf" id="4_0c5j3"]
+[ext_resource type="AudioStream" uid="uid://cc58od6ko8nvj" path="res://audio/sfx/clocktower/elevator_exit.ogg" id="4_icyef"]
+[ext_resource type="PackedScene" uid="uid://cr6d4aec7b6sc" path="res://mechanics_and_systems/interactables/InteractionArea.tscn" id="5_t1puh"]
+[ext_resource type="PackedScene" uid="uid://bkl7vffqv0g8h" path="res://mechanics_and_systems/camera/camera_system/CameraNode.tscn" id="6_eumky"]
+[ext_resource type="PackedScene" uid="uid://bq1egor1yml34" path="res://mechanics_and_systems/camera/CutscenePosition.tscn" id="8_bqics"]
+[ext_resource type="Script" uid="uid://gmhka722vl4r" path="res://environments/clocktower/scenes/dummy_elevator_sequencer.gd" id="13_sywwf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y0pjp"]
+albedo_texture = ExtResource("1_n3nyc")
+metallic = 0.78
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vhtda"]
+clearcoat_enabled = true
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_o8bcq"]
+data = PackedVector3Array(0.0101, -1, 0.1897, 0.0101, 5.6, -0.1897, 0.0101, 5.6, 0.1897, 0.0101, -1, 0.1897, 0.0101, -1, -0.1897, 0.0101, 5.6, -0.1897, 0.0101, -1, -0.1897, 2.8101, 5.6, -0.1897, 0.0101, 5.6, -0.1897, 0.0101, -1, -0.1897, 2.8101, -1, -0.1897, 2.8101, 5.6, -0.1897, 2.8101, -1, -0.1897, 2.8101, 5.6, 0.1897, 2.8101, 5.6, -0.1897, 2.8101, -1, -0.1897, 2.8101, -1, 0.1897, 2.8101, 5.6, 0.1897, 2.8101, -1, 0.1897, 0.0101, 5.6, 0.1897, 2.8101, 5.6, 0.1897, 2.8101, -1, 0.1897, 0.0101, -1, 0.1897, 0.0101, 5.6, 0.1897, 0.0101, -1, -0.1897, 2.8101, -1, 0.1897, 2.8101, -1, -0.1897, 0.0101, -1, -0.1897, 0.0101, -1, 0.1897, 2.8101, -1, 0.1897, 2.8101, 5.6, -0.1897, 0.0101, 5.6, 0.1897, 0.0101, 5.6, -0.1897, 2.8101, 5.6, -0.1897, 2.8101, 5.6, 0.1897, 0.0101, 5.6, 0.1897)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vnkod"]
+albedo_color = Color(0.184314, 0.184314, 0.184314, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_nqqrx"]
+data = PackedVector3Array(-0.0101, -1, -0.1897, -2.8101, -1, 0.1897, -0.0101, -1, 0.1897, -0.0101, -1, -0.1897, -2.8101, -1, -0.1897, -2.8101, -1, 0.1897, -0.0101, -1, 0.1897, -0.0101, 5.6, -0.1897, -0.0101, -1, -0.1897, -0.0101, -1, 0.1897, -0.0101, 5.6, 0.1897, -0.0101, 5.6, -0.1897, -2.8101, -1, 0.1897, -0.0101, 5.6, 0.1897, -0.0101, -1, 0.1897, -2.8101, -1, 0.1897, -2.8101, 5.6, 0.1897, -0.0101, 5.6, 0.1897, -2.8101, -1, -0.1897, -2.8101, 5.6, 0.1897, -2.8101, -1, 0.1897, -2.8101, -1, -0.1897, -2.8101, 5.6, -0.1897, -2.8101, 5.6, 0.1897, -2.8101, 5.6, -0.1897, -0.0101, 5.6, 0.1897, -2.8101, 5.6, 0.1897, -2.8101, 5.6, -0.1897, -0.0101, 5.6, -0.1897, -0.0101, 5.6, 0.1897, -0.0101, -1, -0.1897, -2.8101, 5.6, -0.1897, -2.8101, -1, -0.1897, -0.0101, -1, -0.1897, -0.0101, 5.6, -0.1897, -2.8101, 5.6, -0.1897)
+
+[sub_resource type="Animation" id="Animation_2lgks"]
+resource_name = "Close"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("elevator/Door_R:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.133972, 0.277393),
+"update": 0,
+"values": [Vector3(3, 0.977709, -0.701782), Vector3(0, 0.977709, -0.701782)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("elevator/Door_L:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.133972, 0.277393),
+"update": 0,
+"values": [Vector3(-3, 0.977709, -0.701782), Vector3(0, 0.977709, -0.701786)]
+}
+
+[sub_resource type="Animation" id="Animation_l47f0"]
+resource_name = "Open"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("elevator/Door_R:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.164939, 1),
+"update": 0,
+"values": [Vector3(0, 0.977709, -0.701782), Vector3(3, 0.977709, -0.701782)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("elevator/Door_L:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.164939, 1),
+"update": 0,
+"values": [Vector3(0, 0.977709, -0.701786), Vector3(-3, 0.977709, -0.701782)]
+}
+
+[sub_resource type="Animation" id="Animation_41p0g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("elevator/Door_R:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.977709, -0.701782)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("elevator/Door_L:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.977709, -0.701786)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0uin3"]
+_data = {
+&"Close": SubResource("Animation_2lgks"),
+&"Open": SubResource("Animation_l47f0"),
+&"RESET": SubResource("Animation_41p0g")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fw2d2"]
+metallic = 0.14
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n3aou"]
+size = Vector3(6.53119, 5.82373, 1.47949)
+
+[node name="Elevator" type="CSGCombiner3D" unique_id=1666087175 groups=["Interactable"]]
+material_override = SubResource("StandardMaterial3D_y0pjp")
+script = ExtResource("1_mxe6f")
+area_to_go_to = 9
+enter_sfx = ExtResource("3_cq5mp")
+exit_sfx = ExtResource("4_icyef")
+interaction_text = "Вызвать лифт"
+
+[node name="ElevatorLabel" type="Label3D" parent="." unique_id=1447112356]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0501976, 6.06459, 0.19136)
+modulate = Color(0.541176, 0.0980392, 0.109804, 1)
+text = "1F"
+font = ExtResource("1_rmklt")
+font_size = 108
+outline_size = 4
+
+[node name="elevator" parent="." unique_id=2045676348 instance=ExtResource("2_wjhhb")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+
+[node name="Frame" parent="elevator" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_vhtda")
+
+[node name="Door_R" parent="elevator" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.977709, -0.701782)
+surface_material_override/0 = SubResource("StandardMaterial3D_vhtda")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="elevator/Door_R" index="0" unique_id=146670862]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="elevator/Door_R/StaticBody3D" unique_id=69345778]
+shape = SubResource("ConcavePolygonShape3D_o8bcq")
+
+[node name="Top_Panel" parent="elevator" index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_vhtda")
+surface_material_override/1 = SubResource("StandardMaterial3D_vnkod")
+
+[node name="Side_Panel" parent="elevator" index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_vhtda")
+
+[node name="Button" parent="elevator" index="4"]
+surface_material_override/0 = ExtResource("3_hev21")
+
+[node name="Door_L" parent="elevator" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.977709, -0.701786)
+surface_material_override/0 = SubResource("StandardMaterial3D_vhtda")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="elevator/Door_L" index="0" unique_id=860703495]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="elevator/Door_L/StaticBody3D" unique_id=1569614830]
+shape = SubResource("ConcavePolygonShape3D_nqqrx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=848830437]
+libraries/ = SubResource("AnimationLibrary_0uin3")
+
+[node name="FloorPanel" type="Node3D" parent="." unique_id=109645521]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7095, 3.93331, 3.8147e-05)
+
+[node name="FloorLabel" type="Label3D" parent="FloorPanel" unique_id=518571660]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 7.62939e-06, -0.0895786, 0.367638)
+modulate = Color(0.301961, 0.254902, 0.0431373, 1)
+outline_modulate = Color(0.713726, 0.713726, 0.713726, 1)
+text = "1F"
+font = ExtResource("4_0c5j3")
+font_size = 128
+outline_size = 4
+
+[node name="Block" type="CSGBox3D" parent="FloorPanel" unique_id=1415323173]
+size = Vector3(1.84909, 1, 0.634574)
+material = SubResource("StandardMaterial3D_vhtda")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1918070201]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.71591, -3.22047)
+material_override = SubResource("StandardMaterial3D_y0pjp")
+flip_faces = true
+size = Vector3(4.58522, 5.30006, 6.91294)
+material = SubResource("StandardMaterial3D_fw2d2")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=385277176]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.05083, -4.19045)
+material_override = SubResource("StandardMaterial3D_y0pjp")
+flip_faces = true
+size = Vector3(5.55835, 5.99909, 6.74354)
+
+[node name="InteractionArea" parent="." unique_id=735012037 instance=ExtResource("5_t1puh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.08066, 0)
+
+[node name="CollisionShape3D" parent="InteractionArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.765533, 0.891357, 0.239746)
+shape = SubResource("BoxShape3D_n3aou")
+
+[node name="CameraNode" parent="." unique_id=1886749979 instance=ExtResource("6_eumky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.66949, 8.16837)
+transition_time = 1.0
+
+[node name="InsideElevator" parent="." unique_id=810234946 instance=ExtResource("8_bqics")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.97347, -4.47214)
+
+[node name="OutsideElevator" parent="." unique_id=2079795228 instance=ExtResource("8_bqics")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 1.97347, 3.50976)
+
+[node name="ExitingElevator" parent="." unique_id=341565163 instance=ExtResource("8_bqics")]
+transform = Transform3D(-1, 0, -2.62269e-07, 0, 1, 0, 2.62269e-07, 0, -1, 0, 1.97347, 3.50976)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=468241516]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.48734, -4.06862)
+light_energy = 0.5
+omni_range = 3.67422
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1472339389]
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=1781889431]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.86045, -7.48059)
+material_override = ExtResource("1_7cgns")
+operation = 2
+flip_faces = true
+size = Vector3(6.06641, 0.353516, 0.163275)
+material = ExtResource("1_7cgns")
+
+[node name="Sequencer" type="Node" parent="." unique_id=1601652490]
+script = ExtResource("13_sywwf")
+metadata/_custom_type_script = "uid://dyvg3kc6wkotj"
+
+[editable path="elevator"]
+[editable path="InteractionArea"]

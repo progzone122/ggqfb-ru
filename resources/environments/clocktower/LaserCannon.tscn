@@ -1,0 +1,419 @@
+[gd_scene load_steps=50 format=3 uid="uid://dx4r41eu3tell"]
+
+[ext_resource type="PackedScene" uid="uid://biwx1smtkk8my" path="res://entities/Entity.tscn" id="1_enmj7"]
+[ext_resource type="Script" uid="uid://q576y7mtf4s4" path="res://environments/clocktower/LaserCannon.gd" id="2_jxaj4"]
+[ext_resource type="Texture2D" uid="uid://dlbvwfusuj486" path="res://ui/textures/Pointer.png" id="3_1nsof"]
+[ext_resource type="PackedScene" uid="uid://d128y6wt1xn5f" path="res://mechanics_and_systems/combat/Damageable.tscn" id="4_yb4bs"]
+[ext_resource type="PackedScene" uid="uid://3b5c6k7br4ej" path="res://mechanics_and_systems/combat/Hurtbox.tscn" id="5_7r1xg"]
+[ext_resource type="Script" uid="uid://ca4l6vqnmop26" path="res://entities/chicken/ChickenStateMachine.gd" id="6_ooqmg"]
+[ext_resource type="Script" uid="uid://dbynh027nguj4" path="res://entities/enemies/states/DoNothing.gd" id="7_plinp"]
+[ext_resource type="Script" uid="uid://bjxwvi0pjsf0y" path="res://environments/clocktower/scenes/LaserCannonRide.gd" id="8_uwaol"]
+[ext_resource type="Script" uid="uid://cuvhsqtnjgt65" path="res://mechanics_and_systems/EffectPlayer_StateEnter.gd" id="10_xsrfl"]
+[ext_resource type="AudioStream" uid="uid://d2kft1swxv3jq" path="res://audio/sfx/clocktower/laser_cannon.ogg" id="11_120rj"]
+[ext_resource type="Script" uid="uid://tqe1b5l1qgfk" path="res://entities/gura/CameraOperator.gd" id="12_3skj0"]
+[ext_resource type="Script" uid="uid://dwavc0rc4bopa" path="res://environments/clocktower/FireLaser.gd" id="12_feemg"]
+[ext_resource type="PackedScene" uid="uid://caoha00ly2nba" path="res://mechanics_and_systems/camera/CamGimbal.tscn" id="13_ewenm"]
+[ext_resource type="PackedScene" uid="uid://dj14lddcei02o" path="res://entities/NPC.tscn" id="14_linlp"]
+[ext_resource type="Script" uid="uid://6oaal5n78uy4" path="res://mechanics_and_systems/interactables/Interactable.gd" id="15_gpl6e"]
+[ext_resource type="PackedScene" uid="uid://dvq4mbn0c5iks" path="res://mechanics_and_systems/platforming/Laser.tscn" id="17_in1x2"]
+[ext_resource type="PackedScene" uid="uid://dwwvbtnub7w0o" path="res://environments/clocktower/models/LaserCannon.glb" id="18_x8n7y"]
+[ext_resource type="Material" uid="uid://7hohe34qvxdt" path="res://environments/clocktower/materials/White.tres" id="19_6w7j2"]
+[ext_resource type="PackedScene" uid="uid://bryl72emoy41w" path="res://mechanics_and_systems/Shadow.tscn" id="19_rxi5s"]
+[ext_resource type="Material" uid="uid://c61bgqpp1q46h" path="res://environments/clocktower/materials/Blue.tres" id="20_cggqk"]
+[ext_resource type="PackedScene" uid="uid://dljfg03vlyt2e" path="res://entities/kronii/BigAssLaser.tscn" id="21_43g7j"]
+[ext_resource type="Material" uid="uid://us10q6jej0iv" path="res://environments/clocktower/materials/Gray.tres" id="21_jvx20"]
+[ext_resource type="Material" uid="uid://7gktvqq8kxp" path="res://environments/clocktower/materials/Pendulum.tres" id="22_0i8ln"]
+[ext_resource type="Shader" uid="uid://bdcjv0btypipb" path="res://rendering/shaders/Distortion.gdshader" id="23_oxacw"]
+[ext_resource type="Script" uid="uid://83on14lstd27" path="res://entities/gura/SurfaceChecker.gd" id="23_tejtx"]
+
+[sub_resource type="CanvasItemMaterial" id="15"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wlxni"]
+radius = 1.20824
+height = 2.43178
+
+[sub_resource type="AnimationNodeAnimation" id="9"]
+animation = &"Glide"
+
+[sub_resource type="AnimationNodeAnimation" id="10"]
+animation = &"Jump"
+
+[sub_resource type="AnimationNodeAnimation" id="6"]
+animation = &"Dash"
+
+[sub_resource type="AnimationNodeAnimation" id="24"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="25"]
+animation = &"Run"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="13"]
+blend_point_0/node = SubResource("24")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("25")
+blend_point_1/pos = 1.0
+min_space = 0.0
+
+[sub_resource type="AnimationNodeTransition" id="14"]
+xfade_time = 0.1
+input_0/name = "state 0"
+input_0/auto_advance = false
+input_0/break_loop_at_end = false
+input_0/reset = true
+input_1/name = "state 1"
+input_1/auto_advance = false
+input_1/break_loop_at_end = false
+input_1/reset = true
+input_2/name = "state 2"
+input_2/auto_advance = false
+input_2/break_loop_at_end = false
+input_2/reset = true
+input_3/name = "state 3"
+input_3/auto_advance = false
+input_3/break_loop_at_end = false
+input_3/reset = true
+
+[sub_resource type="AnimationNodeBlendTree" id="26"]
+nodes/output/position = Vector2(340, 260)
+nodes/Animation/node = SubResource("6")
+nodes/Animation/position = Vector2(-220, 280)
+"nodes/Animation 2/node" = SubResource("9")
+"nodes/Animation 2/position" = Vector2(-220, 500)
+"nodes/Animation 3/node" = SubResource("10")
+"nodes/Animation 3/position" = Vector2(-220, 400)
+nodes/movement/node = SubResource("13")
+nodes/movement/position = Vector2(-240, 140)
+nodes/movement_state/node = SubResource("14")
+nodes/movement_state/position = Vector2(100, 260)
+node_connections = [&"output", 0, &"movement_state", &"movement_state", 0, &"movement", &"movement_state", 1, &"Animation", &"movement_state", 2, &"Animation 3", &"movement_state", 3, &"Animation 2"]
+
+[sub_resource type="Curve" id="Curve_0v5ig"]
+_data = [Vector2(0.0115607, 1), 0.0, -0.936377, 0, 0, Vector2(1, 0), -1.01245, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8223i"]
+curve = SubResource("Curve_0v5ig")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f6f1i"]
+lifetime_randomness = 0.24
+particle_flag_align_y = true
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+initial_velocity_min = 13.5
+initial_velocity_max = 13.5
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_8223i")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2c8v3"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_dx7nl"]
+material = SubResource("StandardMaterial3D_2c8v3")
+outer_radius = 0.7
+rings = 16
+ring_segments = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8g12n"]
+albedo_color = Color(0, 0.945098, 0.933333, 1)
+emission_enabled = true
+emission = Color(0, 0.866667, 0.823529, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_rrbmk"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_431ao"]
+noise = SubResource("FastNoiseLite_rrbmk")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kpxky"]
+render_priority = 0
+shader = ExtResource("23_oxacw")
+shader_parameter/distortionView = 0.015
+shader_parameter/speedView = 0.01
+shader_parameter/noiseViewX = SubResource("NoiseTexture2D_431ao")
+shader_parameter/noiseViewY = SubResource("NoiseTexture2D_431ao")
+shader_parameter/tintColor = Color(0, 0, 0, 1)
+shader_parameter/fesnelAmount = 0.0
+shader_parameter/distortionVertex = 0.15
+shader_parameter/speedVertex = 0.3
+shader_parameter/noiseVertex = SubResource("NoiseTexture2D_431ao")
+
+[sub_resource type="Animation" id="Animation_e7iag"]
+resource_name = "Hover"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LaserCannon:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.6),
+"transitions": PackedFloat32Array(1, 1.10957, 1),
+"update": 0,
+"values": [Vector3(0, 1.2, 0), Vector3(0, 1.3, 0), Vector3(0, 1.2, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7vy01"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LaserCannon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.2, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6drvc"]
+_data = {
+&"Hover": SubResource("Animation_e7iag"),
+&"RESET": SubResource("Animation_7vy01")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rsmj3"]
+height = 1.97533
+
+[sub_resource type="SphereMesh" id="29"]
+radius = 1.2
+height = 2.4
+radial_segments = 16
+rings = 8
+
+[node name="LaserCannon" node_paths=PackedStringArray("guraParent", "floor_raycast") instance=ExtResource("1_enmj7")]
+collision_mask = 28933
+script = ExtResource("2_jxaj4")
+dash_delay = 1.0
+gura_offset = Vector3(0, 1.652, 0.8)
+guraParent = NodePath("Model/LaserCannon/GuraParent")
+caller_sfx = null
+whistle_sfx = null
+target_indicator_color_default = Color(0, 0, 0, 1)
+target_indicator_color_enabled = Color(0, 0, 0, 1)
+target_screen_distance_threshold = 90000.0
+target_distance_max_sqrd = 49.0
+weight_mult = 1.5
+respawn_state = "ChickenRide"
+floor_raycast = NodePath("SurfaceChecker")
+
+[node name="TargetIndicator" type="Control" parent="." index="0"]
+modulate = Color(1, 0.878431, 0.0901961, 1)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 41.0
+offset_bottom = 41.0
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="TargetIndicator" index="0"]
+material = SubResource("15")
+layout_mode = 0
+offset_left = -23.0
+offset_top = -40.0
+offset_right = 20.0
+offset_bottom = -2.0
+texture = ExtResource("3_1nsof")
+
+[node name="Damageable" parent="." index="1" instance=ExtResource("4_yb4bs")]
+state_machine_np = NodePath("../StateMachine")
+mesh_instance_nps = Array[NodePath]([NodePath("../Model/Chicken/Chicken/Skeleton3D/Mesh")])
+god_mode = true
+invulnerability_time = 1.0
+
+[node name="Hurtbox" parent="Damageable" index="1" instance=ExtResource("5_7r1xg")]
+collision_layer = 2
+
+[node name="CollisionShape3D" parent="Damageable/Hurtbox" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_wlxni")
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource("26")
+parameters/movement/blend_position = 0.0
+parameters/movement_state/current_state = "state 0"
+parameters/movement_state/transition_request = ""
+parameters/movement_state/current_index = 0
+
+[node name="StateMachine" type="Node" parent="." index="3"]
+script = ExtResource("6_ooqmg")
+initial_state_name = "Ride"
+animation_tree_node_path = NodePath("../AnimationTree")
+ground_ray_pivot_np = NodePath("../GroundRayPivot")
+
+[node name="DoNothing" type="Node" parent="StateMachine" index="0"]
+script = ExtResource("7_plinp")
+
+[node name="Ride" type="Node" parent="StateMachine" index="1"]
+script = ExtResource("8_uwaol")
+ROTATE_SPEED = 3.0
+MAX_SPEED = 12.0
+has_animations = true
+
+[node name="FireLaser" type="Node" parent="StateMachine" index="2" node_paths=PackedStringArray("laser", "cam_gimbal")]
+script = ExtResource("12_feemg")
+laser = NodePath("../../Model/BigAssLaser")
+cam_gimbal = NodePath("../../Camera/CamGimbal")
+ROTATE_DAMP = 7.0
+auto_finish_time = 2.5
+exit_state = "Ride"
+MAX_SPEED = 7.0
+ACCELERATION = 1.0
+
+[node name="EffectPlayer_StateEntered" type="Node" parent="StateMachine/FireLaser" index="0"]
+script = ExtResource("10_xsrfl")
+audio_clip = ExtResource("11_120rj")
+metadata/_custom_type_script = "uid://cuvhsqtnjgt65"
+
+[node name="Camera" type="Node" parent="." index="4"]
+script = ExtResource("12_3skj0")
+cam_y_offset = 1.0
+dont_dynamic_cam = true
+
+[node name="CamGimbal" parent="Camera" index="0" instance=ExtResource("13_ewenm")]
+
+[node name="SpringArmVertical" parent="Camera/CamGimbal" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.79, 0)
+
+[node name="SpringArmLateral" parent="Camera/CamGimbal/SpringArmVertical/yRotator/xRotator/Offset" index="0"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, -0.32, 1.5)
+
+[node name="Interactable" parent="." index="5" instance=ExtResource("14_linlp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.957141, 0)
+script = ExtResource("15_gpl6e")
+interaction_text = "Сесть"
+
+[node name="Body3" type="GPUParticles3D" parent="Model" index="0"]
+transform = Transform3D(-8.21776e-09, 0, 0.188, 0, 0.188, 0, -0.188, 0, -8.21776e-09, 0, 1.18286, 2.58595)
+amount = 4
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_f6f1i")
+draw_pass_1 = SubResource("TorusMesh_dx7nl")
+
+[node name="MainLaser" type="Node3D" parent="Model" index="1"]
+
+[node name="Laser" parent="Model/MainLaser" index="0" instance=ExtResource("17_in1x2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.69183e-07, 1.25241, -1.53404)
+firing_length = 3.0
+wait_time_length = 5.0
+beam_width_max = 3.0
+targeting_color = Color(0, 0.65098, 1, 1)
+locked_on_color = Color(1, 0.466667, 0, 1)
+tracking_mode = 0
+enabled = false
+dont_block_laser = true
+
+[node name="Beam" parent="Model/MainLaser/Laser/Model" index="0"]
+material = SubResource("StandardMaterial3D_8g12n")
+
+[node name="TargetingBeam" parent="Model/MainLaser/Laser/Model" index="1"]
+radius = 0.1
+
+[node name="DamageHitbox" parent="Model/MainLaser/Laser" index="1"]
+damage_interval = 0.1
+damage = 12.0
+knockback_strength = 4.0
+
+[node name="Boosters" type="Node3D" parent="Model" index="2"]
+transform = Transform3D(-0.195928, 0, -2.95843e-08, 0, 0.195928, 0, 2.95843e-08, 0, -0.195928, 0, 1.2, 0)
+
+[node name="Body" type="GPUParticles3D" parent="Model/Boosters" index="0"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.45514, -2.81478, -2.6889)
+amount = 4
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_f6f1i")
+draw_pass_1 = SubResource("TorusMesh_dx7nl")
+
+[node name="DistortionSphere" type="CSGSphere3D" parent="Model/Boosters/Body" index="0"]
+transform = Transform3D(1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, -2.00242, 0, 0)
+visible = false
+radius = 3.51626
+material = SubResource("ShaderMaterial_kpxky")
+
+[node name="Body2" type="GPUParticles3D" parent="Model/Boosters" index="1"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.84004, -2.67668, -2.6886)
+amount = 4
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_f6f1i")
+draw_pass_1 = SubResource("TorusMesh_dx7nl")
+
+[node name="DistortionSphere2" type="CSGSphere3D" parent="Model/Boosters/Body2" index="0"]
+transform = Transform3D(1, 0, -7.10543e-15, 0, 1, 0, 7.10543e-15, 0, 1, -2.003, -0.138, 0)
+visible = false
+radius = 3.51626
+material = SubResource("ShaderMaterial_kpxky")
+
+[node name="LaserCannon" parent="Model" index="3" instance=ExtResource("18_x8n7y")]
+transform = Transform3D(-0.195928, 0, -2.95843e-08, 0, 0.195928, 0, 2.95843e-08, 0, -0.195928, 0, 1.2, 0)
+
+[node name="GuraParent" type="Node3D" parent="Model/LaserCannon" index="0"]
+transform = Transform3D(-5.31915, 0, 4.65015e-07, 0, 5.31915, 0, -4.65015e-07, 0, -5.31915, -2.6783e-08, 1.66671, 0.306362)
+
+[node name="LaserCannon2" parent="Model/LaserCannon" index="1"]
+surface_material_override/0 = ExtResource("19_6w7j2")
+surface_material_override/1 = ExtResource("20_cggqk")
+surface_material_override/2 = ExtResource("21_jvx20")
+
+[node name="Boosters" parent="Model/LaserCannon/LaserCannon2" index="0"]
+surface_material_override/0 = ExtResource("19_6w7j2")
+surface_material_override/1 = ExtResource("22_0i8ln")
+surface_material_override/2 = ExtResource("21_jvx20")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Model/LaserCannon/LaserCannon2/Boosters" index="0"]
+remote_path = NodePath("../../../../Boosters")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Model/LaserCannon/LaserCannon2" index="1"]
+remote_path = NodePath("../../../MainLaser")
+use_global_coordinates = false
+update_scale = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Model" index="4"]
+libraries = {
+&"": SubResource("AnimationLibrary_6drvc")
+}
+autoplay = "Hover"
+
+[node name="BigAssLaser" parent="Model" index="5" instance=ExtResource("21_43g7j")]
+transform = Transform3D(-0.0812973, 0, 1.22756e-08, 0, 0.0812973, 0, -1.22756e-08, 0, -0.0812973, 0, 1.1747, -1.8404)
+dont_target = true
+
+[node name="DamageHitbox" parent="Model/BigAssLaser" index="7"]
+damage = 15.0
+
+[node name="CollisionShape3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.906802, 0.089699)
+shape = SubResource("CapsuleShape3D_rsmj3")
+
+[node name="WalkParticles" parent="." index="8"]
+amount = 5
+draw_pass_1 = SubResource("29")
+
+[node name="Targetable" parent="." index="9"]
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65193, 0)
+
+[node name="Shadow" parent="." index="11" instance=ExtResource("19_rxi5s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0142468, 0)
+size = Vector3(0.6, 8, 0.6)
+
+[node name="Footstepper" parent="." index="12"]
+process_mode = 4
+
+[node name="SurfaceChecker" type="RayCast3D" parent="." index="13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.128469, 0)
+collision_mask = 4223233
+script = ExtResource("23_tejtx")
+
+[editable path="Damageable/Hurtbox"]
+[editable path="Camera/CamGimbal"]
+[editable path="Interactable"]
+[editable path="Model/MainLaser/Laser"]
+[editable path="Model/MainLaser/Laser/DamageHitbox"]
+[editable path="Model/LaserCannon"]
+[editable path="Model/BigAssLaser"]
+[editable path="Model/BigAssLaser/DamageHitbox"]

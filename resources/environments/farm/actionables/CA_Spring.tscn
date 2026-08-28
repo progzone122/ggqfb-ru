@@ -1,0 +1,263 @@
+[gd_scene format=3 uid="uid://qlvsteajrusx"]
+
+[ext_resource type="PackedScene" uid="uid://duefb5j5ekxc0" path="res://environments/farm/actionables/ChickenActionableArea.tscn" id="1_rqi2g"]
+[ext_resource type="PackedScene" uid="uid://c27gnaccho5e5" path="res://environments/farm/ChickenHook.tscn" id="2_4q0f5"]
+[ext_resource type="Material" uid="uid://bo71nx2lnohs2" path="res://addons/flexible_toon_shader/BaseMaterial.tres" id="2_7by1y"]
+[ext_resource type="Script" uid="uid://fwtc2vtixl13" path="res://environments/farm/actionables/ca_spring.gd" id="2_k14ro"]
+[ext_resource type="Script" uid="uid://dotlu6hk3j62u" path="res://addons/flexible_toon_shader/BaseMaterialOverride.gd" id="3_k14ro"]
+[ext_resource type="AudioStream" uid="uid://bw5srpsixt3ny" path="res://audio/sfx/farm/spring.ogg" id="6_pc3r8"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xpa31"]
+resource_local_to_scene = true
+radius = 5.36279
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rqi2g"]
+height = 2.86774
+radius = 1.7832
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_pc3r8"]
+height = 0.481445
+radius = 1.4458
+
+[sub_resource type="Animation" id="Animation_7by1y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("HookParent:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -0.467825)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpringParent:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpringParent/CollisionShape3D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_vtpgr"]
+resource_name = "compress"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("HookParent:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1.6245, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.467825), Vector3(0, 0, -1.82559)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpringParent:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1.6245, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -1.89868, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_k14ro"]
+resource_name = "land"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpringParent:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.4, 0.7, 0.866667),
+"transitions": PackedFloat32Array(0.482968, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector3(0, -1.899, 0), Vector3(0, -2.034, 0), Vector3(0, -1.809, 0), Vector3(0, -1.944, 0), Vector3(0, -1.899, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4q0f5"]
+resource_name = "spring"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("HookParent:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.353553, -2),
+"update": 0,
+"values": [Vector3(0, 0, -1.82559), Vector3(0, 0, -0.467825)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpringParent:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.466667),
+"transitions": PackedFloat32Array(0.517633, -2, -2, 1.6245),
+"update": 0,
+"values": [Vector3(0, -1.89868, 0), Vector3(0, 0, 0), Vector3(0, -0.189, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpringParent/CollisionShape3D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.466667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer3D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_pc3r8")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/3/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wwno4"]
+_data = {
+&"RESET": SubResource("Animation_7by1y"),
+&"compress": SubResource("Animation_vtpgr"),
+&"land": SubResource("Animation_k14ro"),
+&"spring": SubResource("Animation_4q0f5")
+}
+
+[node name="CA_Spring" unique_id=282643519 node_paths=PackedStringArray("animation_player") instance=ExtResource("1_rqi2g")]
+script = ExtResource("2_k14ro")
+launch_force = 50.0
+animation_player = NodePath("AnimationPlayer")
+success_anim_name = "compress"
+stop_anim_name = "spring"
+interaction_text = "потянуть"
+
+[node name="Hooks" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="ChickenHook" parent="Hooks" index="0" unique_id=1694644521 instance=ExtResource("2_4q0f5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.964155)
+pull_length = 0.8
+pull_time = 1.0
+
+[node name="ChickenHook2" parent="Hooks" index="1" unique_id=866872167 instance=ExtResource("2_4q0f5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22905, -9.53674e-07, -0.964155)
+pull_length = 0.8
+pull_time = 1.0
+
+[node name="ChickenHook3" parent="Hooks" index="2" unique_id=894327838 instance=ExtResource("2_4q0f5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12198, 4.76837e-07, -0.964155)
+pull_length = 0.8
+pull_time = 1.0
+
+[node name="InteractionArea" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8809409, -2.4185305)
+
+[node name="CollisionShape3D" parent="InteractionArea" index="0"]
+shape = SubResource("CylinderShape3D_xpa31")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="." index="2" unique_id=541721498]
+transform = Transform3D(0.927184, 0, 0.374607, 0, 1, 0, -0.374607, 0, 0.927184, 0, 0.667663, 0)
+material_override = ExtResource("2_7by1y")
+instance_shader_parameters/do_override_color = true
+instance_shader_parameters/override_color = Color(0.244776, 0.244776, 0.244776, 1)
+radius = 1.83838
+height = 1.44763
+script = ExtResource("3_k14ro")
+color = Color(0.244776, 0.244776, 0.244776, 1)
+
+[node name="SpringParent" type="AnimatableBody3D" parent="." index="3" unique_id=1491488445]
+sync_to_physics = false
+
+[node name="Spring" type="CSGCylinder3D" parent="SpringParent" index="0" unique_id=707752117]
+transform = Transform3D(0.927184, 0, 0.374607, 0, 1, 0, -0.374607, 0, 0.927184, 0, 2.43736, 0)
+material_override = ExtResource("2_7by1y")
+instance_shader_parameters/do_override_color = true
+instance_shader_parameters/override_color = Color(0.873298, 0.873298, 0.873298, 1)
+radius = 1.3291
+height = 3.43982
+script = ExtResource("3_k14ro")
+color = Color(0.873298, 0.873298, 0.873298, 1)
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="SpringParent" index="1" unique_id=2062448477]
+transform = Transform3D(0.927184, 0, 0.374607, 0, 1, 0, -0.374607, 0, 0.927184, 0, 4, 0)
+material_override = ExtResource("2_7by1y")
+instance_shader_parameters/do_override_color = true
+instance_shader_parameters/override_color = Color(0.791566, 0.337763, 0.293785, 1)
+radius = 1.83838
+height = 0.952637
+script = ExtResource("3_k14ro")
+color = Color(0.791566, 0.337763, 0.293785, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpringParent" index="2" unique_id=1712527853]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.06758, 0)
+shape = SubResource("CylinderShape3D_rqi2g")
+
+[node name="LaunchArea" type="Area3D" parent="SpringParent" index="3" unique_id=1625599821]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.55246, 0)
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpringParent/LaunchArea" index="0" unique_id=171820675]
+shape = SubResource("CylinderShape3D_pc3r8")
+
+[node name="HookParent" type="Node3D" parent="." index="4" unique_id=552601749]
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="HookParent" index="0" unique_id=1990800288]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+remote_path = NodePath("../../Hooks")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="HookParent" index="1" unique_id=650610685]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.400781, -0.0548706)
+material_override = ExtResource("2_7by1y")
+instance_shader_parameters/do_override_color = true
+instance_shader_parameters/override_color = Color(0.314316, 0.314316, 0.314316, 1)
+use_collision = true
+size = Vector3(2.8916, 0.91626, 2.66174)
+script = ExtResource("3_k14ro")
+color = Color(0.314316, 0.314316, 0.314316, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5" unique_id=1189779791]
+libraries/ = SubResource("AnimationLibrary_wwno4")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="6" unique_id=1686713965]
+max_db = -15.0
+
+[editable path="InteractionArea"]

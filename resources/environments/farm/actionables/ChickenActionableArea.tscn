@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://duefb5j5ekxc0"]
+
+[ext_resource type="Script" uid="uid://dox6h48ewch0q" path="res://environments/farm/actionables/chicken_actionable_area.gd" id="1_vtpgr"]
+[ext_resource type="AudioStream" uid="uid://bweav6idfn6it" path="res://audio/sfx/farm/hook_pull.ogg" id="2_0r70r"]
+[ext_resource type="AudioStream" uid="uid://blt3ilfrcv8xq" path="res://audio/sfx/farm/hook_retract.ogg" id="3_0jgd1"]
+[ext_resource type="PackedScene" uid="uid://cr6d4aec7b6sc" path="res://mechanics_and_systems/interactables/InteractionArea.tscn" id="3_0r70r"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0r70r"]
+resource_local_to_scene = true
+radius = 10.0
+
+[node name="ChickenActionable" type="Node3D"]
+script = ExtResource("1_vtpgr")
+chickens_required = 3
+hook_pull_sfx = ExtResource("2_0r70r")
+hook_retract_sfx = ExtResource("3_0jgd1")
+interaction_text = "взаимодействие"
+force_as_closest_interactable = true
+
+[node name="Hooks" type="Node3D" parent="."]
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_0r70r")]
+
+[node name="CollisionShape3D" parent="InteractionArea" index="0"]
+shape = SubResource("CylinderShape3D_0r70r")
+
+[editable path="InteractionArea"]

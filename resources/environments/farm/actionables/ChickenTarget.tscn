@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://wjbpffjxf2f"]
+
+[ext_resource type="Script" uid="uid://bksn5ins0wcxh" path="res://environments/farm/actionables/chicken_target.gd" id="1_o7npd"]
+[ext_resource type="PackedScene" uid="uid://cr6d4aec7b6sc" path="res://mechanics_and_systems/interactables/InteractionArea.tscn" id="2_tjm6s"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_o7npd"]
+resource_local_to_scene = true
+height = 6.0
+radius = 8.0
+
+[node name="ChickenTarget" type="Node3D"]
+script = ExtResource("1_o7npd")
+interaction_text = "Атака"
+force_as_closest_interactable = true
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_tjm6s")]
+
+[node name="CollisionShape3D" parent="InteractionArea" index="0"]
+shape = SubResource("CylinderShape3D_o7npd")
+
+[editable path="InteractionArea"]

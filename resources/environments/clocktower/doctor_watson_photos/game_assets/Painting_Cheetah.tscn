@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci5uuakgpq5a0"]
+
+[ext_resource type="PackedScene" uid="uid://bqhp7i5gsmy1n" path="res://environments/clocktower/scenes/Painting.tscn" id="1_vx4ol"]
+[ext_resource type="Texture2D" uid="uid://d00jgd01pkqs4" path="res://environments/clocktower/doctor_watson_photos/game_assets/cheetah_render.png" id="2_vx4ol"]
+
+[node name="Painting_Cheetah" instance=ExtResource("1_vx4ol")]
+
+[node name="Sprite3D" parent="." index="0"]
+pixel_size = 0.0091
+texture = ExtResource("2_vx4ol")
+
+[node name="CSGBox9" parent="." index="1"]
+size = Vector3(12.799805, 8.1801, 0.0448679)
+
+[node name="Window" parent="." index="2"]
+size = Vector3(13, 9.083, 0.898)
+
+[node name="CSGBox8" parent="Window" index="0"]
+size = Vector3(12.2, 8.18, 7.5)
+
+[node name="Placard" parent="." index="3"]
+visible = true
+size = Vector3(7.378662, 1.206543, 0.30688477)
+
+[node name="Label3D" parent="Placard" index="0"]
+text = "Доктор Ватсон обгоняет гепарда"

@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://du30c0ohvdiuh"]
+
+[ext_resource type="Script" uid="uid://f43t47nfaffq" path="res://environments/clocktower/scenes/LabLabel.gd" id="1_55uc0"]
+[ext_resource type="FontFile" uid="uid://gq8ag3c2i5bt" path="res://ui/fonts/LexendDeca-Medium.ttf" id="1_inncu"]
+
+[node name="LabLabel" type="Node3D"]
+script = ExtResource("1_55uc0")
+main_text = "Лаб 0"
+sub_text = "Подпись"
+
+[node name="MainLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.8147e-06)
+modulate = Color(0.17, 0.12359, 0.0153, 1)
+text = "Лаб 0"
+font = ExtResource("1_inncu")
+font_size = 360
+outline_size = 0
+horizontal_alignment = 2
+
+[node name="SubLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.50916, -1.52588e-05)
+modulate = Color(0.768627, 0.635294, 0.0392157, 1)
+text = "Подпись"
+font = ExtResource("1_inncu")
+font_size = 180
+outline_size = 0
+horizontal_alignment = 2
