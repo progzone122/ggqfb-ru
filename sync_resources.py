@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-# Копирует изменённые файлы из work/extracted обратно в resources/
-# (после того, как вы поправили перевод в work/extracted).
 import os
 import filecmp
 import shutil
@@ -12,7 +10,7 @@ TRAN = os.path.join(HERE, "work", "extracted")
 RES = os.path.join(HERE, "resources")
 
 if not os.path.isdir(PRIS) or not os.path.isdir(TRAN):
-    print("сначала запустите apply.sh (нужны work/pristine и work/extracted)")
+    print("run apply.sh first (work/pristine and work/extracted are required)")
     sys.exit(1)
 
 changed = []
@@ -42,8 +40,7 @@ for rel in changed:
     print("+", rel)
 
 for rel in removed:
-    p = os.path.join(RES, rel)
-    os.remove(p)
+    os.remove(os.path.join(RES, rel))
     print("-", rel)
 
-print("готово: обновлено", len(changed), "файлов, удалено", len(removed))
+print("done: updated", len(changed), "files, removed", len(removed))

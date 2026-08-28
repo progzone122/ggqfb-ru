@@ -33,7 +33,7 @@ def main():
         raise SystemExit("input is not a Godot pck (no GDPC magic)")
 
     pck_off, section_size = find_pck_section(exe)
-    limit = section_size - 12  # 12-byte footer [size][GDPC] inside the section
+    limit = section_size - 12
 
     with open(exe, "rb") as f:
         exe_data = f.read()
@@ -50,14 +50,13 @@ def main():
         mode = "in-place (section replaced)"
     else:
         out_data = bytearray(exe_data)
-        out_data[pck_off:pck_off + 8] = b"\0" * 8  # invalidate section magic
+        out_data[pck_off:pck_off + 8] = b"\0" * 8
         out_data += pck_data + struct.pack("<Q", len(pck_data)) + b"GDPC"
         mode = "appended (section invalidated, EOF trailer used)"
 
     with open(out, "wb") as f:
         f.write(out_data)
 
-    # Verify.
     with open(out, "rb") as f:
         f.seek(0, 2)
         end = f.tell()

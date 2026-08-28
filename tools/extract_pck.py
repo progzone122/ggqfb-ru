@@ -31,7 +31,7 @@ def main():
     if data[:4] != b"GDPC":
         raise SystemExit("no GDPC magic at section start")
     if data[-4:] == b"GDPC":
-        data = data[:-12]  # strip the 12-byte [size][GDPC] footer
+        data = data[:-12]
     with open(out, "wb") as f:
         f.write(data)
     print(f"OK: {len(data)} bytes -> {out}")
