@@ -1,0 +1,115 @@
+[gd_scene load_steps=9 format=3 uid="uid://dxilspw6xx0ge"]
+
+[ext_resource type="Script" uid="uid://d3y7rguixggp7" path="res://mechanics_and_systems/dialogue/scripts/DialogueDisplayer.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://ccshx0k031afc" path="res://ui/textures/Rounded Rectangle.png" id="3"]
+[ext_resource type="Animation" path="res://ui/animations/UIOpen.tres" id="5"]
+[ext_resource type="Animation" path="res://ui/animations/UIClosing.tres" id="6"]
+[ext_resource type="Animation" path="res://ui/animations/UIClosed.tres" id="7"]
+[ext_resource type="Animation" path="res://ui/animations/UIOpening.tres" id="8"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://fdvjpvs3lvmp" path="res://ui/animations/UIOpenClose.tres" id="9"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oadaf"]
+_data = {
+&"UIClosed": ExtResource("7"),
+&"UIClosing": ExtResource("6"),
+&"UIOpen": ExtResource("5"),
+&"UIOpening": ExtResource("8")
+}
+
+[node name="DialogueRect" type="NinePatchRect"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(1, 1, 0.96, 1)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -750.0
+offset_top = -380.0
+offset_right = 750.0
+offset_bottom = -79.9999
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(750, 150)
+texture = ExtResource("3")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+script = ExtResource("1")
+
+[node name="NameRect" type="NinePatchRect" parent="."]
+self_modulate = Color(0.133333, 0.301961, 0.486275, 1)
+layout_mode = 0
+offset_left = -35.3155
+offset_top = -14.1092
+offset_right = 143.685
+offset_bottom = 51.8908
+rotation = -11.9104
+texture = ExtResource("3")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="NameLabel" type="RichTextLabel" parent="NameRect"]
+self_modulate = Color(0.145098, 0.623529, 0.941176, 1)
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 21.2379
+offset_top = 10.3284
+offset_right = 21.2379
+offset_bottom = 8.32837
+scale = Vector2(0.8, 0.8)
+bbcode_enabled = true
+text = "Гура"
+
+[node name="DialogueLabel" type="RichTextLabel" parent="."]
+self_modulate = Color(0.211765, 0.160784, 0.160784, 1)
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 80.0
+offset_top = 60.6908
+offset_right = -80.0
+offset_bottom = -39.3092
+bbcode_enabled = true
+text = "Блин, ХЛЕБ ХЛЕБ ХЛЕБ ХЛЕБ ХЛЕБ"
+
+[node name="NextLineIndicator" type="RichTextLabel" parent="."]
+self_modulate = Color(0.211765, 0.160784, 0.160784, 1)
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -73.4575
+offset_top = -66.7991
+offset_right = -19.4575
+offset_bottom = 8.20093
+scale = Vector2(1, 0.8)
+bbcode_enabled = true
+text = "v"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_oadaf")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_oadaf")
+}
+tree_root = ExtResource("9")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="CharDelayTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ShakeTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="PauseTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="SFXBlip" type="AudioStreamPlayer" parent="."]

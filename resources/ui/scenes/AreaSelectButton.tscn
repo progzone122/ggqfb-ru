@@ -1,0 +1,79 @@
+[gd_scene load_steps=7 format=3 uid="uid://heoopdgdmoui"]
+
+[ext_resource type="PackedScene" uid="uid://bsy1jisb87u0g" path="res://ui/scenes/TextButton.tscn" id="1_ajs4j"]
+[ext_resource type="Script" uid="uid://ih22erqreou8" path="res://ui/scripts/AreaSelectButton.gd" id="2_7jvmw"]
+[ext_resource type="Texture2D" uid="uid://dtx774vw4e15v" path="res://environments/house/materials/addons/jm_pp_outlines/graphics/screen2.png" id="2_p3cb4"]
+[ext_resource type="Shader" uid="uid://cc18i1sksv8rr" path="res://rendering/shaders/Grayscale2.gdshader" id="3_fc5lt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t1v7i"]
+bg_color = Color(0.0873098, 0.126186, 0.168609, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+shadow_color = Color(1, 1, 1, 1)
+shadow_size = 1
+shadow_offset = Vector2(0, 5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ykeb"]
+shader = ExtResource("3_fc5lt")
+shader_parameter/weighted = true
+
+[node name="AreaSelectButton" instance=ExtResource("1_ajs4j")]
+custom_minimum_size = Vector2(800, 120)
+offset_right = 800.0
+offset_bottom = 120.0
+script = ExtResource("2_7jvmw")
+font_size = 36
+
+[node name="Panel" type="Panel" parent="." index="0"]
+layout_mode = 0
+offset_top = 8.0
+offset_right = 586.0
+offset_bottom = 153.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_t1v7i")
+
+[node name="HBoxContainer" parent="." index="1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = 20.0
+offset_right = 14.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Arrow" parent="HBoxContainer" index="0"]
+visible = false
+modulate = Color(1, 1, 1, 1)
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer" index="1"]
+material = SubResource("ShaderMaterial_1ykeb")
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+texture = ExtResource("2_p3cb4")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" index="2"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+
+[node name="Label" parent="HBoxContainer" index="3"]
+text = "0. название зоны"
+vertical_alignment = 1
+
+[node name="LabelShadow" parent="HBoxContainer/Label" index="1"]
+offset_top = 28.0
+offset_bottom = 101.0
+text = "0. название зоны"
+vertical_alignment = 1

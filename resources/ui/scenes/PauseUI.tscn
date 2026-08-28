@@ -1,0 +1,254 @@
+[gd_scene format=3 uid="uid://bejtyby5qjgad"]
+
+[ext_resource type="Shader" uid="uid://t2qwm3bmvssu" path="res://rendering/shaders/Blur.tres" id="1"]
+[ext_resource type="Shader" uid="uid://cm5qmsb3e3tw" path="res://rendering/shaders/Mix.gdshader" id="3"]
+[ext_resource type="PackedScene" uid="uid://dtiw1unu4y2be" path="res://ui/scenes/Settings.tscn" id="4"]
+[ext_resource type="Theme" uid="uid://cvscydthyenwa" path="res://ui/Theme.tres" id="6"]
+[ext_resource type="Script" uid="uid://d370sf6qxynq3" path="res://ui/scripts/PauseUI.gd" id="7"]
+[ext_resource type="PackedScene" uid="uid://bsy1jisb87u0g" path="res://ui/scenes/TextButton.tscn" id="7_2hanc"]
+[ext_resource type="PackedScene" uid="uid://cl2xr3ngrj7gg" path="res://ui/scenes/QuitToMenuMenu.tscn" id="8"]
+[ext_resource type="Shader" uid="uid://y6b6palk5vol" path="res://rendering/shaders/2D_outline_better.tres" id="9"]
+[ext_resource type="Texture2D" uid="uid://bus2ie2vos3pi" path="res://ui/textures/Shark Pin.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://dvoh15hyxl6j5" path="res://ui/Title.png" id="11_3b5u0"]
+[ext_resource type="PackedScene" uid="uid://h8ltxsp2kfqh" path="res://addons/ggs/control_rebinding/controls_ui.tscn" id="11_vw761"]
+[ext_resource type="PackedScene" uid="uid://bjggq7wtrp7ml" path="res://mechanics_and_systems/hats/HatShop.tscn" id="11_wxwi1"]
+[ext_resource type="Texture2D" uid="uid://daav6fx2gwm10" path="res://ui/textures/patterns/Repeating Stripes.png" id="12"]
+
+[sub_resource type="ShaderMaterial" id="15"]
+shader = ExtResource("1")
+shader_parameter/blur_amount = 2.28
+
+[sub_resource type="ShaderMaterial" id="10"]
+shader = ExtResource("3")
+shader_parameter/mix_texture = ExtResource("12")
+shader_parameter/color_black = Color(0.882353, 0.956863, 0.976471, 0.576471)
+shader_parameter/color_white = Color(0.823529, 0.901961, 0.921569, 0.545098)
+shader_parameter/texture_scale = 2.011
+shader_parameter/scroll_speed = Vector2(0.2, 0)
+
+[sub_resource type="ShaderMaterial" id="22"]
+shader = ExtResource("9")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 4.0
+shader_parameter/pattern = 1
+shader_parameter/inside = true
+shader_parameter/add_margins = true
+
+[node name="PauseUI" type="Control" unique_id=243735440]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6")
+script = ExtResource("7")
+default_focus_control = NodePath("PausedPanel/VBoxContainer/ResumeButton")
+close_button = NodePath("PausedPanel/VBoxContainer/ResumeButton")
+
+[node name="BlurRect" type="ColorRect" parent="." unique_id=34187188]
+self_modulate = Color(1, 1, 1, 0.345098)
+material = SubResource("15")
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.431373)
+
+[node name="Backing" type="ColorRect" parent="." unique_id=1665120280]
+modulate = Color(0.388235, 0.388235, 0.388235, 0.32549)
+material = SubResource("10")
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PausedPanel" type="Panel" parent="." unique_id=51922194]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PausedPanel" unique_id=1380020690]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TitleLabel5" type="Label" parent="PausedPanel/VBoxContainer" unique_id=1684230431]
+modulate = Color(0.117647, 0.756863, 1, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.282353)
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 76
+text = "пауза"
+
+[node name="ResumeButton" parent="PausedPanel/VBoxContainer" unique_id=298597953 instance=ExtResource("7_2hanc")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../HatShopButton")
+text = "продолжить"
+
+[node name="HatShopButton" parent="PausedPanel/VBoxContainer" unique_id=2014071328 instance=ExtResource("7_2hanc")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../ResumeButton")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../SettingsButton")
+text = "шляпы!"
+
+[node name="MarginContainer2" type="MarginContainer" parent="PausedPanel/VBoxContainer" unique_id=1665449936]
+layout_mode = 2
+theme_override_constants/margin_top = 34
+
+[node name="SettingsButton" parent="PausedPanel/VBoxContainer" unique_id=482944654 instance=ExtResource("7_2hanc")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../HatShopButton")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../ControlsButton")
+focus_next = NodePath("../ControlsButton")
+focus_previous = NodePath("../ResumeButton")
+text = "настройки"
+
+[node name="ControlsButton" parent="PausedPanel/VBoxContainer" unique_id=61263460 instance=ExtResource("7_2hanc")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../SettingsButton")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../QuitButton")
+focus_next = NodePath("../QuitButton")
+focus_previous = NodePath("../SettingsButton")
+text = "управление"
+
+[node name="MarginContainer" type="MarginContainer" parent="PausedPanel/VBoxContainer" unique_id=258308489]
+layout_mode = 2
+theme_override_constants/margin_top = 34
+
+[node name="StuckButton" parent="PausedPanel/VBoxContainer" unique_id=506733971 instance=ExtResource("7_2hanc")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "застряла!"
+
+[node name="QuitButton" parent="PausedPanel/VBoxContainer" unique_id=1897028105 instance=ExtResource("7_2hanc")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../ControlsButton")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../RetryBossButton")
+focus_next = NodePath("../RetryBossButton")
+focus_previous = NodePath("../ControlsButton")
+text = "выйти в меню"
+
+[node name="RetryBossButton" parent="PausedPanel/VBoxContainer" unique_id=890963643 instance=ExtResource("7_2hanc")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath("../QuitButton")
+text = "к боссу заново"
+
+[node name="SharkPin" type="TextureRect" parent="." unique_id=1759158077]
+visible = false
+material = SubResource("22")
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -211.0
+offset_top = -195.0
+offset_right = -131.0
+offset_bottom = -57.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 11.5549
+texture = ExtResource("10")
+
+[node name="SettingsMenu" parent="." unique_id=1796966574 instance=ExtResource("4")]
+visible = false
+layout_mode = 1
+offset_left = -329.0
+offset_right = 329.0
+
+[node name="ColorRect" type="ColorRect" parent="SettingsMenu" unique_id=802297439]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1450.0
+offset_top = -802.0
+offset_right = 1440.0
+offset_bottom = 745.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.619608)
+
+[node name="ControlsUI" parent="." unique_id=1927627877 instance=ExtResource("11_vw761")]
+visible = false
+layout_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="ControlsUI" unique_id=841705953]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -822.0
+offset_top = -121.0
+offset_right = 812.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.619608)
+
+[node name="HatShop" parent="." unique_id=2130475018 instance=ExtResource("11_wxwi1")]
+visible = false
+layout_mode = 1
+
+[node name="QuitMenu" parent="." unique_id=1490391302 instance=ExtResource("8")]
+visible = false
+layout_mode = 1
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Logo" type="TextureRect" parent="." unique_id=1253320653]
+visible = false
+layout_mode = 0
+offset_left = 18.0
+offset_top = 949.0
+offset_right = 345.0
+offset_bottom = 1077.0
+texture = ExtResource("11_3b5u0")
+expand_mode = 2
+stretch_mode = 5

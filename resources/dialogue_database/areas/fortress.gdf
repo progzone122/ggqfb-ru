@@ -1,0 +1,30 @@
+# Self
+? start
+Gura: <e=excited>Я уже на месте?
+Gura: <e=neutral>Обожаю пешеходные районы.
+>
+
+? etc
+Gura: <e=angry>Что за?! <e=annoyed>Это так не круто, мы же разговаривали!
+>
+
+# Ame
+
+? %ame_0
+Gura: Ами! Это правда ты!
+Ame: Гура! Я была процентов на 50 уверена, что ты потеряешься, а я тут умру.
+Gura: Ты в порядке? И где мы?
+Ame: Я в полном порядке! Просто слегка вымоталась.
+Gura: <auto>Ну, давай я тебя оттуда сниму, а потом мы сможем-<pause>
+Ame: <shake_screen><event=e_raise_cage>Ааааааах!
+Gura: <event=show_portraits><e=angry>Что за?! <e=annoyed>Это ТАК не круто, мы же разговаривали!
+> <flag=ame_cutscene=1>
+
+? %ame_1
+Ame: Гура!
+Ame: <shake_screen><event=e_raise_cage>Ааааааах!
+Gura: <event=show_portraits><e=angry>Серьёзно?! Мне в этот раз и слова вставить не дали!
+Gura: Всё, кто-то сейчас получит.
+> <flag=ame_cutscene=2>
+
+@ END_OF_FILE

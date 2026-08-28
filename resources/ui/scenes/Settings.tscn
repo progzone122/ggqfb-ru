@@ -1,0 +1,374 @@
+[gd_scene format=3 uid="uid://dtiw1unu4y2be"]
+
+[ext_resource type="StyleBox" uid="uid://cr8yuajwnly6d" path="res://ui/OutlinedShadowedPanel.tres" id="2_s7fby"]
+[ext_resource type="Theme" uid="uid://cvscydthyenwa" path="res://ui/Theme.tres" id="4"]
+[ext_resource type="Script" uid="uid://7hnd4divf4rv" path="res://ui/scripts/UI_Menu.gd" id="5"]
+[ext_resource type="PackedScene" uid="uid://b7m6l0lvojrsj" path="res://game_settings/components/option_list/option_list.tscn" id="6"]
+[ext_resource type="Resource" uid="uid://cxdrkk0nrhy17" path="res://game_settings/settings/main/music_volume.tres" id="7_1na20"]
+[ext_resource type="PackedScene" uid="uid://cha8xesfthpfk" path="res://game_settings/components/switch/switch.tscn" id="8"]
+[ext_resource type="Resource" uid="uid://wcm81msif30t" path="res://game_settings/settings/main/sfx_volume.tres" id="8_1wvsj"]
+[ext_resource type="PackedScene" uid="uid://ds06mwhee8ygm" path="res://game_settings/components/slider/slider.tscn" id="9"]
+[ext_resource type="Resource" uid="uid://ctaol4i3shtiq" path="res://game_settings/settings/main/display_scale.tres" id="10_qpyd0"]
+[ext_resource type="Resource" uid="uid://bmdvua1unhbmn" path="res://game_settings/settings/main/fullscreen.tres" id="12_scjrc"]
+[ext_resource type="Resource" uid="uid://ba44pclyq1au4" path="res://game_settings/settings/main/v_sync.tres" id="15_lciko"]
+[ext_resource type="Resource" uid="uid://cv8pktf6dvfgi" path="res://game_settings/settings/main/anti_aliasing.tres" id="16_24q5g"]
+[ext_resource type="Resource" uid="uid://tppdyge7wcft" path="res://game_settings/settings/main/ambient_occlusion.tres" id="16_mdgnd"]
+[ext_resource type="Resource" uid="uid://che7a3cv4dco4" path="res://game_settings/settings/main/effects_quality.tres" id="17_cmtrx"]
+[ext_resource type="Resource" uid="uid://b00h36od88nt2" path="res://game_settings/settings/main/bloom.tres" id="17_q7uod"]
+[ext_resource type="Script" uid="uid://vkcb4by3s2un" path="res://ui/scenes/button_focus_helper.gd" id="17_qnuvs"]
+[ext_resource type="PackedScene" uid="uid://bsy1jisb87u0g" path="res://ui/scenes/TextButton.tscn" id="21_wgf7r"]
+
+[node name="SettingsMenu" type="Panel" unique_id=1586567704]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -341.0
+offset_top = -410.0
+offset_right = 341.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu")
+theme = ExtResource("4")
+theme_override_styles/panel = ExtResource("2_s7fby")
+script = ExtResource("5")
+default_focus_control = NodePath("CloseButton")
+close_button = NodePath("CloseButton")
+
+[node name="TitleLabel5" type="Label" parent="." unique_id=1554914083]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 45.0
+offset_right = 249.0
+offset_bottom = 105.0
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/TitleLabel5")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/TitleLabel5")
+theme_override_font_sizes/font_size = 60
+text = "настройки"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="." unique_id=1779725130]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 128.0
+offset_right = 631.0
+offset_bottom = 656.0
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3")
+theme_override_constants/separation = 41
+
+[node name="AudioContainer" type="VBoxContainer" parent="VBoxContainer3" unique_id=1543043950]
+layout_mode = 2
+size_flags_horizontal = 5
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/AudioContainer")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/AudioContainer")
+alignment = 1
+
+[node name="TitleLabel2" type="Label" parent="VBoxContainer3/AudioContainer" unique_id=272959999]
+self_modulate = Color(0.117647, 0.756863, 1, 1)
+layout_mode = 2
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/AudioContainer/TitleLabel2")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/AudioContainer/TitleLabel2")
+theme_override_font_sizes/font_size = 32
+text = "настройки звука"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer3/AudioContainer" unique_id=1819072003]
+layout_mode = 2
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/AudioContainer/HBoxContainer")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/AudioContainer/HBoxContainer")
+
+[node name="SubtitleLabel2" type="Label" parent="VBoxContainer3/AudioContainer/HBoxContainer" unique_id=1458056998]
+self_modulate = Color(0.72156864, 0.72156864, 0.72156864, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/AudioContainer/HBoxContainer/SubtitleLabel2")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/AudioContainer/HBoxContainer/SubtitleLabel2")
+text = "громкость музыки"
+
+[node name="MusicSlider" parent="VBoxContainer3/AudioContainer/HBoxContainer" unique_id=624469355 instance=ExtResource("9")]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 9
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/AudioContainer/HBoxContainer/MusicSlider")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/AudioContainer/HBoxContainer/MusicSlider")
+setting = ExtResource("7_1na20")
+apply_on_change = true
+
+[node name="Slider" parent="VBoxContainer3/AudioContainer/HBoxContainer/MusicSlider" index="0"]
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/AudioContainer/HBoxContainer/MusicSlider/Slider")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/AudioContainer/HBoxContainer/MusicSlider/Slider")
+focus_neighbor_bottom = NodePath("../../../HBoxContainer2/SfxSlider/Slider")
+focus_next = NodePath("../../../HBoxContainer2/SfxSlider/Slider")
+focus_previous = NodePath(".")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer3/AudioContainer" unique_id=1965826798]
+layout_mode = 2
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/AudioContainer/HBoxContainer2")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/AudioContainer/HBoxContainer2")
+
+[node name="SubtitleLabel3" type="Label" parent="VBoxContainer3/AudioContainer/HBoxContainer2" unique_id=130959795]
+self_modulate = Color(0.72156864, 0.72156864, 0.72156864, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/AudioContainer/HBoxContainer2/SubtitleLabel3")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/AudioContainer/HBoxContainer2/SubtitleLabel3")
+text = "громкость эффектов"
+
+[node name="SfxSlider" parent="VBoxContainer3/AudioContainer/HBoxContainer2" unique_id=1751506898 instance=ExtResource("9")]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 9
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/AudioContainer/HBoxContainer2/SfxSlider")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/AudioContainer/HBoxContainer2/SfxSlider")
+setting = ExtResource("8_1wvsj")
+apply_on_change = true
+
+[node name="Slider" parent="VBoxContainer3/AudioContainer/HBoxContainer2/SfxSlider" index="0"]
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/AudioContainer/HBoxContainer2/SfxSlider/Slider")
+focus_neighbor_top = NodePath("../../../HBoxContainer/MusicSlider/Slider")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/AudioContainer/HBoxContainer2/SfxSlider/Slider")
+focus_neighbor_bottom = NodePath("../../../../VideoContainer/HBoxContainer3/RenderScaleSlider/Slider")
+focus_next = NodePath("../../../../VideoContainer/HBoxContainer3/RenderScaleSlider/Slider")
+focus_previous = NodePath("../../../HBoxContainer/MusicSlider/Slider")
+
+[node name="VideoContainer" type="VBoxContainer" parent="VBoxContainer3" unique_id=872900087]
+layout_mode = 2
+size_flags_horizontal = 5
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer")
+
+[node name="TitleLabel4" type="Label" parent="VBoxContainer3/VideoContainer" unique_id=1145804666]
+self_modulate = Color(0.117647, 0.756863, 1, 1)
+layout_mode = 2
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/TitleLabel4")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/TitleLabel4")
+theme_override_font_sizes/font_size = 32
+text = "настройки видео"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer3/VideoContainer" unique_id=619451078]
+layout_mode = 2
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/HBoxContainer3")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/HBoxContainer3")
+
+[node name="SubtitleLabel7" type="Label" parent="VBoxContainer3/VideoContainer/HBoxContainer3" unique_id=1827612244]
+self_modulate = Color(0.72156864, 0.72156864, 0.72156864, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/HBoxContainer3/SubtitleLabel7")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/HBoxContainer3/SubtitleLabel7")
+text = "масштаб рендера"
+
+[node name="RenderScaleSlider" parent="VBoxContainer3/VideoContainer/HBoxContainer3" unique_id=1345683077 instance=ExtResource("9")]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 9
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/HBoxContainer3/RenderScaleSlider")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/HBoxContainer3/RenderScaleSlider")
+setting = ExtResource("10_qpyd0")
+apply_on_change = true
+
+[node name="Slider" parent="VBoxContainer3/VideoContainer/HBoxContainer3/RenderScaleSlider" index="0"]
+size_flags_vertical = 9
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/HBoxContainer3/RenderScaleSlider/Slider")
+focus_neighbor_top = NodePath("../../../../AudioContainer/HBoxContainer2/SfxSlider/Slider")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/HBoxContainer3/RenderScaleSlider/Slider")
+focus_neighbor_bottom = NodePath("../../../FullscreenCheck/Btn")
+focus_next = NodePath("../../../FullscreenCheck/Btn")
+focus_previous = NodePath("../../../../AudioContainer/HBoxContainer2/SfxSlider/Slider")
+min_value = 2.0
+max_value = 9.0
+value = 2.0
+
+[node name="FullscreenCheck" parent="VBoxContainer3/VideoContainer" unique_id=1674551129 instance=ExtResource("8")]
+layout_mode = 2
+tooltip_text = "awdawdawd"
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/FullscreenCheck")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/FullscreenCheck")
+setting = ExtResource("12_scjrc")
+apply_on_change = true
+
+[node name="Btn" parent="VBoxContainer3/VideoContainer/FullscreenCheck" index="0"]
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/FullscreenCheck/Btn")
+focus_neighbor_top = NodePath("../../HBoxContainer3/RenderScaleSlider/Slider")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/FullscreenCheck/Btn")
+focus_neighbor_bottom = NodePath("../../Vsync/Btn")
+focus_next = NodePath("../../Vsync/Btn")
+focus_previous = NodePath("../../HBoxContainer3/RenderScaleSlider/Slider")
+text = "полный экран"
+
+[node name="Vsync" parent="VBoxContainer3/VideoContainer" unique_id=1110182555 instance=ExtResource("8")]
+layout_mode = 2
+tooltip_text = "awdawdawd"
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/Vsync")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/Vsync")
+setting = ExtResource("15_lciko")
+apply_on_change = true
+
+[node name="Btn" parent="VBoxContainer3/VideoContainer/Vsync" index="0"]
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/Vsync/Btn")
+focus_neighbor_top = NodePath("../../FullscreenCheck/Btn")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/Vsync/Btn")
+focus_neighbor_bottom = NodePath("../../HBoxContainer2/AntiAliasing/Btn")
+focus_next = NodePath("../../HBoxContainer2/AntiAliasing/Btn")
+focus_previous = NodePath("../../FullscreenCheck/Btn")
+text = "v-sync"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer3/VideoContainer" unique_id=1185201373]
+layout_mode = 2
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/MarginContainer")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/MarginContainer")
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer3/VideoContainer" unique_id=115824614]
+layout_mode = 2
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/HBoxContainer2")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/HBoxContainer2")
+
+[node name="SubtitleLabel12" type="Label" parent="VBoxContainer3/VideoContainer/HBoxContainer2" unique_id=731204059]
+self_modulate = Color(0.72156864, 0.72156864, 0.72156864, 1)
+layout_mode = 2
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/HBoxContainer2/SubtitleLabel12")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/HBoxContainer2/SubtitleLabel12")
+text = "сглаживание"
+
+[node name="AntiAliasing" parent="VBoxContainer3/VideoContainer/HBoxContainer2" unique_id=1885325456 instance=ExtResource("6")]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/HBoxContainer2/AntiAliasing")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/HBoxContainer2/AntiAliasing")
+setting = ExtResource("16_24q5g")
+apply_on_change = true
+
+[node name="Btn" parent="VBoxContainer3/VideoContainer/HBoxContainer2/AntiAliasing" index="0"]
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/HBoxContainer2/AntiAliasing/Btn")
+focus_neighbor_top = NodePath("../../../Vsync/Btn")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/HBoxContainer2/AntiAliasing/Btn")
+focus_neighbor_bottom = NodePath("../../../HBoxContainer4/EffectsQuality/Btn")
+focus_next = NodePath("../../../HBoxContainer4/EffectsQuality/Btn")
+focus_previous = NodePath("../../../Vsync/Btn")
+theme_override_font_sizes/font_size = 28
+alignment = 2
+item_count = 4
+popup/item_0/text = "выключено"
+popup/item_0/id = 0
+popup/item_1/text = "2x"
+popup/item_1/id = 1
+popup/item_2/text = "4x"
+popup/item_2/id = 2
+popup/item_3/text = "8x"
+popup/item_3/id = 3
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer3/VideoContainer" unique_id=521080156]
+layout_mode = 2
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/HBoxContainer4")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/HBoxContainer4")
+
+[node name="SubtitleLabel12" type="Label" parent="VBoxContainer3/VideoContainer/HBoxContainer4" unique_id=993155892]
+self_modulate = Color(0.72156864, 0.72156864, 0.72156864, 1)
+layout_mode = 2
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/HBoxContainer4/SubtitleLabel12")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/HBoxContainer4/SubtitleLabel12")
+text = "качество эффектов"
+
+[node name="EffectsQuality" parent="VBoxContainer3/VideoContainer/HBoxContainer4" unique_id=676513080 instance=ExtResource("6")]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/HBoxContainer4/EffectsQuality")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/HBoxContainer4/EffectsQuality")
+setting = ExtResource("17_cmtrx")
+apply_on_change = true
+
+[node name="Btn" parent="VBoxContainer3/VideoContainer/HBoxContainer4/EffectsQuality" index="0"]
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/HBoxContainer4/EffectsQuality/Btn")
+focus_neighbor_top = NodePath("../../../HBoxContainer2/AntiAliasing/Btn")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/HBoxContainer4/EffectsQuality/Btn")
+focus_neighbor_bottom = NodePath("../../../Ambient Occlusion/Btn")
+focus_next = NodePath("../../../Ambient Occlusion/Btn")
+focus_previous = NodePath("../../../HBoxContainer2/AntiAliasing/Btn")
+theme_override_font_sizes/font_size = 28
+alignment = 2
+item_count = 3
+popup/item_0/text = "низкое"
+popup/item_0/id = 1
+popup/item_1/text = "среднее"
+popup/item_1/id = 2
+popup/item_2/text = "высокое"
+popup/item_2/id = 2
+
+[node name="Ambient Occlusion" parent="VBoxContainer3/VideoContainer" unique_id=58826438 instance=ExtResource("8")]
+layout_mode = 2
+tooltip_text = "awdawdawd"
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/Ambient Occlusion")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/Ambient Occlusion")
+setting = ExtResource("16_mdgnd")
+apply_on_change = true
+
+[node name="Btn" parent="VBoxContainer3/VideoContainer/Ambient Occlusion" index="0"]
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/Ambient Occlusion/Btn")
+focus_neighbor_top = NodePath("../../HBoxContainer4/EffectsQuality/Btn")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/Ambient Occlusion/Btn")
+focus_neighbor_bottom = NodePath("../../Bloom/Btn")
+focus_next = NodePath("../../Bloom/Btn")
+focus_previous = NodePath("../../HBoxContainer4/EffectsQuality/Btn")
+text = "глобальное затенение"
+
+[node name="Bloom" parent="VBoxContainer3/VideoContainer" unique_id=826587665 instance=ExtResource("8")]
+layout_mode = 2
+tooltip_text = "awdawdawd"
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/Bloom")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/Bloom")
+setting = ExtResource("17_q7uod")
+apply_on_change = true
+
+[node name="Btn" parent="VBoxContainer3/VideoContainer/Bloom" index="0"]
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/Bloom/Btn")
+focus_neighbor_top = NodePath("../../Ambient Occlusion/Btn")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/VBoxContainer3/VideoContainer/Bloom/Btn")
+focus_neighbor_bottom = NodePath("../../../../CloseButton")
+focus_next = NodePath("../../../../CloseButton")
+focus_previous = NodePath("../../Ambient Occlusion/Btn")
+text = "свечение"
+
+[node name="CloseButton" parent="." unique_id=1364582120 instance=ExtResource("21_wgf7r")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -276.0
+offset_top = -60.0
+offset_right = -57.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/CloseButton")
+focus_neighbor_top = NodePath("../VBoxContainer3/VideoContainer/Bloom/Btn")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/CloseButton")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath("../VBoxContainer3/VideoContainer/Bloom/Btn")
+theme_override_font_sizes/font_size = 36
+text = "закрыть"
+font_size = 36
+
+[node name="Node" type="Node" parent="." unique_id=1226041851 node_paths=PackedStringArray("root")]
+script = ExtResource("17_qnuvs")
+root = NodePath("..")
+
+[editable path="VBoxContainer3/AudioContainer/HBoxContainer/MusicSlider"]
+[editable path="VBoxContainer3/AudioContainer/HBoxContainer2/SfxSlider"]
+[editable path="VBoxContainer3/VideoContainer/HBoxContainer3/RenderScaleSlider"]
+[editable path="VBoxContainer3/VideoContainer/FullscreenCheck"]
+[editable path="VBoxContainer3/VideoContainer/Vsync"]
+[editable path="VBoxContainer3/VideoContainer/HBoxContainer2/AntiAliasing"]
+[editable path="VBoxContainer3/VideoContainer/HBoxContainer4/EffectsQuality"]
+[editable path="VBoxContainer3/VideoContainer/Ambient Occlusion"]
+[editable path="VBoxContainer3/VideoContainer/Bloom"]

@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=3 uid="uid://bu5ishsodve7"]
+
+[ext_resource type="FontFile" uid="uid://dkciaasnj8qjw" path="res://ui/fonts/Jua-Regular.ttf" id="1_mj06u"]
+[ext_resource type="Script" uid="uid://cuxon1opbvtnm" path="res://ui/scripts/TextCard.gd" id="1_nlpwa"]
+[ext_resource type="AudioStream" uid="uid://dycllvcmbkjlq" path="res://audio/sfx/interface/click_002.ogg" id="2_b70ua"]
+[ext_resource type="AudioStream" uid="uid://c12ie2tlivsot" path="res://audio/sfx/interface/click_003.ogg" id="3_lab2u"]
+[ext_resource type="AudioStream" uid="uid://dut1s4p4yuv62" path="res://audio/sfx/interface/dialogue_next.ogg" id="4_bohno"]
+
+[node name="TextCard" type="CanvasLayer"]
+script = ExtResource("1_nlpwa")
+texts = Array[String](["Text!"])
+disappear_sfx = ExtResource("2_b70ua")
+appear_sfx = ExtResource("3_lab2u")
+initial_sfx = ExtResource("4_bohno")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="NoteLabel" type="Label" parent="ColorRect"]
+modulate = Color(0.454531, 0.809464, 0.42555, 1)
+layout_mode = 1
+offset_left = 32.0
+offset_top = 61.0
+offset_right = 482.0
+offset_bottom = 104.0
+theme_override_fonts/font = ExtResource("1_mj06u")
+theme_override_font_sizes/font_size = 42
+text = "заметка от разработчика!"
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -618.0
+offset_top = -221.0
+offset_right = 618.0
+offset_bottom = 221.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_mj06u")
+theme_override_font_sizes/font_size = 52
+text = "У этой битвы есть ещё одна фаза, но она пока не доделана!"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ContinueLabel" type="Label" parent="ColorRect"]
+modulate = Color(0.71, 0.71, 0.71, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -297.0
+offset_top = -279.0
+offset_right = 297.0
+offset_bottom = -236.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_mj06u")
+theme_override_font_sizes/font_size = 28
+text = "нажмите любую кнопку, чтобы продолжить"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://drkluxdc0upd1"]
+
+[ext_resource type="Texture2D" uid="uid://b26e1tswoyfsx" path="res://ui/textures/Circle 32px.png" id="1"]
+[ext_resource type="PackedScene" uid="uid://d1uutkruhlqa1" path="res://ui/scenes/InputIcon.tscn" id="3"]
+[ext_resource type="Script" uid="uid://cmc1r8xcr8785" path="res://ui/scripts/ActionIndicator.gd" id="8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l3xvy"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="ActionIndicator" type="PanelContainer"]
+offset_right = 91.0
+offset_bottom = 36.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_l3xvy")
+script = ExtResource("8")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 14
+
+[node name="InputIcon" parent="MarginContainer/HBoxContainer" instance=ExtResource("3")]
+layout_mode = 2
+
+[node name="ActionNameLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.103744, 0.103744, 0.103744, 1)
+theme_override_font_sizes/font_size = 24
+text = "взаимодействие"
+
+[node name="Margin" type="Control" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="Panel" type="NinePatchRect" parent="Margin"]
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("1")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16

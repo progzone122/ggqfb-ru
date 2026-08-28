@@ -1,0 +1,55 @@
+# Self
+
+? %intro_0
+Gura: ...
+> <flag=g_step=0>
+
+? %intro_1
+$ 0=Gura
+Gura: Ух ты...
+Gura: Где... где это я, черт возьми, нахожусь?
+> <flag=g_step=1>
+
+
+? %intro_2
+$ 0=Gura
+...: <shake_screen><anime=true><size=b>Гура!
+> <flag=step=0>
+
+
+? %intro_3
+Ame: <anime=true><size=b><shake_screen>Гура! <pause><shake_screen>Сюда!
+Gura: <size=s>Ами? А она что тут делает?
+Ame: Давай же, ну ты и копуша! Мы всё пропустим!
+Gura: А? Что пропустим?
+Ame: <shake_screen><shake>ЭТО САМОЕ!</shake><br><pause><shake_screen>Просто поторопись!
+Gura: Ладно, ладно! Дай мне секунду!
+> <flag=step=1>
+
+? %intro_4
+Gura: Успела!
+>
+
+? %intro_5
+Gura: Ами! Что происходит? Где мы?
+Ame: .  <pause>.  <pause>.
+Gura: Ами?
+> <flag=step=2>
+
+? %intro_6
+$ 0=Gura
+Gura: <e=sad>Ч-<pause><shake_screen>Что за?! <e=begging><shake_screen>Ватсон? <shake_screen=enabled><pause><anime=true><e=worried>ПОЧЕМУ ТЫ КАРТОННАЯ??
+...: <shake_screen=disabled>Тебе здесь не место.
+Gura: <e=begging>Кто здесь?
+...: [color=#bd2020]Тебе вообще не следовало сюда приходить.
+Gura: Что? Да я даже не знаю, где это «здесь»!
+...: [color=#bd2020]<shake>ГЛУПЕЦ.
+...: <event=e_clocks><auto><speed=f>[color=#bd2020]<shake_screen=enabled>ТЕБЕ НЕЛЬЗЯ ЗДЕСЬ НАХОДИТЬСЯ ТЕБЕ НЕЛЬЗЯ ЗДЕСЬ НАХОДИТЬСЯ ТЕБЕ НЕЛЬЗЯ ЗДЕСЬ НАХОДИТЬСЯ ТЕБЕ НЕЛЬЗЯ ЗДЕСЬ НАХОДИТЬСЯ
+...: <auto><speed=f>[color=#bd2020]<shake_screen=enabled>ТЕБЕ НЕЛЬЗЯ ЗДЕСЬ НАХОДИТЬСЯ ТЕБЕ НЕЛЬЗЯ ЗДЕСЬ НАХОДИТЬСЯ ТЕБЕ НЕЛЬЗЯ ЗДЕСЬ НАХОДИТЬСЯ ТЕБЕ НЕЛЬЗЯ ЗДЕСЬ НАХОДИТЬСЯ
+...: <auto><speed=f>[color=#bd2020]<shake_screen=enabled>ТЕБЕ НЕЛЬЗЯ ЗДЕСЬ НАХОДИТЬСЯ ТЕБЕ НЕЛЬЗЯ ЗДЕСЬ НАХОДИТЬСЯ ТЕБЕ НЕЛЬЗЯ ЗДЕСЬ НАХОДИТЬСЯ ТЕБЕ НЕЛЬЗЯ ЗДЕСЬ НАХОДИТЬСЯ
+...: <auto><speed=f>[color=#bd2020]<shake_screen=enabled>ТЕБЕ НЕЛЬЗЯ ЗДЕСЬ НАХОДИТЬСЯ ТЕБЕ НЕЛЬЗЯ ЗДЕСЬ НАХОДИТЬСЯ ТЕБЕ НЕЛЬЗЯ ЗДЕСЬ НАХОДИТЬСЯ ТЕБЕ НЕЛЬЗЯ ЗДЕСЬ НАХОДИТЬСЯ
+...: <auto><speed=f>[color=#bd2020]<shake_screen=enabled>ТЕБЕ НЕЛЬЗЯ ЗДЕСЬ НАХОДИТЬСЯ ТЕБЕ НЕЛЬЗЯ ЗДЕСЬ НАХОДИТЬСЯ ТЕБЕ НЕЛЬЗЯ ЗДЕСЬ НАХОДИТЬСЯ ТЕБЕ НЕЛЬЗЯ ЗДЕСЬ НАХОДИТЬСЯ
+...: <auto><speed=f>[color=#bd2020]<shake_screen=enabled>ТЕБЕ НЕЛЬЗЯ ЗДЕСЬ НАХОДИТЬСЯ ТЕБЕ НЕЛЬЗЯ ЗДЕСЬ НАХОДИТЬСЯ ТЕБЕ НЕЛЬЗЯ ЗДЕСЬ НАХОДИТЬСЯ ТЕБЕ НЕЛЬЗЯ ЗДЕСЬ НАХОДИТЬСЯ
+>
+
+@END_OF_FILE

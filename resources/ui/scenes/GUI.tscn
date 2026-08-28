@@ -1,0 +1,1610 @@
+[gd_scene format=3 uid="uid://v56k04jardu8"]
+
+[ext_resource type="Script" uid="uid://djbu7axghncac" path="res://addons/shake/Shake.gd" id="1"]
+[ext_resource type="Script" uid="uid://bho2xnu0viyo3" path="res://ui/scripts/HealthBar.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://b66ef8n86xibs" path="res://ui/textures/HealthRectangle.png" id="8_nyc2e"]
+[ext_resource type="PackedScene" uid="uid://bejtyby5qjgad" path="res://ui/scenes/PauseUI.tscn" id="9"]
+[ext_resource type="Script" uid="uid://c7kynu3a284j" path="res://ui/scripts/CinemaBars.gd" id="10"]
+[ext_resource type="Environment" uid="uid://dfb0awqw7p8d1" path="res://environments/e_health_bar_gura.tres" id="10_d2w0e"]
+[ext_resource type="FontFile" uid="uid://bhuvggkbinfjx" path="res://ui/fonts/KGRedHands.ttf" id="10_r6oey"]
+[ext_resource type="PackedScene" uid="uid://drkluxdc0upd1" path="res://ui/scenes/ActionIndicator.tscn" id="11"]
+[ext_resource type="PackedScene" uid="uid://5v74gdfd8y44" path="res://mechanics_and_systems/dialogue/scenes/DialogueUI.tscn" id="12"]
+[ext_resource type="PackedScene" uid="uid://clwugvoorbqdr" path="res://ui/scenes/SpeedLines.tscn" id="13"]
+[ext_resource type="PackedScene" uid="uid://8lidup5bl5ot" path="res://ui/scenes/GameOverUI.tscn" id="14"]
+[ext_resource type="PackedScene" uid="uid://dq8kg0uvqrpta" path="res://entities/gura/models/GuraModel.tscn" id="14_na7dn"]
+[ext_resource type="Shader" uid="uid://cm5qmsb3e3tw" path="res://rendering/shaders/Mix.gdshader" id="15"]
+[ext_resource type="Script" uid="uid://dwkbd0c2apuna" path="res://ui/scripts/GUI.gd" id="16"]
+[ext_resource type="Texture2D" uid="uid://ctbog407guwjy" path="res://ui/textures/patterns/moroccan-flower.png" id="16_e8707"]
+[ext_resource type="Texture2D" uid="uid://c8fwc37kqlbxt" path="res://ui/textures/Circle.png" id="17"]
+[ext_resource type="Script" uid="uid://dhp0cxw4u4rhx" path="res://entities/FaceSettings.gd" id="19_13bfb"]
+[ext_resource type="Script" uid="uid://bhhg415yendw8" path="res://ui/scripts/TransitionUI.gd" id="21"]
+[ext_resource type="FontFile" uid="uid://c7vyxtjva11vq" path="res://ui/fonts/theboldfont.ttf" id="22_xmv2i"]
+[ext_resource type="Texture2D" uid="uid://b2qwubsdiy7i8" path="res://ui/textures/Arrow.png" id="23"]
+[ext_resource type="Shader" uid="uid://6qft2cu708pa" path="res://rendering/shaders/Grayscale.gdshader" id="23_uqdoa"]
+[ext_resource type="Material" uid="uid://b1rne8fcmfs8d" path="res://rendering/shaders/UIPanel.tres" id="24"]
+[ext_resource type="Shader" uid="uid://blr52002dseoi" path="res://rendering/shaders/2D_outline.gdshader" id="25"]
+[ext_resource type="Texture2D" uid="uid://dguadg01acf7a" path="res://ui/textures/Health Panel Straight.png" id="26"]
+[ext_resource type="Texture2D" uid="uid://dbuyvaqclb0w5" path="res://ui/textures/Trident Icon.png" id="27"]
+[ext_resource type="Script" uid="uid://jdf8hmnh6de7" path="res://ui/scenes/FpsCounter.gd" id="30_b72bq"]
+[ext_resource type="Shader" uid="uid://y6b6palk5vol" path="res://rendering/shaders/2D_outline_better.tres" id="31"]
+[ext_resource type="VideoStream" uid="uid://cnxhpqnbvykso" path="res://textures/video/matthew.ogv" id="31_u7t6a"]
+[ext_resource type="PackedScene" uid="uid://ckintmibwroow" path="res://mechanics_and_systems/hats/hat_notification.tscn" id="33_mt5gx"]
+
+[sub_resource type="Animation" id="5"]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TopBarPanel/TopBar:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.535887, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -180)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BottomBarPanel/BottomBar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.535887, 1),
+"update": 0,
+"values": [Vector2(0, -180), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="6"]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TopBarPanel/TopBar:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.392292, 0.535887),
+"update": 0,
+"values": [Vector2(0, -180), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BottomBarPanel/BottomBar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.392292, 0.535887),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -180)]
+}
+
+[sub_resource type="Animation" id="Animation_u0m6m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TopBarPanel/TopBar:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -180)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BottomBarPanel/BottomBar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m50kf"]
+_data = {
+&"Disable": SubResource("5"),
+&"Enable": SubResource("6"),
+&"RESET": SubResource("Animation_u0m6m")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="16"]
+animation = &"Disable"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d2w0e"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="17"]
+animation = &"Enable"
+
+[sub_resource type="AnimationNodeTimeScale" id="18"]
+
+[sub_resource type="AnimationNodeTransition" id="19"]
+input_0/name = "disable"
+input_0/auto_advance = false
+input_0/break_loop_at_end = false
+input_0/reset = true
+input_1/name = "enable"
+input_1/auto_advance = false
+input_1/break_loop_at_end = false
+input_1/reset = true
+input_2/name = "default"
+input_2/auto_advance = false
+input_2/break_loop_at_end = false
+input_2/reset = true
+
+[sub_resource type="AnimationNodeBlendTree" id="20"]
+graph_offset = Vector2(-356.42093, 61.455017)
+nodes/output/position = Vector2(555.556, 155.556)
+nodes/Animation/node = SubResource("17")
+nodes/Animation/position = Vector2(0, 300)
+"nodes/Animation 2/node" = SubResource("16")
+"nodes/Animation 2/position" = Vector2(0, 111.111)
+nodes/TimeScale/node = SubResource("18")
+nodes/TimeScale/position = Vector2(377.778, 155.556)
+nodes/state/node = SubResource("19")
+nodes/state/position = Vector2(200, 180)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_d2w0e")
+"nodes/Animation 3/position" = Vector2(0, 500)
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"state", &"state", 0, &"Animation 2", &"state", 1, &"Animation", &"state", 2, &"Animation 3"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_88mu7"]
+blend_mode = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_co3tr"]
+shader = ExtResource("25")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 5.0
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/alpha = 1.0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_50ha6"]
+animation = &"Blocked"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_omki3"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dr24c"]
+animation = &"Worried"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qupck"]
+xfade_time = 0.5
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5bj52"]
+xfade_time = 0.5
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"Worried"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_eetbt"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ah7lo"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ebdry"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jct6w"]
+advance_mode = 2
+advance_condition = &"Reset"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_kosxa"]
+states/Blocked/node = SubResource("AnimationNodeAnimation_50ha6")
+states/Blocked/position = Vector2(331, 150)
+states/Idle/node = SubResource("AnimationNodeAnimation_omki3")
+states/Idle/position = Vector2(339, 45)
+states/Start/position = Vector2(174, 109)
+states/Worried/node = SubResource("AnimationNodeAnimation_dr24c")
+states/Worried/position = Vector2(479, 136)
+transitions = ["Blocked", "Idle", SubResource("AnimationNodeStateMachineTransition_qupck"), "Blocked", "Worried", SubResource("AnimationNodeStateMachineTransition_5bj52"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_eetbt"), "Idle", "Blocked", SubResource("AnimationNodeStateMachineTransition_ah7lo"), "Worried", "Blocked", SubResource("AnimationNodeStateMachineTransition_ebdry"), "Worried", "Idle", SubResource("AnimationNodeStateMachineTransition_jct6w")]
+graph_offset = Vector2(-76, -19)
+
+[sub_resource type="ShaderMaterial" id="29"]
+shader = ExtResource("31")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 6.798
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="ShaderMaterial" id="3"]
+shader = ExtResource("15")
+shader_parameter/mix_texture = ExtResource("16_e8707")
+shader_parameter/color_black = Color(0, 0, 0, 1)
+shader_parameter/color_white = Color(0.941176, 0.290196, 0.243137, 1)
+shader_parameter/texture_scale = 0.001
+shader_parameter/scroll_speed = Vector2(10, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f01h0"]
+content_margin_left = 24.0
+content_margin_right = 24.0
+bg_color = Color(0, 0, 0, 0.45098)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5nxq1"]
+font = ExtResource("22_xmv2i")
+font_size = 21
+
+[sub_resource type="Gradient" id="Gradient_jrt7c"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xsfg0"]
+gradient = SubResource("Gradient_jrt7c")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Animation" id="Animation_xe6qx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(369, 72)]
+}
+
+[sub_resource type="Animation" id="Animation_sw4v6"]
+resource_name = "close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1182, 14)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(369, 72)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tflw2"]
+resource_name = "open"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(-5.09824, 1),
+"update": 0,
+"values": [Vector2(0, 14), Vector2(1182, 14)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(-5.09824, 1),
+"update": 0,
+"values": [Vector2(960, 72), Vector2(369, 72)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"reset_base_pos"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5xrmi"]
+_data = {
+&"RESET": SubResource("Animation_xe6qx"),
+&"close": SubResource("Animation_sw4v6"),
+&"open": SubResource("Animation_tflw2")
+}
+
+[sub_resource type="CanvasItemMaterial" id="26"]
+
+[sub_resource type="ShaderMaterial" id="21"]
+shader = ExtResource("25")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/alpha = 1.0
+
+[sub_resource type="Animation" id="22"]
+resource_name = "Bounce"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(0.203063, 0.176777, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.05, 1.05), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="23"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n84hh"]
+_data = {
+&"Bounce": SubResource("22"),
+&"RESET": SubResource("23")
+}
+
+[sub_resource type="Animation" id="24"]
+resource_name = "Bounce"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(0.203063, 0.176777, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.05, 1.05), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="25"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r4mb8"]
+_data = {
+&"Bounce": SubResource("24"),
+&"RESET": SubResource("25")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fmovt"]
+shader = ExtResource("23_uqdoa")
+shader_parameter/projector_power = 0.279
+shader_parameter/vignette_param = 1.0
+
+[sub_resource type="Animation" id="Animation_0ikep"]
+resource_name = "Pulse"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3j68y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1gb38"]
+_data = {
+&"Pulse": SubResource("Animation_0ikep"),
+&"RESET": SubResource("Animation_3j68y")
+}
+
+[sub_resource type="Shader" id="7"]
+code = "shader_type canvas_item;
+uniform vec2 player_position;
+uniform vec4 color : source_color = vec4(0.305, 0.298, 0.341,1);
+
+uniform float MULTIPLIER = 0.56;
+uniform float SCALE = 0.5;
+uniform float SOFTNESS = 0.45;
+
+void fragment(){
+	float val = distance(vec2(UV.x , UV.y * MULTIPLIER), vec2(player_position.x , player_position.y * MULTIPLIER));
+	val = val / SCALE;
+	float vignette = smoothstep(0.2, SOFTNESS, val);
+	COLOR *= vec4(color.rgb , vignette );
+}"
+
+[sub_resource type="ShaderMaterial" id="8"]
+shader = SubResource("7")
+shader_parameter/player_position = Vector2(0.5, 0.5)
+shader_parameter/color = Color(0.823529, 0.137255, 0.137255, 1)
+shader_parameter/MULTIPLIER = 0.902
+shader_parameter/SCALE = 1.57719
+shader_parameter/SOFTNESS = 0.552
+
+[sub_resource type="Animation" id="9"]
+resource_name = "Pulse"
+length = 1.4
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath(".:material:shader_parameter/SCALE")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(0.129408, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.439216), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2763c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q6g8h"]
+_data = {
+&"Pulse": SubResource("9"),
+&"RESET": SubResource("Animation_2763c")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5eu0w"]
+shader = SubResource("7")
+shader_parameter/player_position = Vector2(0.5, 0.5)
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/MULTIPLIER = 0.902
+shader_parameter/SCALE = 1.57719
+shader_parameter/SOFTNESS = 0.432
+
+[sub_resource type="Animation" id="Animation_6o0wr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_u7t6a"]
+resource_name = "play"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.033333335),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mt5gx"]
+_data = {
+&"RESET": SubResource("Animation_6o0wr"),
+&"play": SubResource("Animation_u7t6a")
+}
+
+[node name="GUI" type="CanvasLayer" unique_id=427935464]
+process_mode = 3
+layer = 5
+script = ExtResource("16")
+
+[node name="CinemaBars" type="Control" parent="." unique_id=1433346512]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("10")
+
+[node name="TopBarPanel" type="Control" parent="CinemaBars" unique_id=1657363029]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="TopBar" type="ColorRect" parent="CinemaBars/TopBarPanel" unique_id=1712143836]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -180.0
+offset_right = 253440.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BottomBarPanel" type="Control" parent="CinemaBars" unique_id=1942497740]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="BottomBar" type="ColorRect" parent="CinemaBars/BottomBarPanel" unique_id=830879266]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = 253440.0
+offset_bottom = 180.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CinemaBars" unique_id=981978931]
+libraries/ = SubResource("AnimationLibrary_m50kf")
+autoplay = &"Disable"
+
+[node name="AnimationTree" type="AnimationTree" parent="CinemaBars" unique_id=2117906065]
+tree_root = SubResource("20")
+anim_player = NodePath("../AnimationPlayer")
+parameters/TimeScale/scale = 1.0
+parameters/state/current_state = "default"
+parameters/state/transition_request = ""
+parameters/state/current_index = 2
+
+[node name="WorldSpaceElements" type="Control" parent="." unique_id=393005698]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameElements" type="Control" parent="." unique_id=31265981]
+process_mode = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ActionIndicator" parent="GameElements" unique_id=920513484 instance=ExtResource("11")]
+visible = false
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.5
+offset_top = -543.0
+offset_right = -789.5
+offset_bottom = -485.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HealthParent" type="Control" parent="GameElements" unique_id=1474063480]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="HealthPanel" type="Control" parent="GameElements/HealthParent" unique_id=1331199383]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = -226.0
+offset_right = 49.0
+offset_bottom = -186.0
+grow_vertical = 0
+offset_transform_enabled = true
+script = ExtResource("3")
+health_bar_np = NodePath("LongPanel/HealthPanel/HealthBar")
+health_delay_np = NodePath("LongPanel/HealthPanel/HealthDelay")
+show_name = true
+set_pos = false
+sleep = false
+
+[node name="NamePanel" type="ColorRect" parent="GameElements/HealthParent/HealthPanel" unique_id=1299159795]
+self_modulate = Color(1, 1, 1, 0.8)
+material = ExtResource("24")
+layout_mode = 0
+offset_left = 166.0
+offset_top = 44.9694
+offset_right = 260.0
+offset_bottom = 82.9694
+rotation = -12.7638
+scale = Vector2(1.3, 1.3)
+size_flags_horizontal = 2
+color = Color(0, 0.196078, 0.286275, 1)
+
+[node name="NameLabel" type="RichTextLabel" parent="GameElements/HealthParent/HealthPanel/NamePanel" unique_id=908506698]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.1489
+offset_top = 2.34223
+offset_right = -3.85109
+offset_bottom = 2.34222
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0789045
+theme_override_fonts/normal_font = ExtResource("10_r6oey")
+theme_override_font_sizes/normal_font_size = 15
+text = "ГУРА"
+
+[node name="LongPanel" type="TextureRect" parent="GameElements/HealthParent/HealthPanel" unique_id=258291295]
+layout_mode = 0
+offset_left = 163.0
+offset_top = 64.9694
+offset_right = 491.0
+offset_bottom = 174.969
+rotation = -0.0329036
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("8_nyc2e")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="HealthPanel" type="Control" parent="GameElements/HealthParent/HealthPanel/LongPanel" unique_id=75127855]
+anchors_preset = 0
+offset_left = 24.0065
+offset_top = 18.902
+offset_right = 302.007
+offset_bottom = 38.902
+rotation = -0.0100381
+scale = Vector2(0.999209, 1.52482)
+
+[node name="HealthBacking" type="ColorRect" parent="GameElements/HealthParent/HealthPanel/LongPanel/HealthPanel" unique_id=137175008]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HealthDelay" type="ColorRect" parent="GameElements/HealthParent/HealthPanel/LongPanel/HealthPanel" unique_id=666812009]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9, 1)
+color = Color(1, 0.741176, 0.333333, 1)
+
+[node name="HealthBar" type="ColorRect" parent="GameElements/HealthParent/HealthPanel/LongPanel/HealthPanel" unique_id=536372231]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 1)
+color = Color(0.188235, 0.737255, 0.882353, 1)
+
+[node name="Shadow" type="ColorRect" parent="GameElements/HealthParent/HealthPanel/LongPanel/HealthPanel" unique_id=213518661]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 15.0
+offset_right = 3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.47451, 0.352941, 0.4, 0.392157)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameElements/HealthParent/HealthPanel/LongPanel/HealthPanel" unique_id=4810541]
+modulate = Color(0.156863, 0.156863, 0.156863, 1)
+material = SubResource("CanvasItemMaterial_88mu7")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="ColorRect" parent="GameElements/HealthParent/HealthPanel/LongPanel/HealthPanel/HBoxContainer" unique_id=1088196352]
+use_parent_material = true
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="TextureRect2" type="ColorRect" parent="GameElements/HealthParent/HealthPanel/LongPanel/HealthPanel/HBoxContainer" unique_id=1719896432]
+use_parent_material = true
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="TextureRect3" type="ColorRect" parent="GameElements/HealthParent/HealthPanel/LongPanel/HealthPanel/HBoxContainer" unique_id=368145762]
+use_parent_material = true
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="TextureRect4" type="ColorRect" parent="GameElements/HealthParent/HealthPanel/LongPanel/HealthPanel/HBoxContainer" unique_id=2117739909]
+use_parent_material = true
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="TextureRect5" type="ColorRect" parent="GameElements/HealthParent/HealthPanel/LongPanel/HealthPanel/HBoxContainer" unique_id=23254272]
+use_parent_material = true
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="TextureRect6" type="ColorRect" parent="GameElements/HealthParent/HealthPanel/LongPanel/HealthPanel/HBoxContainer" unique_id=37091818]
+use_parent_material = true
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="TextureRect7" type="ColorRect" parent="GameElements/HealthParent/HealthPanel/LongPanel/HealthPanel/HBoxContainer" unique_id=997134641]
+use_parent_material = true
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="TextureRect8" type="ColorRect" parent="GameElements/HealthParent/HealthPanel/LongPanel/HealthPanel/HBoxContainer" unique_id=780107254]
+use_parent_material = true
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="TextureRect9" type="ColorRect" parent="GameElements/HealthParent/HealthPanel/LongPanel/HealthPanel/HBoxContainer" unique_id=351330305]
+use_parent_material = true
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="TextureRect10" type="ColorRect" parent="GameElements/HealthParent/HealthPanel/LongPanel/HealthPanel/HBoxContainer" unique_id=598622211]
+use_parent_material = true
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="StaminaPanel" type="Control" parent="GameElements/HealthParent/HealthPanel/LongPanel" unique_id=758843888]
+self_modulate = Color(1, 1, 1, 0.8)
+material = ExtResource("24")
+anchors_preset = 0
+offset_left = 24.3616
+offset_top = 53.1026
+offset_right = 302.362
+offset_bottom = 66.1026
+
+[node name="StaminaBacking" type="ColorRect" parent="GameElements/HealthParent/HealthPanel/LongPanel/StaminaPanel" unique_id=815439951]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StaminaBar" type="ColorRect" parent="GameElements/HealthParent/HealthPanel/LongPanel/StaminaPanel" unique_id=320186043]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.884375, 0.26, 1)
+
+[node name="Shadow" type="ColorRect" parent="GameElements/HealthParent/HealthPanel/LongPanel/StaminaPanel" unique_id=1127320362]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.47451, 0.352941, 0.4, 0.392157)
+
+[node name="HealthDelayTimer" type="Timer" parent="GameElements/HealthParent/HealthPanel" unique_id=219539223]
+one_shot = true
+
+[node name="Shake" type="Node" parent="GameElements/HealthParent/HealthPanel" unique_id=1929626063]
+script = ExtResource("1")
+
+[node name="GuraViewport" type="SubViewportContainer" parent="GameElements" unique_id=388376914]
+material = SubResource("ShaderMaterial_co3tr")
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -536.0
+offset_right = 292.0
+offset_bottom = 102.0
+grow_vertical = 0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="GameElements/GuraViewport" unique_id=1499758305]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(340, 638)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="GameElements/GuraViewport/SubViewport" unique_id=1512493643]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.3784, 9.67)
+cull_mask = 32
+environment = ExtResource("10_d2w0e")
+v_offset = 0.38
+fov = 13.4
+
+[node name="Gura" parent="GameElements/GuraViewport/SubViewport" unique_id=889825305 instance=ExtResource("14_na7dn")]
+transform = Transform3D(0.932324, 0, 0.361624, 0, 1, 0, -0.361624, 0, 0.932324, 0, -3.08589, 0)
+
+[node name="Skeleton3D" parent="GameElements/GuraViewport/SubViewport/Gura/GuraModel" parent_id_path=PackedInt32Array(889825305, 1172231497) index="0" unique_id=736951069]
+bones/0/rotation = Quaternion(0, 0.7071068, 0.7071068, 0)
+bones/3/position = Vector3(-0.093578316, -0.012493789, 0.06504137)
+bones/3/rotation = Quaternion(-2.0433757e-17, 0.07831002, 0.99692905, 0)
+bones/4/position = Vector3(-5.0985483e-09, 5.3085387e-07, 2.3678876e-07)
+bones/4/rotation = Quaternion(0.995826, -7.6162536e-08, 8.309764e-07, -0.09127202)
+bones/5/position = Vector3(0.093578316, -0.012493789, 0.06504137)
+bones/5/rotation = Quaternion(2.0433758e-17, 0.07831003, 0.99692905, 0)
+bones/6/position = Vector3(5.0985496e-09, 2.1792948e-07, -9.9884346e-08)
+bones/6/rotation = Quaternion(0.995826, 7.616256e-08, -8.309764e-07, -0.091272034)
+bones/7/position = Vector3(-3.9119433e-12, -4.4747416e-05, 0.40945634)
+bones/7/rotation = Quaternion(3.0938274e-08, 0.70778525, 0.7064277, 3.0878937e-08)
+bones/8/rotation = Quaternion(0.9999461, -0.0012309456, -6.825307e-05, 0.010311622)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(0.043133512, 7.074268e-05, -0.00013096753, 0.99906933)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(-0.022497978, 4.3697025e-08, 9.83421e-10, 0.9997469)
+bones/11/rotation = Quaternion(-0.0006624453, 2.6993674e-12, -2.5931255e-15, 0.9999999)
+bones/12/rotation = Quaternion(-0.00066836446, 2.7222948e-12, 8.039342e-14, 0.9999999)
+bones/13/rotation = Quaternion(0.7105905, 0.4845448, 0.42443222, -0.28308102)
+bones/14/rotation = Quaternion(0.7105904, -0.4845448, -0.42443228, -0.28308105)
+bones/15/rotation = Quaternion(0.99955994, 3.5361913e-09, -1.1915684e-07, -0.02966368)
+bones/15/scale = Vector3(1, 1, 1)
+bones/16/rotation = Quaternion(-0.495158, -0.499977, -0.499976, 0.504842)
+bones/16/scale = Vector3(1, 1, 1)
+bones/17/rotation = Quaternion(-0.5558316, 0.07525182, -0.010773925, 0.8278118)
+bones/17/scale = Vector3(0.99999964, 0.9999997, 0.99999976)
+bones/18/rotation = Quaternion(2.2873867e-06, 0.036794774, -0.0023695882, 0.9993201)
+bones/18/scale = Vector3(1.0000001, 1.0000002, 0.9999998)
+bones/19/rotation = Quaternion(-0.495158, 0.499977, 0.499976, 0.504842)
+bones/19/scale = Vector3(1, 1, 1)
+bones/20/rotation = Quaternion(-0.5558437, -0.07394499, 0.009753546, 0.82793415)
+bones/20/scale = Vector3(0.99999976, 0.99999976, 0.99999994)
+bones/21/rotation = Quaternion(7.720082e-06, -0.034941535, 0.0026133668, 0.99938595)
+bones/21/scale = Vector3(1.0000002, 1.0000001, 1)
+bones/22/position = Vector3(0.33867484, -0.23419985, -0.035117157)
+bones/22/rotation = Quaternion(-0.5635484, 0.42623505, -0.42791113, 0.5635858)
+bones/23/position = Vector3(-0.007799232, -0.0005593589, -0.0010242653)
+bones/24/position = Vector3(-0.33867484, -0.23419985, -0.035117157)
+bones/24/rotation = Quaternion(-0.5552619, -0.43695945, 0.43865192, 0.55527943)
+bones/25/position = Vector3(0.0077518173, -0.0005594198, -0.0013374211)
+bones/25/rotation = Quaternion(1.9036057e-10, -1.800708e-10, 0.7071068, 0.7071068)
+bones/26/position = Vector3(0.27997977, -0.0474945, -0.17424995)
+bones/26/rotation = Quaternion(-0.7071068, -3.3421013e-18, 3.145648e-18, 0.7071068)
+bones/27/position = Vector3(-0.27997977, -0.0474945, -0.17424996)
+bones/27/rotation = Quaternion(-0.7071068, -3.3421013e-18, 3.145648e-18, 0.7071068)
+bones/28/rotation = Quaternion(-0.8214448, 2.6269031e-17, 3.059045e-17, 0.57028806)
+bones/29/rotation = Quaternion(0.1888, 2.52699e-24, -4.19221e-17, 0.982015)
+bones/30/position = Vector3(-0.094555095, 0.07747885, -1.8372324e-08)
+bones/30/rotation = Quaternion(0.9999472, 0.0012318023, 6.799798e-05, 0.010214285)
+bones/30/scale = Vector3(1, 1, 1)
+bones/31/rotation = Quaternion(0.042957325, -7.092199e-05, 0.00013271181, 0.99907696)
+bones/31/scale = Vector3(1, 1, 1)
+
+[node name="Gura_Arms" parent="GameElements/GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="0" unique_id=1159227489]
+layers = 32
+
+[node name="Gura_Bangs" parent="GameElements/GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="1" unique_id=100087140]
+layers = 32
+
+[node name="Gura_Body" parent="GameElements/GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="2" unique_id=1594811983]
+layers = 32
+
+[node name="Gura_Collar" parent="GameElements/GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="3" unique_id=740333434]
+layers = 32
+
+[node name="Gura_Eyes" parent="GameElements/GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="4" unique_id=142824496]
+layers = 32
+
+[node name="Gura_Fin" parent="GameElements/GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="5" unique_id=306930845]
+layers = 32
+
+[node name="Gura_Hair" parent="GameElements/GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="6" unique_id=2049281449]
+layers = 32
+
+[node name="Gura_Hair_Back" parent="GameElements/GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="7" unique_id=1345237153]
+layers = 32
+
+[node name="Gura_Hair_Back_Sides" parent="GameElements/GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="8" unique_id=1318571122]
+layers = 32
+
+[node name="Gura_Head" parent="GameElements/GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="9" unique_id=1029595651]
+layers = 32
+
+[node name="Gura_Hood" parent="GameElements/GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="10" unique_id=405490538]
+layers = 32
+
+[node name="Gura_Legs" parent="GameElements/GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="11" unique_id=1810082922]
+layers = 32
+
+[node name="Gura_Mouth" parent="GameElements/GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="12" unique_id=70139751]
+layers = 32
+
+[node name="Gura_Neck" parent="GameElements/GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="13" unique_id=1469372255]
+layers = 32
+
+[node name="Gura_String_Left" parent="GameElements/GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="14" unique_id=1682886271]
+layers = 32
+
+[node name="HatHeadBone" parent="GameElements/GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="15" unique_id=499739115]
+transform = Transform3D(1, -1.6766039e-10, -3.600324e-12, 1.6765257e-10, 0.99895406, 0.04572556, -4.089492e-12, -0.04572562, 0.99895406, -9.560873e-11, 1.0029149, -0.022852968)
+
+[node name="HatEquipper" parent="GameElements/GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D/HatHeadBone" index="0" unique_id=1110634359]
+layer_mask = 6
+
+[node name="Gura_String_Right" parent="GameElements/GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="16" unique_id=1062444497]
+layers = 32
+
+[node name="Gura_Tail" parent="GameElements/GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="17" unique_id=167550893]
+layers = 32
+
+[node name="Gura_TwinTails" parent="GameElements/GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="18" unique_id=584742276]
+layers = 32
+
+[node name="OmniLight3D" type="OmniLight3D" parent="GameElements/GuraViewport/SubViewport" unique_id=2126766931 groups=["No Shadows"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.911, -2.26211, 1.288)
+layers = 32
+light_color = Color(1, 0.858824, 0.780392, 1)
+light_energy = 2.325
+light_cull_mask = 4293918752
+
+[node name="FaceSettings" type="Node" parent="GameElements/GuraViewport/SubViewport" unique_id=1611341950]
+script = ExtResource("19_13bfb")
+eyes_node_path = NodePath("../Gura/GuraModel/Skeleton3D/Gura_Eyes")
+mouth_node_path = NodePath("../Gura/GuraModel/Skeleton3D/Gura_Mouth")
+
+[node name="AnimationTree" type="AnimationTree" parent="GameElements/GuraViewport/SubViewport" unique_id=1338925336]
+root_node = NodePath("../Gura")
+tree_root = SubResource("AnimationNodeStateMachine_kosxa")
+anim_player = NodePath("../Gura/AnimationPlayer")
+parameters/conditions/Reset = false
+parameters/conditions/Worried = false
+
+[node name="BossHealthBar" type="TextureRect" parent="GameElements" unique_id=1081713126]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("29")
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -591.0
+offset_top = 72.0
+offset_right = 591.0
+offset_bottom = 86.0
+grow_horizontal = 2
+script = ExtResource("3")
+health_bar_np = NodePath("HealthBar")
+health_delay_np = NodePath("HealthDelay")
+show_name = true
+set_pos = false
+sleep = false
+
+[node name="HealthBacking" type="ColorRect" parent="GameElements/BossHealthBar" unique_id=106367490]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.407843)
+
+[node name="HealthDelay" type="ColorRect" parent="GameElements/BossHealthBar" unique_id=1597106251]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.567, 1)
+color = Color(1, 0.815686, 0.14902, 1)
+
+[node name="HealthBar" type="ColorRect" parent="GameElements/BossHealthBar" unique_id=1658414003]
+material = SubResource("3")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.425, 1)
+
+[node name="LeftYellow" type="ColorRect" parent="GameElements/BossHealthBar" unique_id=543536322]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -9.0
+offset_right = -12.0
+offset_bottom = 9.0
+grow_vertical = 2
+color = Color(1, 0.8, 0.0823529, 1)
+
+[node name="RightYellow" type="ColorRect" parent="GameElements/BossHealthBar" unique_id=821072486]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = -9.0
+offset_right = 16.0
+offset_bottom = 9.0
+grow_horizontal = 0
+grow_vertical = 2
+color = Color(1, 0.8, 0.0823529, 1)
+
+[node name="NamePanel" type="PanelContainer" parent="GameElements/BossHealthBar" unique_id=118851769]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = 22.0
+offset_right = 99.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(98, 20)
+theme_override_styles/panel = SubResource("StyleBoxFlat_f01h0")
+
+[node name="NameLabel" type="Label" parent="GameElements/BossHealthBar/NamePanel" unique_id=320504629]
+layout_mode = 2
+text = "Мори Каллиопа"
+label_settings = SubResource("LabelSettings_5nxq1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shadow" type="TextureRect" parent="GameElements/BossHealthBar" unique_id=291669008]
+self_modulate = Color(0.113725, 0.113725, 0.113725, 0.490196)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("GradientTexture2D_xsfg0")
+expand_mode = 1
+
+[node name="HealthDelayTimer" type="Timer" parent="GameElements/BossHealthBar" unique_id=2028702373]
+one_shot = true
+
+[node name="Shake" type="Node" parent="GameElements/BossHealthBar" unique_id=1170595667]
+script = ExtResource("1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameElements/BossHealthBar" unique_id=926104129]
+libraries/ = SubResource("AnimationLibrary_5xrmi")
+
+[node name="Crosshair" type="Control" parent="GameElements" unique_id=960483435]
+modulate = Color(1, 1, 1, 0.458824)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="GameElements/Crosshair" unique_id=632316118]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("17")
+expand_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="GameElements/Crosshair/TextureRect" unique_id=509787259]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("17")
+expand_mode = 2
+
+[node name="AbilityIndicators" type="Control" parent="GameElements" unique_id=1056576141]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 592.0
+offset_top = 159.0
+offset_right = 632.0
+offset_bottom = 199.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(541, 565)
+
+[node name="HealthPanelStraight2" type="ColorRect" parent="GameElements/AbilityIndicators" unique_id=937368867]
+modulate = Color(0.427451, 0.427451, 0.427451, 0.772549)
+layout_mode = 0
+offset_left = 27.6687
+offset_top = 1027.75
+offset_right = 1001.67
+offset_bottom = 1628.75
+rotation = -88.5947
+color = Color(0.513726, 0.513726, 0.513726, 1)
+
+[node name="HealthPanelStraight" type="NinePatchRect" parent="GameElements/AbilityIndicators" unique_id=93506956]
+modulate = Color(0.941176, 0.941176, 0.941176, 1)
+material = SubResource("26")
+layout_mode = 0
+offset_left = -6.0
+offset_top = 1017.38
+offset_right = 968.0
+offset_bottom = 1618.38
+rotation = -85.794
+texture = ExtResource("26")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="FirstJump" type="TextureRect" parent="GameElements/AbilityIndicators" unique_id=1248218760]
+material = SubResource("21")
+layout_mode = 0
+offset_left = 54.0
+offset_top = 189.0
+offset_right = 226.0
+offset_bottom = 361.0
+rotation = 10.655
+texture = ExtResource("23")
+
+[node name="Fill" type="TextureRect" parent="GameElements/AbilityIndicators/FirstJump" unique_id=90891616]
+self_modulate = Color(1, 0.509804, 0.317647, 1)
+layout_mode = 0
+offset_right = 172.0
+offset_bottom = 172.0
+texture = ExtResource("23")
+
+[node name="Fill2" type="TextureRect" parent="GameElements/AbilityIndicators/FirstJump" unique_id=189975999]
+self_modulate = Color(0.266667, 0.301961, 0.341176, 1)
+show_behind_parent = true
+layout_mode = 0
+offset_left = 22.2457
+offset_top = 3.59149
+offset_right = 194.246
+offset_bottom = 175.591
+rotation = 3.80922
+texture = ExtResource("23")
+
+[node name="SecondJump" type="TextureRect" parent="GameElements/AbilityIndicators" unique_id=1425043591]
+material = SubResource("21")
+layout_mode = 0
+offset_left = 76.0
+offset_top = 67.0
+offset_right = 248.0
+offset_bottom = 239.0
+rotation = -8.81475
+pivot_offset = Vector2(0.00012207, 132.877)
+texture = ExtResource("23")
+
+[node name="Fill" type="TextureRect" parent="GameElements/AbilityIndicators/SecondJump" unique_id=1298587300]
+self_modulate = Color(1, 0.509804, 0.317647, 1)
+layout_mode = 0
+offset_right = 172.0
+offset_bottom = 172.0
+pivot_offset = Vector2(-297.162, 116.481)
+texture = ExtResource("23")
+
+[node name="Fill2" type="TextureRect" parent="GameElements/AbilityIndicators/SecondJump" unique_id=1209364725]
+self_modulate = Color(0.266667, 0.301961, 0.341176, 1)
+show_behind_parent = true
+layout_mode = 0
+offset_left = 22.2457
+offset_top = 3.59149
+offset_right = 194.246
+offset_bottom = 175.591
+rotation = 3.80922
+texture = ExtResource("23")
+
+[node name="Spin" type="TextureRect" parent="GameElements/AbilityIndicators" unique_id=1181173352]
+material = SubResource("21")
+layout_mode = 0
+offset_left = 131.0
+offset_top = 94.0
+offset_right = 404.0
+offset_bottom = 367.0
+rotation = 1.46472
+texture = ExtResource("27")
+
+[node name="Fill" type="TextureRect" parent="GameElements/AbilityIndicators/Spin" unique_id=1906733274]
+modulate = Color(0.329412, 0.717647, 1, 1)
+layout_mode = 0
+offset_right = 152.0
+offset_bottom = 235.0
+texture = ExtResource("27")
+
+[node name="Fill2" type="TextureRect" parent="GameElements/AbilityIndicators/Spin" unique_id=1272569244]
+modulate = Color(0.266667, 0.301961, 0.341176, 1)
+show_behind_parent = true
+layout_mode = 0
+offset_left = 6.98853
+offset_top = 14.2823
+offset_right = 279.989
+offset_bottom = 287.282
+rotation = -1.21184
+texture = ExtResource("27")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameElements/AbilityIndicators" unique_id=1203579920]
+libraries/ = SubResource("AnimationLibrary_n84hh")
+
+[node name="ChickenAbilityIndicators" type="Control" parent="GameElements" unique_id=1133677574]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 592.0
+offset_top = 159.0
+offset_right = 632.0
+offset_bottom = 199.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(541, 565)
+
+[node name="HealthPanelStraight2" type="ColorRect" parent="GameElements/ChickenAbilityIndicators" unique_id=1167247613]
+modulate = Color(0.427451, 0.427451, 0.427451, 0.772549)
+layout_mode = 0
+offset_left = 5.6687
+offset_top = 1128.75
+offset_right = 979.67
+offset_bottom = 1729.75
+rotation = -88.5947
+color = Color(0.513726, 0.513726, 0.513726, 1)
+
+[node name="HealthPanelStraight" type="NinePatchRect" parent="GameElements/ChickenAbilityIndicators" unique_id=915690151]
+layout_mode = 0
+offset_left = -28.0
+offset_top = 1118.38
+offset_right = 946.0
+offset_bottom = 1719.38
+rotation = -85.794
+texture = ExtResource("26")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="FirstJump" type="TextureRect" parent="GameElements/ChickenAbilityIndicators" unique_id=1897714612]
+material = SubResource("21")
+layout_mode = 0
+offset_left = 54.0
+offset_top = 184.0
+offset_right = 226.0
+offset_bottom = 356.0
+rotation = 10.655
+texture = ExtResource("23")
+
+[node name="Fill" type="TextureRect" parent="GameElements/ChickenAbilityIndicators/FirstJump" unique_id=1135719026]
+self_modulate = Color(1, 0.509804, 0.317647, 1)
+layout_mode = 0
+offset_right = 172.0
+offset_bottom = 172.0
+texture = ExtResource("23")
+
+[node name="Fill2" type="TextureRect" parent="GameElements/ChickenAbilityIndicators/FirstJump" unique_id=1417874023]
+self_modulate = Color(0.266667, 0.301961, 0.341176, 1)
+show_behind_parent = true
+layout_mode = 0
+offset_left = 22.2457
+offset_top = 3.59149
+offset_right = 194.246
+offset_bottom = 175.591
+rotation = 3.80922
+texture = ExtResource("23")
+
+[node name="SecondJump" type="TextureRect" parent="GameElements/ChickenAbilityIndicators" unique_id=574612807]
+material = SubResource("21")
+layout_mode = 0
+offset_left = 218.0
+offset_top = 84.0
+offset_right = 390.0
+offset_bottom = 256.0
+rotation = 80.2504
+pivot_offset = Vector2(0.00012207, 132.877)
+texture = ExtResource("23")
+
+[node name="Fill" type="TextureRect" parent="GameElements/ChickenAbilityIndicators/SecondJump" unique_id=1502717018]
+self_modulate = Color(0.356863, 0.317647, 1, 1)
+layout_mode = 0
+offset_right = 172.0
+offset_bottom = 172.0
+pivot_offset = Vector2(-297.162, 116.481)
+texture = ExtResource("23")
+
+[node name="Fill2" type="TextureRect" parent="GameElements/ChickenAbilityIndicators/SecondJump" unique_id=897422990]
+self_modulate = Color(0.266667, 0.301961, 0.341176, 1)
+show_behind_parent = true
+layout_mode = 0
+offset_left = 22.2457
+offset_top = 3.59149
+offset_right = 194.246
+offset_bottom = 175.591
+rotation = 3.80922
+texture = ExtResource("23")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameElements/ChickenAbilityIndicators" unique_id=1040825951]
+libraries/ = SubResource("AnimationLibrary_r4mb8")
+
+[node name="StaggerOverlay" type="ColorRect" parent="GameElements" unique_id=915305263]
+material = SubResource("ShaderMaterial_fmovt")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameElements/StaggerOverlay" unique_id=1209430588]
+libraries/ = SubResource("AnimationLibrary_1gb38")
+
+[node name="DamageVignette" type="ColorRect" parent="GameElements" unique_id=110982440]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("8")
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameElements/DamageVignette" unique_id=1128755043]
+libraries/ = SubResource("AnimationLibrary_q6g8h")
+
+[node name="HealVignette" type="ColorRect" parent="GameElements" unique_id=1526497570]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_5eu0w")
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.560784, 1, 0.705882, 1)
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameElements/HealVignette" unique_id=79933999]
+libraries/ = SubResource("AnimationLibrary_q6g8h")
+
+[node name="DialogueUI" parent="." unique_id=380260855 instance=ExtResource("12")]
+visible = false
+
+[node name="SpeedLines" parent="." unique_id=1753895891 instance=ExtResource("13")]
+visible = false
+modulate = Color(1, 1, 1, 0.572549)
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TransitionRect" type="ColorRect" parent="." unique_id=591035607]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+script = ExtResource("21")
+metadata/_edit_lock_ = true
+
+[node name="PauseUI" parent="." unique_id=1207412158 instance=ExtResource("9")]
+visible = false
+
+[node name="GameOverUI" parent="." unique_id=1288551813 instance=ExtResource("14")]
+visible = false
+
+[node name="FpsLabel" type="Label" parent="." unique_id=1001591994]
+visible = false
+modulate = Color(1, 1, 1, 0.470588)
+offset_left = 9.0
+offset_top = 8.0
+offset_right = 91.0
+offset_bottom = 41.0
+text = "fps: 60"
+script = ExtResource("30_b72bq")
+
+[node name="DebugLabel" type="Label" parent="." unique_id=381317369]
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -96.0
+offset_top = 11.0
+offset_right = -14.0
+offset_bottom = 44.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 0.88, 0.100000024, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+text = "DEBUG"
+horizontal_alignment = 2
+
+[node name="Matthew" type="VideoStreamPlayer" parent="." unique_id=1896947889]
+visible = false
+modulate = Color(1, 1, 1, 0.6627451)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -427.5
+offset_top = -427.5
+offset_right = 427.5
+offset_bottom = 427.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stream = ExtResource("31_u7t6a")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Matthew" unique_id=1911031179]
+libraries/ = SubResource("AnimationLibrary_mt5gx")
+
+[node name="HatNotification" parent="." unique_id=1041085199 instance=ExtResource("33_mt5gx")]
+
+[editable path="GameElements/GuraViewport/SubViewport/Gura"]

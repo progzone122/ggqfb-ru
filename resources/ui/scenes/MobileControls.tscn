@@ -1,0 +1,334 @@
+[gd_scene load_steps=10 format=3 uid="uid://dbwxcswm0t7ih"]
+
+[ext_resource type="Texture2D" uid="uid://c8fwc37kqlbxt" path="res://ui/textures/Circle.png" id="1"]
+[ext_resource type="FontFile" uid="uid://bbttvwhcel3t7" path="res://ui/fonts/Gravity-24.tres" id="2"]
+[ext_resource type="Script" uid="uid://lpf7gyent086" path="res://ui/scenes/MobileButton.gd" id="3"]
+[ext_resource type="Theme" uid="uid://cvscydthyenwa" path="res://ui/Theme.tres" id="4"]
+[ext_resource type="Script" uid="uid://d2gvx72bavxiy" path="res://ui/scenes/MobileJoystick.gd" id="5"]
+[ext_resource type="Script" uid="uid://b04obyl5qgjpb" path="res://ui/scenes/MobileControls.gd" id="6"]
+[ext_resource type="PackedScene" uid="uid://l2khtd2vv1ig" path="res://addons/joystick/virtual_joystick.tscn" id="7"]
+
+[sub_resource type="StyleBoxTexture" id="1"]
+texture = ExtResource("1")
+region_rect = Rect2(0, 0, 129, 129)
+modulate_color = Color(0.262745, 0.278431, 0.286275, 1)
+
+[sub_resource type="StyleBoxEmpty" id="2"]
+
+[node name="MobileControls" type="CanvasLayer"]
+script = ExtResource("6")
+
+[node name="Button" type="Button" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.784314)
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -552.0
+offset_top = -267.0
+offset_right = -351.0
+offset_bottom = -49.0
+theme = ExtResource("4")
+custom_styles/normal = SubResource("1")
+text = "Прыжок"
+script = ExtResource("3")
+action_name = "jump"
+
+[node name="Button3" type="Button" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.784314)
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -711.0
+offset_top = -198.0
+offset_right = -569.0
+offset_bottom = -44.0
+theme = ExtResource("4")
+custom_styles/normal = SubResource("1")
+text = "Атака"
+script = ExtResource("3")
+action_name = "attack"
+
+[node name="Button2" type="Button" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.784314)
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -673.0
+offset_top = -369.0
+offset_right = -531.0
+offset_bottom = -215.0
+theme = ExtResource("4")
+custom_styles/normal = SubResource("1")
+text = "Кувырок"
+script = ExtResource("3")
+action_name = "roll"
+
+[node name="Button4" type="Button" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.784314)
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -520.0
+offset_top = -445.0
+offset_right = -378.0
+offset_bottom = -291.0
+theme = ExtResource("4")
+custom_styles/normal = SubResource("1")
+text = "Блок"
+script = ExtResource("3")
+action_name = "block"
+
+[node name="Button5" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0.784314)
+offset_left = 29.0
+offset_top = 43.0
+offset_right = 183.0
+offset_bottom = 124.0
+theme = ExtResource("4")
+custom_styles/normal = SubResource("1")
+text = "Пауза"
+script = ExtResource("3")
+action_name = "pause"
+
+[node name="Button6" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0.784314)
+offset_left = 32.0
+offset_top = 252.0
+offset_right = 186.0
+offset_bottom = 333.0
+theme = ExtResource("4")
+custom_styles/normal = SubResource("1")
+text = "Журнал"
+script = ExtResource("3")
+action_name = "toggle_hyperlog"
+
+[node name="Joystick" type="Button" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.784314)
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 59.0
+offset_top = -273.0
+offset_right = 230.0
+offset_bottom = -102.0
+custom_styles/normal = SubResource("2")
+script = ExtResource("5")
+action_name = "move"
+max_distance = 80.0
+
+[node name="Backing" type="TextureRect" parent="Joystick"]
+self_modulate = Color(0.176471, 0.176471, 0.176471, 1)
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("1")
+expand = true
+
+[node name="TextureRect3" type="TextureRect" parent="Joystick"]
+self_modulate = Color(0.0705882, 0.0705882, 0.0705882, 1)
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource("1")
+expand = true
+
+[node name="Stick" type="TextureRect" parent="Joystick"]
+self_modulate = Color(0.27451, 0.286275, 0.294118, 1)
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.5
+offset_top = -73.5
+offset_right = 74.5
+offset_bottom = 74.5
+mouse_filter = 2
+texture = ExtResource("1")
+expand = true
+
+[node name="Joystick2" type="Button" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.784314)
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -702.0
+offset_top = -647.0
+offset_right = -531.0
+offset_bottom = -476.0
+custom_styles/normal = SubResource("2")
+script = ExtResource("5")
+action_name = "cam"
+max_distance = 80.0
+
+[node name="Backing" type="TextureRect" parent="Joystick2"]
+self_modulate = Color(0.176471, 0.176471, 0.176471, 1)
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("1")
+expand = true
+
+[node name="TextureRect3" type="TextureRect" parent="Joystick2"]
+self_modulate = Color(0.0705882, 0.0705882, 0.0705882, 1)
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource("1")
+expand = true
+
+[node name="Stick" type="TextureRect" parent="Joystick2"]
+self_modulate = Color(0.27451, 0.286275, 0.294118, 1)
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.5
+offset_top = -73.5
+offset_right = 74.5
+offset_bottom = 74.5
+mouse_filter = 2
+texture = ExtResource("1")
+expand = true
+
+[node name="Virtual joystick" parent="." instance=ExtResource("7")]
+offset_left = 63.0
+offset_top = -275.0
+offset_right = 263.0
+offset_bottom = -75.0
+action_left = "move_left"
+action_right = "move_right"
+action_up = "move_up"
+action_down = "move_down"
+
+[node name="Virtual joystick2" parent="." instance=ExtResource("7")]
+offset_left = 1666.0
+offset_top = -796.0
+offset_right = 1866.0
+offset_bottom = -596.0
+action_left = "cam_left"
+action_right = "cam_right"
+action_up = "cam_up"
+action_down = "cam_down"
+
+[node name="Control" type="Control" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -390.0
+offset_top = -501.0
+offset_right = -21.0
+offset_bottom = -21.0
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Control"]
+self_modulate = Color(0.262745, 0.278431, 0.286275, 1)
+position = Vector2(169, 262)
+scale = Vector2(1.44961, 1.44961)
+normal = ExtResource("1")
+action = "jump"
+
+[node name="Label" type="Label" parent="Control/TouchScreenButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -15.0
+offset_right = 31.0
+offset_bottom = 15.0
+custom_fonts/font = ExtResource("2")
+text = "Прыжок"
+
+[node name="TouchScreenButton2" type="TouchScreenButton" parent="Control"]
+self_modulate = Color(0.262745, 0.278431, 0.286275, 1)
+position = Vector2(21, 323)
+normal = ExtResource("1")
+action = "attack"
+
+[node name="Label" type="Label" parent="Control/TouchScreenButton2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -15.0
+offset_right = 38.0
+offset_bottom = 15.0
+custom_fonts/font = ExtResource("2")
+text = "Атака"
+
+[node name="TouchScreenButton3" type="TouchScreenButton" parent="Control"]
+self_modulate = Color(0.262745, 0.278431, 0.286275, 1)
+position = Vector2(53, 179)
+normal = ExtResource("1")
+action = "roll"
+
+[node name="Label" type="Label" parent="Control/TouchScreenButton3"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -15.0
+offset_right = 31.0
+offset_bottom = 15.0
+custom_fonts/font = ExtResource("2")
+text = "Кувырок"
+
+[node name="TouchScreenButton4" type="TouchScreenButton" parent="Control"]
+self_modulate = Color(0.262745, 0.278431, 0.286275, 1)
+position = Vector2(199, 111)
+normal = ExtResource("1")
+action = "block"
+
+[node name="Label" type="Label" parent="Control/TouchScreenButton4"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -15.0
+offset_right = 32.0
+offset_bottom = 15.0
+custom_fonts/font = ExtResource("2")
+text = "Блок"
+
+[node name="TouchScreenButton5" type="TouchScreenButton" parent="Control"]
+self_modulate = Color(0.262745, 0.278431, 0.286275, 1)
+position = Vector2(50, 17)
+normal = ExtResource("1")
+action = "block"
+
+[node name="Label" type="Label" parent="Control/TouchScreenButton5"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.5
+offset_top = -15.0
+offset_right = 45.5
+offset_bottom = 15.0
+custom_fonts/font = ExtResource("2")
+text = "Взаимодействие"

@@ -1,0 +1,537 @@
+[gd_scene format=3 uid="uid://4e3g5k7e7inw"]
+
+[ext_resource type="PackedScene" uid="uid://d1uutkruhlqa1" path="res://ui/scenes/InputIcon.tscn" id="1"]
+[ext_resource type="Script" uid="uid://cskt05kpcruwu" path="res://ui/scripts/TutorialUI.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://bfwwgh5jhr3nq" path="res://ui/textures/Check_Ticked.png" id="2_6frk0"]
+[ext_resource type="Texture2D" uid="uid://bq50osbhnt1te" path="res://ui/textures/Check_Unticked.png" id="3_d0pt3"]
+[ext_resource type="FontFile" uid="uid://6wupjude0wuo" path="res://ui/fonts/Dongle-Bold.ttf" id="4_4i6f8"]
+
+[sub_resource type="StyleBoxFlat" id="25"]
+bg_color = Color(0.956863, 0.207843, 0.207843, 0)
+
+[sub_resource type="StyleBoxEmpty" id="22"]
+
+[sub_resource type="StyleBoxEmpty" id="23"]
+
+[sub_resource type="StyleBoxEmpty" id="24"]
+
+[sub_resource type="StyleBoxFlat" id="26"]
+bg_color = Color(0.203922, 0.211765, 0.254902, 1)
+
+[sub_resource type="StyleBoxEmpty" id="9"]
+
+[sub_resource type="StyleBoxEmpty" id="10"]
+
+[sub_resource type="StyleBoxEmpty" id="11"]
+
+[sub_resource type="StyleBoxEmpty" id="12"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_edobd"]
+
+[sub_resource type="StyleBoxFlat" id="21"]
+bg_color = Color(0.482353, 1, 0.411765, 1)
+
+[sub_resource type="StyleBoxFlat" id="19"]
+bg_color = Color(0.239216, 0.513726, 0.2, 1)
+
+[sub_resource type="StyleBoxLine" id="20"]
+color = Color(0.286275, 0.286275, 0.286275, 1)
+thickness = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g35bb"]
+bg_color = Color(0.0337305, 0.400674, 0.490625, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0.869531, 0.83146, 0.372268, 1)
+shadow_size = 1
+shadow_offset = Vector2(6, 6)
+
+[sub_resource type="Theme" id="Theme_bcgsp"]
+default_font = ExtResource("4_4i6f8")
+default_font_size = 42
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_focus_color = Color(0.447059, 0.847059, 1, 1)
+Button/colors/font_hover_color = Color(1, 0.976471, 0.447059, 1)
+Button/colors/font_pressed_color = Color(0.0392157, 0.607843, 0.823529, 1)
+Button/constants/hseparation = 2
+Button/styles/disabled = null
+Button/styles/focus = SubResource("25")
+Button/styles/hover = SubResource("22")
+Button/styles/normal = SubResource("23")
+Button/styles/pressed = SubResource("24")
+CheckButton/colors/font_color = Color(0.865625, 0.865625, 0.865625, 1)
+CheckButton/colors/font_color_disabled = Color(0.9, 0.9, 0.9, 0.2)
+CheckButton/colors/font_color_focus = Color(0.94, 0.94, 0.94, 1)
+CheckButton/colors/font_color_hover = Color(0.94, 0.94, 0.94, 1)
+CheckButton/colors/font_color_hover_pressed = Color(1, 1, 1, 1)
+CheckButton/colors/font_color_pressed = Color(1, 1, 1, 1)
+CheckButton/constants/check_vadjust = 0
+CheckButton/constants/hseparation = 4
+CheckButton/icons/checked = ExtResource("2_6frk0")
+CheckButton/icons/unchecked = ExtResource("3_d0pt3")
+CheckButton/styles/disabled = null
+CheckButton/styles/focus = SubResource("26")
+CheckButton/styles/hover = SubResource("9")
+CheckButton/styles/hover_pressed = SubResource("10")
+CheckButton/styles/normal = SubResource("11")
+CheckButton/styles/pressed = SubResource("12")
+HSlider/icons/grabber = SubResource("ImageTexture_edobd")
+HSlider/styles/grabber_area = SubResource("21")
+HSlider/styles/grabber_area_highlight = SubResource("19")
+HSlider/styles/slider = SubResource("20")
+MenuButton/colors/font_color = Color(1, 1, 1, 1)
+OptionButton/colors/font_color = Color(0.866667, 0.866667, 0.866667, 1)
+Panel/styles/panel = SubResource("StyleBoxFlat_g35bb")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c461x"]
+bg_color = Color(0.0771082, 0.0790111, 0.0882813, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 5
+corner_radius_bottom_right = 30
+shadow_size = 1
+shadow_offset = Vector2(3, 2)
+
+[node name="TutorialUI" type="CanvasLayer" unique_id=1058561191]
+script = ExtResource("2")
+
+[node name="Special Panel" type="PanelContainer" parent="." unique_id=48599514]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -386.0
+offset_top = 362.0
+offset_right = 386.0
+offset_bottom = 428.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+theme = SubResource("Theme_bcgsp")
+theme_override_styles/panel = SubResource("StyleBoxFlat_c461x")
+
+[node name="MarginContainer" type="MarginContainer" parent="Special Panel" unique_id=1788258437]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 4
+
+[node name="Special" type="HBoxContainer" parent="Special Panel/MarginContainer" unique_id=2004526731]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 12
+
+[node name="RichTextLabel2" type="Label" parent="Special Panel/MarginContainer/Special" unique_id=1562761426]
+layout_mode = 2
+text = "Нажмите"
+
+[node name="InputIcon" parent="Special Panel/MarginContainer/Special" unique_id=1960271996 instance=ExtResource("1")]
+layout_mode = 2
+action = 5
+
+[node name="RichTextLabel3" type="Label" parent="Special Panel/MarginContainer/Special" unique_id=1469199803]
+layout_mode = 2
+text = "когда твоя"
+
+[node name="RichTextLabel4" type="Label" parent="Special Panel/MarginContainer/Special" unique_id=1695302984]
+modulate = Color(1, 0.901443, 0.201563, 1)
+layout_mode = 2
+text = "выносливость"
+
+[node name="RichTextLabel5" type="Label" parent="Special Panel/MarginContainer/Special" unique_id=627262947]
+layout_mode = 2
+text = "полна, чтобы выполнить особую атаку."
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1230742344]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -776.5
+offset_top = -329.0
+offset_right = 776.5
+offset_bottom = -268.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_bcgsp")
+
+[node name="Panel" type="PanelContainer" parent="CenterContainer" unique_id=1181633230]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_c461x")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel" unique_id=1543054163]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 4
+
+[node name="Movement" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer" unique_id=1591922370]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 12
+
+[node name="Keyboard" type="Label" parent="CenterContainer/Panel/MarginContainer/Movement" unique_id=1467522574]
+visible = false
+layout_mode = 2
+text = "Используй WASD для движения и мышь для обзора."
+
+[node name="Gamepad" type="Label" parent="CenterContainer/Panel/MarginContainer/Movement" unique_id=20951586]
+layout_mode = 2
+text = "Используй левый стик для движения и правый стик для обзора."
+
+[node name="Jump" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer" unique_id=357016620]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 12
+
+[node name="RichTextLabel2" type="Label" parent="CenterContainer/Panel/MarginContainer/Jump" unique_id=1618736478]
+layout_mode = 2
+text = "Нажмите"
+
+[node name="InputIcon" parent="CenterContainer/Panel/MarginContainer/Jump" unique_id=835322213 instance=ExtResource("1")]
+layout_mode = 2
+action = 1
+
+[node name="RichTextLabel" type="Label" parent="CenterContainer/Panel/MarginContainer/Jump" unique_id=37133300]
+layout_mode = 2
+text = "чтобы прыгнуть."
+
+[node name="DoubleJump" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer" unique_id=476027325]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 12
+
+[node name="RichTextLabel2" type="Label" parent="CenterContainer/Panel/MarginContainer/DoubleJump" unique_id=1738247855]
+layout_mode = 2
+text = "Нажмите"
+
+[node name="InputIcon" parent="CenterContainer/Panel/MarginContainer/DoubleJump" unique_id=485303061 instance=ExtResource("1")]
+layout_mode = 2
+action = 1
+
+[node name="RichTextLabel" type="Label" parent="CenterContainer/Panel/MarginContainer/DoubleJump" unique_id=246832482]
+layout_mode = 2
+text = "в воздухе, чтобы прыгнуть дважды."
+
+[node name="Dive" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer" unique_id=2137625936]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 12
+
+[node name="RichTextLabel2" type="Label" parent="CenterContainer/Panel/MarginContainer/Dive" unique_id=1922503785]
+layout_mode = 2
+text = "Нажмите"
+
+[node name="InputIcon" parent="CenterContainer/Panel/MarginContainer/Dive" unique_id=1955409896 instance=ExtResource("1")]
+layout_mode = 2
+action = 2
+
+[node name="RichTextLabel" type="Label" parent="CenterContainer/Panel/MarginContainer/Dive" unique_id=2122306222]
+layout_mode = 2
+text = "в воздухе, чтобы спикировать."
+
+[node name="Thrust1" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer" unique_id=1052357121]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 12
+
+[node name="RichTextLabel2" type="Label" parent="CenterContainer/Panel/MarginContainer/Thrust1" unique_id=1224867395]
+layout_mode = 2
+text = "Нажмите"
+
+[node name="InputIcon" parent="CenterContainer/Panel/MarginContainer/Thrust1" unique_id=1747896013 instance=ExtResource("1")]
+layout_mode = 2
+action = 4
+
+[node name="RichTextLabel" type="Label" parent="CenterContainer/Panel/MarginContainer/Thrust1" unique_id=1834285962]
+layout_mode = 2
+text = "чтобы сделать выпад трезубцем."
+
+[node name="Wrong" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer" unique_id=14695271]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 12
+
+[node name="RichTextLabel2" type="Label" parent="CenterContainer/Panel/MarginContainer/Wrong" unique_id=394368887]
+layout_mode = 2
+text = "Хм, нет, ты просто махнула им. Трезубцем не машут — им тыкают."
+
+[node name="Thrust2" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer" unique_id=221699593]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 12
+
+[node name="RichTextLabel5" type="Label" parent="CenterContainer/Panel/MarginContainer/Thrust2" unique_id=442484061]
+layout_mode = 2
+text = "Кхем, нажмите"
+
+[node name="InputIcon" parent="CenterContainer/Panel/MarginContainer/Thrust2" unique_id=631460016 instance=ExtResource("1")]
+layout_mode = 2
+action = 4
+
+[node name="RichTextLabel" type="Label" parent="CenterContainer/Panel/MarginContainer/Thrust2" unique_id=422802772]
+layout_mode = 2
+text = "чтобы"
+
+[node name="RichTextLabel3" type="Label" parent="CenterContainer/Panel/MarginContainer/Thrust2" unique_id=1142301248]
+self_modulate = Color(1, 0.262745, 0.262745, 1)
+layout_mode = 2
+text = "тыкать"
+
+[node name="RichTextLabel4" type="Label" parent="CenterContainer/Panel/MarginContainer/Thrust2" unique_id=438493686]
+layout_mode = 2
+text = "своим трезубцем."
+
+[node name="Thrust3" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer" unique_id=470069056]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 12
+
+[node name="RichTextLabel3" type="Label" parent="CenterContainer/Panel/MarginContainer/Thrust3" unique_id=628230999]
+layout_mode = 2
+text = "Ткни. Своим. Трезубцем."
+
+[node name="Swing" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer" unique_id=1984414177]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Swing" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer/Swing" unique_id=424310157]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 12
+
+[node name="RichTextLabel2" type="Label" parent="CenterContainer/Panel/MarginContainer/Swing/Swing" unique_id=1574018443]
+layout_mode = 2
+text = "Нажмите"
+
+[node name="InputIcon" parent="CenterContainer/Panel/MarginContainer/Swing/Swing" unique_id=1461466438 instance=ExtResource("1")]
+layout_mode = 2
+action = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/Panel/MarginContainer/Swing/Swing" unique_id=654276469]
+custom_minimum_size = Vector2(420, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "чтобы махнуть трезубцем. [color=ff4343]Как обезьянка."
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Nice" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer" unique_id=640417318]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 12
+
+[node name="RichTextLabel3" type="Label" parent="CenterContainer/Panel/MarginContainer/Nice" unique_id=760782325]
+layout_mode = 2
+text = "Отлично!"
+
+[node name="Combo" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer" unique_id=635223866]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 12
+
+[node name="RichTextLabel2" type="Label" parent="CenterContainer/Panel/MarginContainer/Combo" unique_id=511245219]
+layout_mode = 2
+text = "Соедини три атаки подряд для комбо."
+
+[node name="SpinAttack" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer" unique_id=1410446386]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 12
+
+[node name="RichTextLabel2" type="Label" parent="CenterContainer/Panel/MarginContainer/SpinAttack" unique_id=1728324105]
+layout_mode = 2
+text = "Нажмите"
+
+[node name="InputIcon" parent="CenterContainer/Panel/MarginContainer/SpinAttack" unique_id=161687369 instance=ExtResource("1")]
+layout_mode = 2
+action = 4
+
+[node name="RichTextLabel3" type="Label" parent="CenterContainer/Panel/MarginContainer/SpinAttack" unique_id=880465435]
+layout_mode = 2
+text = "в воздухе, чтобы выполнить вращающуюся атаку."
+
+[node name="DefeatEnemies" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer" unique_id=1988536600]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 12
+
+[node name="RichTextLabel3" type="Label" parent="CenterContainer/Panel/MarginContainer/DefeatEnemies" unique_id=1882727661]
+layout_mode = 2
+text = "Расправься со всеми мишенями как пожелаешь."
+
+[node name="Demo_Combat" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer" unique_id=497803635]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 12
+
+[node name="Demo_Combat2" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer/Demo_Combat" unique_id=689913251]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 12
+
+[node name="RichTextLabel2" type="Label" parent="CenterContainer/Panel/MarginContainer/Demo_Combat/Demo_Combat2" unique_id=1782292877]
+layout_mode = 2
+text = "Нажмите"
+
+[node name="InputIcon" parent="CenterContainer/Panel/MarginContainer/Demo_Combat/Demo_Combat2" unique_id=829239495 instance=ExtResource("1")]
+layout_mode = 2
+action = 4
+
+[node name="RichTextLabel" type="Label" parent="CenterContainer/Panel/MarginContainer/Demo_Combat/Demo_Combat2" unique_id=512637291]
+layout_mode = 2
+text = "чтобы махнуть трезубцем."
+
+[node name="Demo_Roll" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer/Demo_Combat" unique_id=1487134958]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 12
+
+[node name="RichTextLabel2" type="Label" parent="CenterContainer/Panel/MarginContainer/Demo_Combat/Demo_Roll" unique_id=1870435553]
+layout_mode = 2
+text = "Уклоняйся от атак, нажимая"
+
+[node name="InputIcon" parent="CenterContainer/Panel/MarginContainer/Demo_Combat/Demo_Roll" unique_id=1793961495 instance=ExtResource("1")]
+layout_mode = 2
+action = 2
+
+[node name="RichTextLabel3" type="Label" parent="CenterContainer/Panel/MarginContainer/Demo_Combat/Demo_Roll" unique_id=1690231003]
+visible = false
+layout_mode = 2
+text = "!"
+
+[node name="Demo_Roll" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer" unique_id=494348527]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 12
+
+[node name="RichTextLabel2" type="Label" parent="CenterContainer/Panel/MarginContainer/Demo_Roll" unique_id=260499058]
+layout_mode = 2
+text = "Ты можешь уклоняться от атак, нажимая"
+
+[node name="InputIcon" parent="CenterContainer/Panel/MarginContainer/Demo_Roll" unique_id=319429473 instance=ExtResource("1")]
+layout_mode = 2
+action = 2
+
+[node name="RichTextLabel3" type="Label" parent="CenterContainer/Panel/MarginContainer/Demo_Roll" unique_id=1079798867]
+layout_mode = 2
+text = "!"
+
+[node name="Demo_BounceSphere" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer" unique_id=625183050]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 12
+
+[node name="RichTextLabel2" type="Label" parent="CenterContainer/Panel/MarginContainer/Demo_BounceSphere" unique_id=1023812475]
+layout_mode = 2
+text = "Нажмите"
+
+[node name="InputIcon" parent="CenterContainer/Panel/MarginContainer/Demo_BounceSphere" unique_id=146117633 instance=ExtResource("1")]
+layout_mode = 2
+action = 4
+
+[node name="RichTextLabel3" type="Label" parent="CenterContainer/Panel/MarginContainer/Demo_BounceSphere" unique_id=813435030]
+layout_mode = 2
+text = "в воздухе, чтобы выполнить вращающуюся атаку."
+
+[node name="Demo_SpinJumpReset" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer" unique_id=1433864130]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 12
+
+[node name="RichTextLabel2" type="Label" parent="CenterContainer/Panel/MarginContainer/Demo_SpinJumpReset" unique_id=1251075647]
+layout_mode = 2
+text = "Вращающаяся атака сбрасывает прыжки и пикирование."
+
+[node name="Demo_Launcher" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer" unique_id=2131317005]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 12
+
+[node name="RichTextLabel2" type="Label" parent="CenterContainer/Panel/MarginContainer/Demo_Launcher" unique_id=803077811]
+layout_mode = 2
+text = "Ударь с разворота по катапульте, чтобы активировать её!"
+
+[node name="Special" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer" unique_id=582668397]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 12
+
+[node name="RichTextLabel2" type="Label" parent="CenterContainer/Panel/MarginContainer/Special" unique_id=770816661]
+layout_mode = 2
+text = "Нажмите"
+
+[node name="InputIcon" parent="CenterContainer/Panel/MarginContainer/Special" unique_id=1513764038 instance=ExtResource("1")]
+layout_mode = 2
+action = 5
+
+[node name="RichTextLabel3" type="Label" parent="CenterContainer/Panel/MarginContainer/Special" unique_id=2045637634]
+layout_mode = 2
+text = "чтобы выполнить особую атаку! Для неё нужна"
+
+[node name="RichTextLabel4" type="Label" parent="CenterContainer/Panel/MarginContainer/Special" unique_id=582092443]
+modulate = Color(1, 0.901443, 0.201563, 1)
+layout_mode = 2
+text = "выносливость."
+
+[node name="Adult" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer" unique_id=536655425]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 12
+
+[node name="RichTextLabel2" type="Label" parent="CenterContainer/Panel/MarginContainer/Adult" unique_id=360826682]
+layout_mode = 2
+text = "Нажмите"
+
+[node name="InputIcon" parent="CenterContainer/Panel/MarginContainer/Adult" unique_id=1845678285 instance=ExtResource("1")]
+layout_mode = 2
+
+[node name="RichTextLabel" type="Label" parent="CenterContainer/Panel/MarginContainer/Adult" unique_id=1540235093]
+layout_mode = 2
+text = "чтобы позвать взрослого."
+
+[node name="Roll" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer" unique_id=1244115281]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 12
+
+[node name="RichTextLabel2" type="Label" parent="CenterContainer/Panel/MarginContainer/Roll" unique_id=1725643183]
+layout_mode = 2
+text = "Нажмите"
+
+[node name="InputIcon" parent="CenterContainer/Panel/MarginContainer/Roll" unique_id=1729889527 instance=ExtResource("1")]
+layout_mode = 2
+action = 2
+
+[node name="RichTextLabel" type="Label" parent="CenterContainer/Panel/MarginContainer/Roll" unique_id=1869218191]
+layout_mode = 2
+text = "чтобы кувыркнуться."

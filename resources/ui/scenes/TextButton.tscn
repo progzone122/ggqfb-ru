@@ -1,0 +1,130 @@
+[gd_scene load_steps=11 format=3 uid="uid://bsy1jisb87u0g"]
+
+[ext_resource type="Theme" uid="uid://cvscydthyenwa" path="res://ui/Theme.tres" id="1_1cgu5"]
+[ext_resource type="Script" uid="uid://c6ltqij412ecg" path="res://ui/scripts/TextButton.gd" id="2_dok0x"]
+[ext_resource type="Texture2D" uid="uid://xi7gm4mhahu8" path="res://ui/textures/Triangle_Rounded.png" id="3_2t5lh"]
+[ext_resource type="AudioStream" uid="uid://dycllvcmbkjlq" path="res://audio/sfx/interface/click_002.ogg" id="3_6llif"]
+[ext_resource type="AudioStream" uid="uid://c12ie2tlivsot" path="res://audio/sfx/interface/click_003.ogg" id="4_ye0q0"]
+[ext_resource type="AudioStream" uid="uid://87tsw41whnis" path="res://audio/sfx/ui_focus.ogg" id="5_1cgu5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cb0v2"]
+
+[sub_resource type="Animation" id="Animation_ajgs3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-44, 37)]
+}
+
+[sub_resource type="Animation" id="Animation_wvgd6"]
+resource_name = "point"
+length = 0.8
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(-34, 37), Vector2(-30, 37)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xgwsf"]
+_data = {
+&"RESET": SubResource("Animation_ajgs3"),
+&"point": SubResource("Animation_wvgd6")
+}
+
+[node name="TextButton" type="Button"]
+process_mode = 3
+self_modulate = Color(1, 1, 1, 0)
+offset_right = 219.0
+offset_bottom = 49.0
+theme = ExtResource("1_1cgu5")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxEmpty_cb0v2")
+text = "ПРОДОЛЖИТЬ"
+script = ExtResource("2_dok0x")
+font_size = 48
+button_down_sfx = ExtResource("3_6llif")
+button_up_sfx = ExtResource("4_ye0q0")
+foxused_sfx = ExtResource("5_1cgu5")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 413.0
+offset_bottom = 67.0
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Arrow" type="Control" parent="HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Arrow" type="TextureRect" parent="HBoxContainer/Arrow"]
+layout_mode = 0
+offset_left = -44.0
+offset_top = 37.0
+offset_right = -18.0
+offset_bottom = 59.0
+rotation = -1.57079
+mouse_filter = 2
+texture = ExtResource("3_2t5lh")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/Arrow/Arrow"]
+self_modulate = Color(0, 0, 0, 0.309804)
+show_behind_parent = true
+layout_mode = 0
+offset_left = -2.0
+offset_top = 2.0
+offset_right = 24.0
+offset_bottom = 24.0
+mouse_filter = 2
+texture = ExtResource("3_2t5lh")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HBoxContainer/Arrow/Arrow"]
+libraries = {
+&"": SubResource("AnimationLibrary_xgwsf")
+}
+autoplay = "point"
+
+[node name="Label" type="RichTextLabel" parent="HBoxContainer"]
+show_behind_parent = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "ПРОДОЛЖИТЬ"
+autowrap_mode = 0
+
+[node name="LabelShadow" type="RichTextLabel" parent="HBoxContainer/Label"]
+self_modulate = Color(0, 0, 0, 0.282353)
+show_behind_parent = true
+layout_mode = 0
+offset_top = 3.0
+offset_right = 342.0
+offset_bottom = 76.0
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "ПРОДОЛЖИТЬ"
+autowrap_mode = 0

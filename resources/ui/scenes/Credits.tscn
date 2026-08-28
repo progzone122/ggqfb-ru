@@ -1,0 +1,679 @@
+[gd_scene format=3 uid="uid://kxds862tflh0"]
+
+[ext_resource type="Texture2D" uid="uid://bxng4nnp0yoq2" path="res://ui/textures/peace.png" id="1_4cnp3"]
+[ext_resource type="Script" uid="uid://ctqrsq2q1mru7" path="res://ui/scripts/Credits.gd" id="1_7shh7"]
+[ext_resource type="Script" uid="uid://c2j4lwltmepv6" path="res://mechanics_and_systems/VisibilityChanger.gd" id="2_4v7fv"]
+[ext_resource type="AudioStream" uid="uid://c550bdgbg7r0a" path="res://audio/bgm/menu/credits.ogg" id="2_eavvu"]
+[ext_resource type="Material" uid="uid://dx3xoifup3dnx" path="res://environments/mountain/Cloud.tres" id="3_eavvu"]
+[ext_resource type="ArrayMesh" uid="uid://5de51rfwpvpk" path="res://environments/mountain/Cloud Circle Normal UVS.obj" id="4_x4ook"]
+[ext_resource type="FontFile" uid="uid://dkciaasnj8qjw" path="res://ui/fonts/Jua-Regular.ttf" id="5_g5f1v"]
+[ext_resource type="Shader" uid="uid://bciewcvmxo13j" path="res://rendering/shaders/2D_clouds.gdshader" id="5_v37gt"]
+[ext_resource type="Environment" uid="uid://c4te4cjuv1r2a" path="res://environments/farm/E_Farm_Night.tres" id="6_0db2g"]
+[ext_resource type="Material" uid="uid://1kld741esxjv" path="res://environments/farm/Water.tres" id="7_wqtid"]
+[ext_resource type="Material" uid="uid://dnrc4wwcxceae" path="res://environments/farm/Plains_Farm_grass.tres" id="8_6mw8s"]
+[ext_resource type="ArrayMesh" uid="uid://c1pwoy38370px" path="res://environments/farm/Mountain.obj" id="9_c4yhp"]
+[ext_resource type="Texture2D" uid="uid://sh00wxotxm26" path="res://ui/textures/company_logos/godot_logo.png" id="9_kgujb"]
+[ext_resource type="Texture2D" uid="uid://ums0pgqr8kme" path="res://ui/textures/company_logos/blender_logo.png" id="10_5xkm2"]
+[ext_resource type="Script" uid="uid://brs44nblvpddu" path="res://addons/lens_flare/lens_flare.gd" id="10_v37gt"]
+[ext_resource type="Texture2D" uid="uid://44acr4683qnr" path="res://addons/lens_flare/lensflare.png" id="11_0db2g"]
+[ext_resource type="Script" uid="uid://b8shv4rbrpb8e" path="res://addons/lens_flare/flare_ghost.gd" id="12_wqtid"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tb3e8"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ivwut"]
+width = 1024
+height = 1024
+noise = SubResource("FastNoiseLite_tb3e8")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0etgy"]
+render_priority = 0
+shader = ExtResource("5_v37gt")
+shader_parameter/noiseTexture = SubResource("NoiseTexture2D_ivwut")
+shader_parameter/color = Color(0.937255, 1, 0.996078, 0.278431)
+shader_parameter/isSoft = false
+shader_parameter/speed = 0.043
+shader_parameter/brightness = 1.136
+shader_parameter/threshold = 1.009
+shader_parameter/fluffiness = 0.373
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xybwg"]
+render_priority = 0
+shader = ExtResource("5_v37gt")
+shader_parameter/noiseTexture = SubResource("NoiseTexture2D_ivwut")
+shader_parameter/color = Color(0.937255, 1, 0.996078, 0.756863)
+shader_parameter/isSoft = false
+shader_parameter/speed = 0.02
+shader_parameter/brightness = 1.648
+shader_parameter/threshold = 0.963
+shader_parameter/fluffiness = 0.373
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_78qbe"]
+data = PackedVector3Array(-0.083, 0, 0, 0, 0, 0, -0.0767, 0, 0.0318, 0, 0, -0.083, -0.0318, 0, -0.0767, 0, 0, -1, 0, 0, -1, -0.0318, 0, -0.0767, -0.3827, 0, -0.9239, -0.0318, 0, -0.0767, -0.0587, 0, -0.0587, -0.3827, 0, -0.9239, -0.3827, 0, -0.9239, -0.0587, 0, -0.0587, -0.7071, 0, -0.7071, -0.0587, 0, -0.0587, -0.0767, 0, -0.0318, -0.7071, 0, -0.7071, -0.7071, 0, -0.7071, -0.0767, 0, -0.0318, -0.9239, 0, -0.3827, -0.0767, 0, -0.0318, -0.083, 0, 0, -0.9239, 0, -0.3827, -0.9239, 0, -0.3827, -0.083, 0, 0, -1, 0, 0, -0.083, 0, 0, -0.0767, 0, 0.0318, -1, 0, 0, -1, 0, 0, -0.0767, 0, 0.0318, -0.9239, 0, 0.3827, -0.0767, 0, 0.0318, -0.0587, 0, 0.0587, -0.9239, 0, 0.3827, -0.9239, 0, 0.3827, -0.0587, 0, 0.0587, -0.7071, 0, 0.7071, -0.0587, 0, 0.0587, -0.0318, 0, 0.0767, -0.7071, 0, 0.7071, -0.7071, 0, 0.7071, -0.0318, 0, 0.0767, -0.3827, 0, 0.9239, -0.0318, 0, 0.0767, 0, 0, 0.083, -0.3827, 0, 0.9239, -0.3827, 0, 0.9239, 0, 0, 0.083, 0, 0, 1, 0, 0, 0.083, 0.0318, 0, 0.0767, 0, 0, 1, 0, 0, 1, 0.0318, 0, 0.0767, 0.3827, 0, 0.9239, 0.0318, 0, 0.0767, 0.0587, 0, 0.0587, 0.3827, 0, 0.9239, 0.3827, 0, 0.9239, 0.0587, 0, 0.0587, 0.7071, 0, 0.7071, 0.0587, 0, 0.0587, 0.0767, 0, 0.0318, 0.7071, 0, 0.7071, 0.7071, 0, 0.7071, 0.0767, 0, 0.0318, 0.9239, 0, 0.3827, 0.0767, 0, 0.0318, 0.083, 0, 0, 0.9239, 0, 0.3827, 0.9239, 0, 0.3827, 0.083, 0, 0, 1, 0, 0, 0.083, 0, 0, 0.0767, 0, -0.0318, 1, 0, 0, 1, 0, 0, 0.0767, 0, -0.0318, 0.9239, 0, -0.3827, 0.0767, 0, -0.0318, 0.0587, 0, -0.0587, 0.9239, 0, -0.3827, 0.9239, 0, -0.3827, 0.0587, 0, -0.0587, 0.7071, 0, -0.7071, 0.0587, 0, -0.0587, 0.0318, 0, -0.0767, 0.7071, 0, -0.7071, 0.7071, 0, -0.7071, 0.0318, 0, -0.0767, 0.3827, 0, -0.9239, 0.0318, 0, -0.0767, 0, 0, -0.083, 0.3827, 0, -0.9239, 0.3827, 0, -0.9239, 0, 0, -0.083, 0, 0, -1, 0.083, 0, 0, 0, 0, 0, 0.0767, 0, -0.0318, 0, 0, 0.083, 0, 0, 0, 0.0318, 0, 0.0767, -0.083, 0, 0, -0.0767, 0, -0.0318, 0, 0, 0, 0.0587, 0, 0.0587, 0, 0, 0, 0.0767, 0, 0.0318, -0.0587, 0, -0.0587, -0.0318, 0, -0.0767, 0, 0, 0, 0, 0, 0, 0, 0, -0.083, 0.0318, 0, -0.0767, 0, 0, 0, 0, 0, 0.083, -0.0318, 0, 0.0767, 0, 0, 0, 0.0318, 0, -0.0767, 0.0587, 0, -0.0587, 0, 0, 0, -0.0318, 0, 0.0767, -0.0587, 0, 0.0587, 0, 0, 0, 0.0587, 0, -0.0587, 0.0767, 0, -0.0318, 0, 0, 0, -0.0587, 0, 0.0587, -0.0767, 0, 0.0318, 0, 0, 0, 0.0587, 0, 0.0587, 0.0318, 0, 0.0767, -0.0318, 0, -0.0767, 0, 0, -0.083, 0, 0, 0, 0, 0, 0, 0.083, 0, 0, 0.0767, 0, 0.0318, -0.0767, 0, -0.0318, -0.0587, 0, -0.0587, 0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6mw8s"]
+albedo_color = Color(1, 0.612, 0.03, 1)
+emission_enabled = true
+emission = Color(1, 0.88, 0.28, 1)
+emission_energy_multiplier = 15.0
+
+[sub_resource type="Resource" id="Resource_jer51"]
+script = ExtResource("12_wqtid")
+color = Color(0.988235, 0.972549, 0.878431, 0.188235)
+size = 0.390356
+metadata/_custom_type_script = "uid://b8shv4rbrpb8e"
+
+[sub_resource type="Resource" id="Resource_cdcfk"]
+script = ExtResource("12_wqtid")
+color = Color(0.933333, 0.898039, 0.85098, 0.223529)
+size = 0.892786
+metadata/_custom_type_script = "uid://b8shv4rbrpb8e"
+
+[sub_resource type="Resource" id="Resource_d7cd3"]
+script = ExtResource("12_wqtid")
+color = Color(0.85098, 0.968627, 0.847059, 0.180392)
+size = 0.475059
+metadata/_custom_type_script = "uid://b8shv4rbrpb8e"
+
+[sub_resource type="Resource" id="Resource_trxs3"]
+script = ExtResource("12_wqtid")
+color = Color(0.878431, 0.968627, 0.827451, 0.180392)
+size = 0.821628
+metadata/_custom_type_script = "uid://b8shv4rbrpb8e"
+
+[sub_resource type="Resource" id="Resource_22ko8"]
+script = ExtResource("12_wqtid")
+color = Color(0.956863, 1, 0.85098, 0.247059)
+size = 0.80864
+metadata/_custom_type_script = "uid://b8shv4rbrpb8e"
+
+[sub_resource type="Resource" id="Resource_vkmrf"]
+script = ExtResource("12_wqtid")
+color = Color(0.87451, 0.866667, 0.972549, 0.243137)
+size = 0.687554
+metadata/_custom_type_script = "uid://b8shv4rbrpb8e"
+
+[sub_resource type="Resource" id="Resource_g1n35"]
+script = ExtResource("12_wqtid")
+color = Color(0.831373, 0.92549, 0.968627, 0.207843)
+size = 0.462762
+metadata/_custom_type_script = "uid://b8shv4rbrpb8e"
+
+[sub_resource type="LabelSettings" id="LabelSettings_5xkm2"]
+font = ExtResource("5_g5f1v")
+font_size = 42
+
+[sub_resource type="Animation" id="Animation_7vl36"]
+resource_name = "Credits"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewportContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1.68179, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"start_scroll"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_hst2r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewportContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5ghte"]
+_data = {
+&"Credits": SubResource("Animation_7vl36"),
+&"RESET": SubResource("Animation_hst2r")
+}
+
+[node name="Credits" type="CanvasLayer" unique_id=801024758]
+layer = 8
+script = ExtResource("1_7shh7")
+scroll_amount = 5100.0
+scroll_time = 60.0
+bgm = ExtResource("2_eavvu")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1737162833]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=363957505]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0.552941)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1542174846]
+own_world_3d = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="Clouds" type="Node3D" parent="SubViewportContainer/SubViewport" unique_id=440603022]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.699, 0)
+script = ExtResource("2_4v7fv")
+visible_on_ready = true
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="Clouds_Upper" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Clouds" unique_id=1819016551]
+transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, 15.49, 0)
+visible = false
+material_override = ExtResource("3_eavvu")
+mesh = ExtResource("4_x4ook")
+skeleton = NodePath("../../../../..")
+
+[node name="Clouds_Lower" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Clouds" unique_id=790360481]
+transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, -34, 0)
+visible = false
+material_override = SubResource("ShaderMaterial_0etgy")
+mesh = ExtResource("4_x4ook")
+skeleton = NodePath("../../../../..")
+
+[node name="Clouds_Floor" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Clouds" unique_id=339760529]
+transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, -0.515823, 0)
+material_override = SubResource("ShaderMaterial_xybwg")
+mesh = ExtResource("4_x4ook")
+skeleton = NodePath("../../../../..")
+metadata/_edit_lock_ = true
+
+[node name="Water2" type="MeshInstance3D" parent="SubViewportContainer/SubViewport" unique_id=1610740173]
+transform = Transform3D(1000, 0, 0, 0, 1, 0, 0, 0, 1000, 0, -57.5758, 0)
+mesh = ExtResource("4_x4ook")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("7_wqtid")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SubViewportContainer/SubViewport/Water2" unique_id=1153677237]
+collision_mask = 8388609
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Water2/StaticBody3D" unique_id=898257870]
+shape = SubResource("ConcavePolygonShape3D_78qbe")
+disabled = true
+
+[node name="Mountain" type="MeshInstance3D" parent="SubViewportContainer/SubViewport" unique_id=1098578653]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.2841, -34.0103, -55.5424)
+material_override = ExtResource("8_6mw8s")
+mesh = ExtResource("9_c4yhp")
+skeleton = NodePath("")
+
+[node name="Mountain2" type="MeshInstance3D" parent="SubViewportContainer/SubViewport" unique_id=1282035175]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.7663, -34.0103, -101.46)
+material_override = ExtResource("8_6mw8s")
+mesh = ExtResource("9_c4yhp")
+skeleton = NodePath("")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=854811677]
+transform = Transform3D(1, 0, 0, 0, 0.987414, -0.158158, 0, 0.158158, 0.987414, 9, -50.661, 0)
+environment = ExtResource("6_0db2g")
+fov = 96.9
+
+[node name="Moon" type="CSGSphere3D" parent="SubViewportContainer/SubViewport" unique_id=678187007]
+transform = Transform3D(0.909787, 0, 0.415074, 0, 1, 0, -0.415074, 0, 0.909787, 500, 150, -505.03)
+radius = 100.0
+radial_segments = 36
+rings = 18
+material = SubResource("StandardMaterial3D_6mw8s")
+
+[node name="Node3D" type="Node3D" parent="SubViewportContainer/SubViewport/Moon" unique_id=364532784]
+script = ExtResource("10_v37gt")
+lensflare_sprite = ExtResource("11_0db2g")
+length = 0.8
+ghosts = Array[ExtResource("12_wqtid")]([SubResource("Resource_jer51"), SubResource("Resource_cdcfk"), SubResource("Resource_d7cd3"), SubResource("Resource_trxs3"), SubResource("Resource_22ko8"), SubResource("Resource_vkmrf"), SubResource("Resource_g1n35")])
+
+[node name="Scroll" type="Control" parent="." unique_id=2079391397]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Scroll" unique_id=691177939]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -840.0
+offset_top = 1082.0
+offset_right = 840.0
+offset_bottom = 4218.0
+grow_horizontal = 2
+theme_override_constants/separation = 26
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Scroll/VBoxContainer" unique_id=115798266]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Scroll/VBoxContainer/HBoxContainer" unique_id=538372921]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+texture = ExtResource("1_4cnp3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label3" type="Label" parent="Scroll/VBoxContainer/HBoxContainer" unique_id=621196751]
+layout_mode = 2
+text = "a game by kenny park!"
+label_settings = SubResource("LabelSettings_5xkm2")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Scroll/VBoxContainer" unique_id=159143534]
+layout_mode = 2
+theme_override_constants/margin_top = 52
+
+[node name="playtesters" type="VBoxContainer" parent="Scroll/VBoxContainer" unique_id=1607989274]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Role" type="Label" parent="Scroll/VBoxContainer/playtesters" unique_id=1831228302]
+modulate = Color(0.41502702, 0.68241847, 0.8082849, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_g5f1v")
+theme_override_font_sizes/font_size = 26
+text = "плейтестеры"
+horizontal_alignment = 1
+
+[node name="Name" type="Label" parent="Scroll/VBoxContainer/playtesters" unique_id=696597830]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_g5f1v")
+theme_override_font_sizes/font_size = 21
+text = "Andrew Lee-Au
+AVeryLostTraveller
+Azunya (azunya_uwu)
+Blind Nostalgia
+Boolin Boge
+Borōs
+CallMeKona
+Clumsii
+Derek H
+Elfeitan_ (Ryshman)
+Grant Lohman
+Groose
+Ian Rojasw
+IGDC members
+Isaac
+Jordan R Hagar
+Lanturn's Angler
+Matthew
+OribaMori
+Robert Harris, CPA
+RTurtle53
+Tim
+Timmy Lesley
+Tom
+VelketKai
+WarSpite"
+horizontal_alignment = 1
+
+[node name="ending_art" type="VBoxContainer" parent="Scroll/VBoxContainer" unique_id=251439981]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Role" type="Label" parent="Scroll/VBoxContainer/ending_art" unique_id=893350577]
+modulate = Color(0.41502702, 0.68241847, 0.8082849, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_g5f1v")
+theme_override_font_sizes/font_size = 24
+text = "ending_art"
+horizontal_alignment = 1
+
+[node name="Name" type="Label" parent="Scroll/VBoxContainer/ending_art" unique_id=375687421]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_g5f1v")
+theme_override_font_sizes/font_size = 21
+text = "Darrian Nield(?)"
+horizontal_alignment = 1
+
+[node name="game inspirations" type="VBoxContainer" parent="Scroll/VBoxContainer" unique_id=1010495690]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Role" type="Label" parent="Scroll/VBoxContainer/game inspirations" unique_id=1506665547]
+modulate = Color(0.41502702, 0.68241847, 0.8082849, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_g5f1v")
+theme_override_font_sizes/font_size = 24
+text = "вдохновение"
+horizontal_alignment = 1
+
+[node name="Name" type="Label" parent="Scroll/VBoxContainer/game inspirations" unique_id=165068721]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_g5f1v")
+theme_override_font_sizes/font_size = 21
+text = "The Wind Waker
+Phantom Hourglass
+Fall Guys
+Hades
+Furi
+Super Mario Odyssey
+Blue Fire"
+horizontal_alignment = 1
+
+[node name="music*" type="VBoxContainer" parent="Scroll/VBoxContainer" unique_id=136407824]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Role" type="Label" parent="Scroll/VBoxContainer/music*" unique_id=830476863]
+modulate = Color(0.41502702, 0.68241847, 0.8082849, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_g5f1v")
+theme_override_font_sizes/font_size = 26
+text = "музыка"
+horizontal_alignment = 1
+
+[node name="Name" type="Label" parent="Scroll/VBoxContainer/music*" unique_id=76471563]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_g5f1v")
+theme_override_font_sizes/font_size = 16
+text = "- Интро -
+yd - Another space background track/Observing The Star
+yuhei komatsu - Signal
+EN_OKAWA - pyramid
+Marron Fields Production - Factory Crusher"
+horizontal_alignment = 1
+
+[node name="Name2" type="Label" parent="Scroll/VBoxContainer/music*" unique_id=931723389]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_g5f1v")
+theme_override_font_sizes/font_size = 16
+text = "- Рыбный Городок / Ледяные Пещеры -
+Kazinchu - Star Dust
+Abstraction - Sketchbook 2024-05-01
+Abstraction - Sketchbook 2024-11-30
+Matthew Pablo - Grassy World Overture
+Abstraction - Sketchbook 2024-10-14
+Abstraction - Sketchbook 2024-08-07
+SouljahdeShiva - Bubbles"
+horizontal_alignment = 1
+
+[node name="Name3" type="Label" parent="Scroll/VBoxContainer/music*" unique_id=349022894]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_g5f1v")
+theme_override_font_sizes/font_size = 16
+text = "- Крепость -
+えだまめ88 - Devil’s haunt
+えだまめ88 - Scarlett’s Temptation
+Raging Inferno - Marron Fields Production"
+horizontal_alignment = 1
+
+[node name="Name4" type="Label" parent="Scroll/VBoxContainer/music*" unique_id=1162098204]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_g5f1v")
+theme_override_font_sizes/font_size = 16
+text = "- Часовая Башня -
+のる - Carrot Cake
+Abstraction - Sketchbook 2024-05-29
+Abstraction - Sketchbook 2024-11-12
+まんぼう二等兵 - particle tones
+shimtone - System Reserve
+スエノブ - Battle in the Moonlight
+DMassalll - Video Game Enhancements!"
+horizontal_alignment = 1
+
+[node name="Name5" type="Label" parent="Scroll/VBoxContainer/music*" unique_id=1984571574]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_g5f1v")
+theme_override_font_sizes/font_size = 16
+text = "- Финал -
+のる - A定食ごはん少なめ
+えだまめ88 - チョコミント"
+horizontal_alignment = 1
+
+[node name="audio*" type="VBoxContainer" parent="Scroll/VBoxContainer" unique_id=1566465620]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Role" type="Label" parent="Scroll/VBoxContainer/audio*" unique_id=1549325037]
+modulate = Color(0.41502702, 0.68241847, 0.8082849, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_g5f1v")
+theme_override_font_sizes/font_size = 24
+text = "озвучка"
+horizontal_alignment = 1
+
+[node name="Name" type="Label" parent="Scroll/VBoxContainer/audio*" unique_id=1872060947]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_g5f1v")
+theme_override_font_sizes/font_size = 21
+text = "Shana Chen
+Gawr Gura
+Kevin Cow
+Kenney Game Assets"
+horizontal_alignment = 1
+
+[node name="sounds from Pixabay*2" type="VBoxContainer" parent="Scroll/VBoxContainer" unique_id=711591119]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Role" type="Label" parent="Scroll/VBoxContainer/sounds from Pixabay*2" unique_id=1030569853]
+modulate = Color(0.41502702, 0.68241847, 0.8082849, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_g5f1v")
+theme_override_font_sizes/font_size = 24
+text = "звуки с Pixabay:"
+horizontal_alignment = 1
+
+[node name="Name" type="Label" parent="Scroll/VBoxContainer/sounds from Pixabay*2" unique_id=1137414003]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_g5f1v")
+theme_override_font_sizes/font_size = 16
+text = "fast whoosh by StudioKolomna
+transition1 by u 83ynl5kta9
+cinematic kick verb (for laser/big damage) by liecio
+stone debris by liecio 
+Bell by UNIVERSFIELD
+065594_Coach Whistle by Freesound Community
+waterfall by eisenkern1982
+yay by freesound_community
+Video Game Enhancements! by DMassalll
+sci fi weapon laser shot by David Dumais
+Random Alarm by JeremayJimenez"
+horizontal_alignment = 1
+
+[node name="sounds from Freesound*" type="VBoxContainer" parent="Scroll/VBoxContainer" unique_id=1782593091]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Role" type="Label" parent="Scroll/VBoxContainer/sounds from Freesound*" unique_id=1449684011]
+modulate = Color(0.41502702, 0.68241847, 0.8082849, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_g5f1v")
+theme_override_font_sizes/font_size = 24
+text = "звуки с Freesound:"
+horizontal_alignment = 1
+
+[node name="Name" type="Label" parent="Scroll/VBoxContainer/sounds from Freesound*" unique_id=99275847]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_g5f1v")
+theme_override_font_sizes/font_size = 16
+text = "Woosh by florianreichelt 
+Wardrobe door1.wav by babuhr
+Squeaky Hinge by Department64
+Curtains Opening or Closing 2.wav by RutgerMuller
+FX - Rock / stone falling debris by bolkmar
+Explosion_Debris_Short_Stereo.wav by Nox_Sound
+crumple-02.ogg by drooler
+jump-into-water-02.flac by yurkobb
+bassy_small_fate_stay_night_impact_jump_or_land_sound_11212025 by Artninja
+Serpent Chomp (S).wav by Z_er0
+Skateboarding Tricks by SoundBiterSFX 
+FUSE.wav by Seidolon 
+Switches_and_Levers_Steampunk/Dieslpunk by SoundsofTheMachine
+Running Water_Near_Mono.wav by _stubb
+slide_whistle.wav by plingativator
+footsteps-wet-sand.wav by audioninja001
+FPS Footsteps Loop by qubodup
+snd_footsteps_grass.wav by drowsyprincess
+WOOD FOOTSTEPS.wav by trexlasso
+Pneumatic drill - Atlas Copco bv7 - Run freely play 1 by ldezem
+Pipe Bomb by modusmogulus
+medium_rock_boulder_explosion_sound_12182025 by Artninja
+Startup sound computer by xkeril 
+Woosh by lebaston100
+Laser 05 by velcronator
+20200603-042117-Bird_Song_Garden_-_Early_Morning_In_Suburbs.WAV by beninu 
+Human body fall in the next room.wav by OptronTeamFilms"
+horizontal_alignment = 1
+
+[node name="models from Sketchfab*" type="VBoxContainer" parent="Scroll/VBoxContainer" unique_id=481704904]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Role" type="Label" parent="Scroll/VBoxContainer/models from Sketchfab*" unique_id=1685756659]
+modulate = Color(0.41502702, 0.68241847, 0.8082849, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_g5f1v")
+theme_override_font_sizes/font_size = 24
+text = "модели со Sketchfab (лицензия CC Attribution):"
+horizontal_alignment = 1
+
+[node name="Name" type="Label" parent="Scroll/VBoxContainer/models from Sketchfab*" unique_id=362252522]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_g5f1v")
+theme_override_font_sizes/font_size = 16
+text = "Tako by White124 
+Low Poly Blåhaj by IsabelleDotJpeg 
+Bubba Plush by Fwub
+Smol Ame Mascot Suit - Hololive Expo 2022 by Seafoam
+Hololive Council + IRyS Plushies by Seafoam
+Smol HoloMyth Halloween Costumes! by Seafoam
+Plant by whyniero
+Potted Plant by Gonçalo Miranda
+Investigator by Hasksoft
+Shark by AndrejKrebs
+Palm Tree by karma
+French baguette by Rainbow
+Pizza Time! by Shivansh Singh
+The major general shark by hugannh3
+cinema camera with simple tripod by SILVER KEY
+Gawr Gura's Trident by Akio
+Mori Calliope’s Ricky Bass by BunnyGame"
+horizontal_alignment = 1
+
+[node name="special thanks*" type="VBoxContainer" parent="Scroll/VBoxContainer" unique_id=1527478187]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Role" type="Label" parent="Scroll/VBoxContainer/special thanks*" unique_id=1558766463]
+modulate = Color(0.41502702, 0.68241847, 0.8082849, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_g5f1v")
+theme_override_font_sizes/font_size = 24
+text = "особые благодарности"
+horizontal_alignment = 1
+
+[node name="Name" type="Label" parent="Scroll/VBoxContainer/special thanks*" unique_id=962844410]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_g5f1v")
+theme_override_font_sizes/font_size = 21
+text = "Shana Chen
+Isaac
+The Parks
+Purdue's Indie Game Dev Club
+Brantly McCord
+Joshua Brown
+Kevin Cow"
+horizontal_alignment = 1
+
+[node name="MarginContainer4" type="MarginContainer" parent="Scroll/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 52
+
+[node name="translation" type="VBoxContainer" parent="Scroll/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Role" type="Label" parent="Scroll/VBoxContainer/translation"]
+modulate = Color(0.41502702, 0.68241847, 0.8082849, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_g5f1v")
+theme_override_font_sizes/font_size = 26
+text = "перевод на русский + патчинг"
+horizontal_alignment = 1
+
+[node name="Name" type="Label" parent="Scroll/VBoxContainer/translation"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_g5f1v")
+theme_override_font_sizes/font_size = 21
+text = "DiabloSat"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Scroll/VBoxContainer" unique_id=923417112]
+layout_mode = 2
+theme_override_constants/margin_top = 52
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Scroll/VBoxContainer" unique_id=1294404726]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Scroll/VBoxContainer/VBoxContainer" unique_id=32148253]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_constants/separation = -541
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Scroll/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=821875272]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("9_kgujb")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="Scroll/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=1935747577]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_5xkm2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer3" type="MarginContainer" parent="Scroll/VBoxContainer" unique_id=1183246994]
+layout_mode = 2
+theme_override_constants/margin_top = 52
+
+[node name="Label" type="Label" parent="Scroll/VBoxContainer" unique_id=1826658814]
+layout_mode = 2
+text = "спасибо за игру!"
+label_settings = SubResource("LabelSettings_5xkm2")
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=155150468]
+libraries/ = SubResource("AnimationLibrary_5ghte")

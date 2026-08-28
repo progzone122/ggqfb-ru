@@ -1,0 +1,135 @@
+[gd_scene load_steps=9 format=3 uid="uid://bj3mg63k5nl4q"]
+
+[ext_resource type="Script" uid="uid://bho2xnu0viyo3" path="res://ui/scripts/HealthBar.gd" id="4"]
+[ext_resource type="Material" uid="uid://b1rne8fcmfs8d" path="res://rendering/shaders/UIPanel.tres" id="5"]
+[ext_resource type="Script" uid="uid://djbu7axghncac" path="res://addons/shake/Shake.gd" id="6"]
+
+[sub_resource type="Gradient" id="3"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="4"]
+gradient = SubResource("3")
+width = 20
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cesdd"]
+blend_mode = 3
+
+[sub_resource type="Gradient" id="Gradient_s5yi4"]
+offsets = PackedFloat32Array(0.00357143, 1)
+colors = PackedColorArray(1, 0.721569, 0.556863, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qknhg"]
+gradient = SubResource("Gradient_s5yi4")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0.495726)
+
+[node name="HealthBar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 21.0
+script = ExtResource("4")
+health_bar_np = NodePath("HealthPanel/HealthBar")
+health_delay_np = NodePath("HealthPanel/HealthDelay")
+health_delay = 0.5
+
+[node name="HealthPanel" type="ColorRect" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_right = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.196078, 0.286275, 1)
+
+[node name="TextureRect" type="TextureRect" parent="HealthPanel"]
+visible = false
+layout_mode = 0
+offset_left = 125.0
+offset_top = 7.0
+offset_right = 136.0
+offset_bottom = 126.0
+rotation = 89.9999
+texture = SubResource("4")
+
+[node name="HealthBacking" type="ColorRect" parent="HealthPanel"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HealthDelay" type="ColorRect" parent="HealthPanel"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.567, 1)
+color = Color(1, 0.745098, 0.380392, 1)
+
+[node name="HealthBar" type="ColorRect" parent="HealthPanel"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.425, 1)
+color = Color(0.87451, 0.247059, 0, 1)
+
+[node name="HealthBacking2" type="TextureRect" parent="HealthPanel"]
+visible = false
+material = SubResource("CanvasItemMaterial_cesdd")
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_qknhg")
+expand_mode = 1
+
+[node name="NamePanel" type="ColorRect" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0.8)
+material = ExtResource("5")
+layout_mode = 0
+offset_top = -23.0
+offset_right = 133.0
+size_flags_horizontal = 2
+color = Color(0, 0.196078, 0.286275, 1)
+
+[node name="NameLabel" type="RichTextLabel" parent="NamePanel"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 5.0
+offset_right = -10.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ВОЖДЬ РЫБА"
+
+[node name="HealthDelayTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Shake" type="Node" parent="."]
+script = ExtResource("6")

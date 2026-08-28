@@ -1,0 +1,367 @@
+[gd_scene format=3 uid="uid://bmjb7lvew6fg7"]
+
+[ext_resource type="Script" uid="uid://cbn8y6cnr4ve8" path="res://ui/scenes/gameplay_time_label.gd" id="1_2abon"]
+[ext_resource type="Script" uid="uid://bkeoi2l22hwyd" path="res://globals/speedrun_manager.gd" id="1_u01wc"]
+[ext_resource type="FontFile" uid="uid://16i6ni3a6hty" path="res://ui/fonts/Chapaza.ttf" id="2_d4js3"]
+[ext_resource type="Shader" uid="uid://t2qwm3bmvssu" path="res://rendering/shaders/Blur.tres" id="4_m811f"]
+[ext_resource type="FontFile" uid="uid://bbttvwhcel3t7" path="res://ui/fonts/Gravity-24.tres" id="4_ugep8"]
+[ext_resource type="Theme" uid="uid://cvscydthyenwa" path="res://ui/Theme.tres" id="5_ugep8"]
+[ext_resource type="StyleBox" uid="uid://cr8yuajwnly6d" path="res://ui/OutlinedShadowedPanel.tres" id="6_n0rkx"]
+[ext_resource type="PackedScene" uid="uid://bsy1jisb87u0g" path="res://ui/scenes/TextButton.tscn" id="7_gy74q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g8dpj"]
+shader = ExtResource("4_m811f")
+shader_parameter/blur_amount = 2.28
+
+[sub_resource type="Animation" id="Animation_73upx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel/BestTimeLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel/TimeLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel/ResultLabel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Panel/CloseButton:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_dtq2p"]
+resource_name = "show"
+length = 3.02
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel/BestTimeLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel/TimeLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel/ResultLabel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.8000001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Panel/CloseButton:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xamln"]
+_data = {
+&"RESET": SubResource("Animation_73upx"),
+&"show": SubResource("Animation_dtq2p")
+}
+
+[node name="SpeedrunManager" type="CanvasLayer" unique_id=441143747]
+process_mode = 3
+layer = 25
+script = ExtResource("1_u01wc")
+
+[node name="FastForwardPanel" type="ColorRect" parent="." unique_id=1834080317]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.54901963)
+
+[node name="Label" type="Label" parent="FastForwardPanel" unique_id=1585738819]
+modulate = Color(1, 1, 1, 0.6392157)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -217.5
+offset_top = -22.0
+offset_right = 217.5
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_d4js3")
+theme_override_font_sizes/font_size = 43
+text = "перемотка игры!"
+horizontal_alignment = 1
+
+[node name="AwaitingInputPanel" type="ColorRect" parent="." unique_id=332398285]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.54901963)
+
+[node name="Label" type="Label" parent="AwaitingInputPanel" unique_id=1629382571]
+modulate = Color(1, 1, 1, 0.6392157)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.0
+offset_top = -16.5
+offset_right = 85.0
+offset_bottom = 16.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_d4js3")
+theme_override_font_sizes/font_size = 43
+text = "таймер возобновится при следующем вводе"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="." unique_id=655171859]
+offset_left = 16.0
+offset_top = 19.0
+offset_right = 212.0
+offset_bottom = 88.0
+mouse_filter = 2
+theme = ExtResource("5_ugep8")
+
+[node name="Timer" type="Label" parent="." unique_id=1135914189]
+offset_left = 39.0
+offset_top = 31.0
+offset_right = 183.0
+offset_bottom = 71.0
+theme_override_fonts/font = ExtResource("4_ugep8")
+theme_override_font_sizes/font_size = 32
+text = "00:00:00"
+script = ExtResource("1_2abon")
+
+[node name="FinishedPanel" type="ColorRect" parent="." unique_id=872353295]
+visible = false
+self_modulate = Color(1, 1, 1, 0.345098)
+material = SubResource("ShaderMaterial_g8dpj")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0.431373)
+
+[node name="Panel" type="Panel" parent="FinishedPanel" unique_id=1586567704]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -341.0
+offset_top = -333.0
+offset_right = 341.0
+offset_bottom = 323.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu")
+theme = ExtResource("5_ugep8")
+theme_override_styles/panel = ExtResource("6_n0rkx")
+
+[node name="Title" type="Label" parent="FinishedPanel/Panel" unique_id=1554914083]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 64.0
+offset_right = 352.0
+offset_bottom = 124.0
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/TitleLabel5")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/TitleLabel5")
+theme_override_font_sizes/font_size = 60
+text = "забег завершён!"
+
+[node name="BestTimeLabel" type="Label" parent="FinishedPanel/Panel" unique_id=1180326668]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 32.0
+offset_top = 211.0
+offset_right = 476.0
+offset_bottom = 271.0
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/TitleLabel5")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/TitleLabel5")
+theme_override_font_sizes/font_size = 60
+text = "пока не записано"
+script = ExtResource("1_2abon")
+
+[node name="Subtitle2" type="Label" parent="FinishedPanel/Panel/BestTimeLabel" unique_id=1820038122]
+self_modulate = Color(0.5529556, 0.55295557, 0.55295557, 1)
+layout_mode = 0
+offset_top = -35.0
+offset_right = 320.0
+offset_bottom = 25.0
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/TitleLabel5")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/TitleLabel5")
+theme_override_font_sizes/font_size = 32
+text = "лучшее время:"
+
+[node name="TimeLabel" type="Label" parent="FinishedPanel/Panel" unique_id=1368881913]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 32.0
+offset_top = 369.0
+offset_right = 352.0
+offset_bottom = 429.0
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/TitleLabel5")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/TitleLabel5")
+theme_override_font_sizes/font_size = 60
+text = "00:00:00"
+script = ExtResource("1_2abon")
+
+[node name="Subtitle" type="Label" parent="FinishedPanel/Panel/TimeLabel" unique_id=2046928754]
+self_modulate = Color(0.5529556, 0.55295557, 0.55295557, 1)
+layout_mode = 0
+offset_top = -35.0
+offset_right = 320.0
+offset_bottom = 25.0
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/TitleLabel5")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/TitleLabel5")
+theme_override_font_sizes/font_size = 32
+text = "твоё время:"
+
+[node name="ResultLabel" type="RichTextLabel" parent="FinishedPanel/Panel" unique_id=1515029353]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 32.0
+offset_top = 460.0
+offset_right = 451.0
+offset_bottom = 520.0
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/TitleLabel5")
+focus_neighbor_right = NodePath("/root/@EditorNode@19508/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/SettingsMenu/TitleLabel5")
+bbcode_enabled = true
+text = "[rainbow val=2][wave]новый рекорд!"
+fit_content = true
+
+[node name="CloseButton" parent="FinishedPanel/Panel" unique_id=1364582120 instance=ExtResource("7_gy74q")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -276.0
+offset_top = -60.0
+offset_right = -57.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+theme_override_font_sizes/font_size = 36
+text = "вернуться в меню"
+font_size = 36
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FinishedPanel" unique_id=1785061956]
+libraries/ = SubResource("AnimationLibrary_xamln")
+autoplay = &"RESET"

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://chx4qgqr3i1ik"]
+
+[ext_resource type="Script" uid="uid://pjf2jcd4hynt" path="res://ui/scenes/credits_role_pair.gd" id="1_36r32"]
+
+[node name="role" type="VBoxContainer" unique_id=1697103003]
+theme_override_constants/separation = -8
+script = ExtResource("1_36r32")
+
+[node name="Role" type="Label" parent="." unique_id=1831228302]
+layout_mode = 2
+text = "роль"
+horizontal_alignment = 1
+
+[node name="Name" type="Label" parent="." unique_id=696597830]
+layout_mode = 2
+text = "имена"
+horizontal_alignment = 1

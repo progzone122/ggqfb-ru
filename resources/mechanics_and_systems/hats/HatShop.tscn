@@ -1,0 +1,632 @@
+[gd_scene format=3 uid="uid://bjggq7wtrp7ml"]
+
+[ext_resource type="Theme" uid="uid://cvscydthyenwa" path="res://ui/Theme.tres" id="1_isr4v"]
+[ext_resource type="Script" uid="uid://be2i1xsf87m2q" path="res://mechanics_and_systems/hats/hat_shop.gd" id="2_isr4v"]
+[ext_resource type="Shader" uid="uid://blr52002dseoi" path="res://rendering/shaders/2D_outline.gdshader" id="2_ruaxo"]
+[ext_resource type="PackedScene" uid="uid://cuax1mvlnwkou" path="res://mechanics_and_systems/hats/HatSelectButton.tscn" id="3_3g7or"]
+[ext_resource type="PackedScene" uid="uid://dq8kg0uvqrpta" path="res://entities/gura/models/GuraModel.tscn" id="4_3g7or"]
+[ext_resource type="Texture2D" uid="uid://dr4cgtbytir3u" path="res://ui/textures/honk.png" id="4_ruaxo"]
+[ext_resource type="Shader" uid="uid://t2qwm3bmvssu" path="res://rendering/shaders/Blur.tres" id="4_txksi"]
+[ext_resource type="Script" uid="uid://dhp0cxw4u4rhx" path="res://entities/FaceSettings.gd" id="6_fohd4"]
+[ext_resource type="PackedScene" uid="uid://bsy1jisb87u0g" path="res://ui/scenes/TextButton.tscn" id="7_7loyy"]
+[ext_resource type="Environment" uid="uid://dfb0awqw7p8d1" path="res://environments/e_health_bar_gura.tres" id="7_wt2yr"]
+[ext_resource type="Texture2D" uid="uid://o1c3b8r5y1qh" path="res://environments/clocktower/bubba/bg.png" id="8_q1qvu"]
+[ext_resource type="Texture2D" uid="uid://dk7hpdfn82lwi" path="res://environments/clocktower/bubba/fence.png" id="9_3cbxm"]
+[ext_resource type="Texture2D" uid="uid://bi0g3p8cmcbnn" path="res://environments/clocktower/bubba/grass.png" id="10_1ohkh"]
+[ext_resource type="Material" uid="uid://bo71nx2lnohs2" path="res://addons/flexible_toon_shader/BaseMaterial.tres" id="11_wt2yr"]
+[ext_resource type="Script" uid="uid://dotlu6hk3j62u" path="res://addons/flexible_toon_shader/BaseMaterialOverride.gd" id="12_dcbsh"]
+[ext_resource type="PackedScene" uid="uid://cq0jpwig6dvw5" path="res://environments/hat_camera.glb" id="13_3cbxm"]
+[ext_resource type="Texture2D" uid="uid://csn2ol7jpagks" path="res://ui/textures/Square.png" id="14_wt2yr"]
+[ext_resource type="AudioStream" uid="uid://bslpbxflhpry2" path="res://audio/sfx/hat_picture.ogg" id="17_1ohkh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3g7or"]
+shader = ExtResource("4_txksi")
+shader_parameter/blur_amount = 2.28
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p1s3g"]
+shader = ExtResource("2_ruaxo")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 5.0
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/alpha = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dcbsh"]
+albedo_color = Color(0.3908592, 0.45209605, 0.53854215, 1)
+
+[sub_resource type="Animation" id="Animation_3cbxm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("./PictureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlashTexture:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GuraViewport/SubViewport/hat_camera:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.7086567, -24.871511, 1.3903526)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GuraViewport/SubViewport/hat_camera:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.0542526, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_q1qvu"]
+resource_name = "flash"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("./PictureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333333),
+"transitions": PackedFloat32Array(0.4061262, 2.07053, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlashTexture:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GuraViewport/SubViewport/hat_camera:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.20000002, 0.3),
+"transitions": PackedFloat32Array(0.57434916, 0.57434916, 0.48296815, 1),
+"update": 0,
+"values": [Vector3(0.7086567, -24.871511, 1.3903526), Vector3(0.7086567, -24.805428, 1.3903526), Vector3(0.70946497, -24.900702, 1.3918921), Vector3(0.7086567, -24.871511, 1.3903526)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GuraViewport/SubViewport/hat_camera:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.20000002, 0.3),
+"transitions": PackedFloat32Array(0.57434916, 0.57434916, 0.48296815, 1),
+"update": 0,
+"values": [Vector3(0, 2.0542526, 0), Vector3(2.312701e-09, 2.0542526, 0.038624134), Vector3(2.2094404e-09, 2.0542526, -0.03550001), Vector3(0, 2.0542526, 0)]
+}
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("17_1ohkh")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/4/use_blend = true
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GuraViewport/SubViewport/FaceSettings")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0, 0, 0],
+"method": &"set_face"
+}]
+}
+tracks/6/type = "animation"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("GuraViewport/SubViewport/Gura/AnimationPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": PackedStringArray("Idle"),
+"times": PackedFloat32Array(0.6)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1ohkh"]
+_data = {
+&"RESET": SubResource("Animation_3cbxm"),
+&"flash": SubResource("Animation_q1qvu")
+}
+
+[node name="HatShop" type="Control" unique_id=208713095 node_paths=PackedStringArray("hat_equipper")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_isr4v")
+script = ExtResource("2_isr4v")
+hat_equipper = NodePath("GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D/HatHeadBone/HatEquipper")
+hat_select_button = ExtResource("3_3g7or")
+default_focus_control = NodePath("ExitButton")
+close_button = NodePath("ExitButton")
+
+[node name="BlurRect" type="ColorRect" parent="." unique_id=255110022]
+self_modulate = Color(1, 1, 1, 0.345098)
+material = SubResource("ShaderMaterial_3g7or")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.431373)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=600782758]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.73333335)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=745383764]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 39.8463
+offset_top = -534.38776
+offset_right = -942.9126
+offset_bottom = -37.791016
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.36263314
+color = Color(0, 0, 0, 1)
+
+[node name="FlashTexture" type="TextureRect" parent="." unique_id=437933235]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -422.0
+offset_top = -197.0
+offset_right = -200.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_ruaxo")
+stretch_mode = 5
+flip_h = true
+
+[node name="GuraViewport" type="SubViewportContainer" parent="." unique_id=57035996]
+material = SubResource("ShaderMaterial_p1s3g")
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -955.0
+offset_top = -1097.0
+offset_right = 1674.0
+offset_bottom = -4.0
+grow_vertical = 0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="GuraViewport" unique_id=998306128]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(2629, 1093)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="GuraViewport/SubViewport" unique_id=430765594]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -23.919554, 4.1968756)
+cull_mask = 32
+environment = ExtResource("7_wt2yr")
+fov = 33.0
+
+[node name="Backdrop" type="Node3D" parent="GuraViewport/SubViewport" unique_id=1483333090]
+transform = Transform3D(0.10687047, 0, 0.16905236, 0, 0.19999999, 0, -0.16905236, 0, 0.10687047, -0.5629584, -24.518253, -1.0032139)
+
+[node name="Sprite3D15" type="Sprite3D" parent="GuraViewport/SubViewport/Backdrop" unique_id=346944839]
+transform = Transform3D(-2.7650979, 0, 1.5964295, 0, 3.1928596, 0, -1.5964295, 0, -2.7650979, 1.2175171, 2.9317322, -2.2165866)
+layers = 32
+flip_h = true
+modulate = Color(1, 1, 1, 0.760784)
+shaded = true
+alpha_cut = 1
+texture = ExtResource("8_q1qvu")
+
+[node name="Sprite3D8" type="Sprite3D" parent="GuraViewport/SubViewport/Backdrop" unique_id=1850829806]
+transform = Transform3D(-1.2933058, 0, 0.16663861, 0, 1.3039999, 0, -0.16663861, 0, -1.2933058, -1.6959739, -0.7642479, 1.6622462)
+layers = 32
+shaded = true
+alpha_cut = 1
+texture = ExtResource("9_3cbxm")
+
+[node name="Sprite3D17" type="Sprite3D" parent="GuraViewport/SubViewport/Backdrop" unique_id=2105447070]
+transform = Transform3D(-1.2933058, 0, 0.16663861, 0, 1.3039999, 0, -0.16663861, 0, -1.2933058, -5.171272, -0.7642479, 1.2144699)
+layers = 32
+shaded = true
+alpha_cut = 1
+texture = ExtResource("9_3cbxm")
+
+[node name="Sprite3D9" type="Sprite3D" parent="GuraViewport/SubViewport/Backdrop" unique_id=1448465410]
+transform = Transform3D(-0.7806158, 0, 1.0445325, 0, 1.3039999, 0, -1.0445325, 0, -0.7806158, 5.2143364, -0.7642479, 8.283728)
+layers = 32
+shaded = true
+alpha_cut = 1
+texture = ExtResource("9_3cbxm")
+
+[node name="Sprite3D22" type="Sprite3D" parent="GuraViewport/SubViewport/Backdrop" unique_id=1726959573]
+transform = Transform3D(-0.7806158, 0, 1.0445325, 0, 1.3039999, 0, -1.0445325, 0, -0.7806158, 3.1167078, -0.7642479, 5.476925)
+layers = 32
+shaded = true
+alpha_cut = 1
+texture = ExtResource("9_3cbxm")
+
+[node name="Sprite3D12" type="Sprite3D" parent="GuraViewport/SubViewport/Backdrop" unique_id=1193718222]
+transform = Transform3D(0.338813, 0, 1.4086577, 0, 1.44883, 0, -1.4086577, 0, 0.338813, 4.446376, -0.40899277, 4.097119)
+layers = 32
+shaded = true
+alpha_cut = 1
+texture = ExtResource("10_1ohkh")
+
+[node name="Sprite3D18" type="Sprite3D" parent="GuraViewport/SubViewport/Backdrop" unique_id=1559260967]
+transform = Transform3D(-0.8401652, 0, 1.1803517, 0, 1.4488299, 0, -1.1803517, 0, -0.8401652, 3.0049367, -0.40899277, 1.1889842)
+layers = 32
+shaded = true
+alpha_cut = 1
+texture = ExtResource("10_1ohkh")
+
+[node name="Sprite3D19" type="Sprite3D" parent="GuraViewport/SubViewport/Backdrop" unique_id=814284960]
+transform = Transform3D(-1.3843853, 0, 0.42729414, 0, 1.4488299, 0, -0.42729414, 0, -1.3843853, -0.7273335, -0.40899277, -2.0482578)
+layers = 32
+shaded = true
+alpha_cut = 1
+texture = ExtResource("10_1ohkh")
+
+[node name="Sprite3D20" type="Sprite3D" parent="GuraViewport/SubViewport/Backdrop" unique_id=801786187]
+transform = Transform3D(-1.3843852, 0, 0.42729414, 0, 1.4488298, 0, -0.42729414, 0, -1.3843852, -4.819191, -0.40898895, -4.1566267)
+layers = 32
+shaded = true
+alpha_cut = 1
+texture = ExtResource("10_1ohkh")
+
+[node name="Sprite3D21" type="Sprite3D" parent="GuraViewport/SubViewport/Backdrop" unique_id=1276736745]
+transform = Transform3D(-1.0704451, 0, 0.9763541, 0, 1.4488298, 0, -0.9763541, 0, -1.0704451, -2.95094, -0.40898895, -1.8238745)
+layers = 32
+shaded = true
+alpha_cut = 1
+texture = ExtResource("10_1ohkh")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="GuraViewport/SubViewport/Backdrop" unique_id=251297705]
+transform = Transform3D(0.8660234, 0, -0.49999747, 0, 0.9999995, 0, 0.49999747, 0, 0.8660234, 1.2676401, 1.2923126, -2.7681637)
+layers = 32
+material_override = ExtResource("11_wt2yr")
+instance_shader_parameters/do_override_color = true
+instance_shader_parameters/override_color = Color(0.6, 0.9199999, 1, 1)
+size = Vector3(16.769297, 10.67041, 1)
+script = ExtResource("12_dcbsh")
+color = Color(0.6, 0.9199999, 1, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="GuraViewport/SubViewport/Backdrop" unique_id=1723935229]
+transform = Transform3D(0.8660224, 0.499998, 2.9802264e-08, -2.9802308e-08, -4.371136e-08, 0.99999654, 0.49999654, -0.86602485, -1.4901151e-08, -4.212171, -2.670044, 6.7443056)
+layers = 32
+size = Vector3(16.790424, 22.892578, 1)
+material = SubResource("StandardMaterial3D_dcbsh")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="GuraViewport/SubViewport/Backdrop" unique_id=1492296254]
+transform = Transform3D(0.8660251, -0.4999996, -4.440892e-15, 0, -4.3711378e-08, -0.9999995, 0.4999996, 0.8660251, -2.9802298e-08, 6.474366, 3.8227997, 0.7026777)
+layers = 32
+material_override = ExtResource("11_wt2yr")
+instance_shader_parameters/do_override_color = true
+instance_shader_parameters/override_color = Color(1, 0.7733334, 0.19999999, 1)
+radius = 1.6181641
+height = 0.28503418
+sides = 15
+script = ExtResource("12_dcbsh")
+color = Color(1, 0.7733334, 0.19999999, 1)
+
+[node name="hat_camera" parent="GuraViewport/SubViewport" unique_id=1634305959 instance=ExtResource("13_3cbxm")]
+transform = Transform3D(-0.41835788, 0, 0.7968542, 0, 0.8999999, 0, -0.79685414, 0, -0.4183579, 0.7086567, -24.871511, 1.3903526)
+
+[node name="Cylinder_010_Material_052_0" parent="GuraViewport/SubViewport/hat_camera" index="0"]
+layers = 33
+
+[node name="Decal" type="Decal" parent="GuraViewport/SubViewport/hat_camera" unique_id=516849839]
+transform = Transform3D(0.99999785, 0, -9.536743e-07, 0, 0.9999997, 0, 1.1026859e-06, 0, 0.9999987, 0, 0.64754295, 0)
+layers = 32
+size = Vector3(0.8251953, 1.4476318, 0.71313477)
+texture_albedo = ExtResource("14_wt2yr")
+modulate = Color(0, 0, 0, 0.93333334)
+upper_fade = 1e-05
+lower_fade = 1e-05
+
+[node name="Gura" parent="GuraViewport/SubViewport" unique_id=1092189184 instance=ExtResource("4_3g7or")]
+transform = Transform3D(0.88539356, 0, 0.46484202, 0, 1, 0, -0.46484202, 0, 0.88539356, 0, -24.978245, 0)
+
+[node name="Skeleton3D" parent="GuraViewport/SubViewport/Gura/GuraModel" parent_id_path=PackedInt32Array(1092189184, 1172231497) index="0" unique_id=736951069]
+bones/0/rotation = Quaternion(0, 0.7071068, 0.7071068, 0)
+bones/1/position = Vector3(-0.12508243, 0.22916535, 0.2804479)
+bones/2/position = Vector3(0.12508243, 0.22916535, 0.2804479)
+bones/3/position = Vector3(-0.124554, -0.012493789, 0.043496646)
+bones/3/rotation = Quaternion(-2.0396227e-17, 0.09185644, 0.99577224, 0)
+bones/4/position = Vector3(5.040356e-05, 0.0035503488, 0.022736909)
+bones/4/rotation = Quaternion(0.995826, -5.4401827e-08, 5.935547e-07, -0.09127202)
+bones/5/position = Vector3(0.124554, -0.012493789, 0.043496646)
+bones/5/rotation = Quaternion(-2.0396227e-17, 0.09185644, 0.99577224, 0)
+bones/6/position = Vector3(-5.043336e-05, 0.0035509318, 0.022739695)
+bones/6/rotation = Quaternion(0.995826, 5.4401827e-08, -5.935547e-07, -0.09127202)
+bones/7/position = Vector3(3.89834e-19, -3.408037e-26, 0.41131935)
+bones/7/rotation = Quaternion(3.0938274e-08, 0.70778525, 0.7064277, 3.0878937e-08)
+bones/8/rotation = Quaternion(0.99993294, -0.0011018666, 1.8750036e-06, -0.011533007)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(0.0029871098, 7.080827e-05, -9.068971e-06, 0.9999956)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(-0.02430728, 4.370255e-08, 1.0625011e-09, 0.99970454)
+bones/11/rotation = Quaternion(0, -1.389134e-19, 4.5875304e-18, 1)
+bones/12/rotation = Quaternion(0, -1.389134e-19, 4.5875304e-18, 1)
+bones/13/rotation = Quaternion(0.7218146, 0.46830735, 0.42930856, -0.2745288)
+bones/14/rotation = Quaternion(0.7218146, -0.46830735, -0.42930856, -0.2745288)
+bones/15/rotation = Quaternion(0.99955994, 3.5361913e-09, -1.1915684e-07, -0.02966368)
+bones/15/scale = Vector3(1, 1, 1)
+bones/16/rotation = Quaternion(-0.495158, -0.499977, -0.499976, 0.504842)
+bones/16/scale = Vector3(1, 1, 1)
+bones/17/rotation = Quaternion(-0.5830626, 0.06466009, 0.006402283, 0.80982476)
+bones/17/scale = Vector3(1.0000001, 1.0000001, 1)
+bones/18/rotation = Quaternion(4.477799e-06, 0.037621066, -0.0025540378, 0.9992889)
+bones/18/scale = Vector3(1.0000001, 0.99999964, 0.9999998)
+bones/19/rotation = Quaternion(-0.495158, 0.499977, 0.499976, 0.504842)
+bones/19/scale = Vector3(1, 1, 1)
+bones/20/rotation = Quaternion(-0.5830456, -0.0629496, -0.0077809994, 0.80995965)
+bones/20/scale = Vector3(1.0000002, 1, 0.9999998)
+bones/21/rotation = Quaternion(1.0591932e-05, -0.035677392, 0.0027830987, 0.99935955)
+bones/21/scale = Vector3(1.0000001, 1, 1)
+bones/22/position = Vector3(0.33176714, -0.2331757, -0.04350604)
+bones/22/rotation = Quaternion(-0.5552619, 0.43695945, -0.43865192, 0.55527943)
+bones/23/position = Vector3(-0.022803595, -0.002156921, -0.00230874)
+bones/24/position = Vector3(-0.33176714, -0.2331757, -0.043506045)
+bones/24/rotation = Quaternion(-0.5552619, -0.43695945, 0.43865192, 0.55527943)
+bones/25/position = Vector3(0.022803977, -0.0021556509, -0.00230878)
+bones/25/rotation = Quaternion(1.9036057e-10, -1.800708e-10, 0.7071068, 0.7071068)
+bones/26/position = Vector3(0.27997977, -0.04749456, -0.17424995)
+bones/26/rotation = Quaternion(-0.7071068, -3.3421013e-18, 3.145648e-18, 0.7071068)
+bones/27/position = Vector3(-0.27997977, -0.04749456, -0.17424996)
+bones/27/rotation = Quaternion(-0.7071068, -3.3421013e-18, 3.145648e-18, 0.7071068)
+bones/28/rotation = Quaternion(-0.81040144, 0.114236504, 0.1647801, 0.5504971)
+bones/29/rotation = Quaternion(0.1888, 2.52699e-24, -4.19221e-17, 0.982015)
+bones/30/position = Vector3(-0.12553076, 0.07747893, -1.8119012e-08)
+bones/30/rotation = Quaternion(0.9999326, 0.0011017291, -2.0323207e-06, -0.011562457)
+bones/30/scale = Vector3(1, 1, 1)
+bones/31/rotation = Quaternion(0.0029320351, -7.09871e-05, 9.058751e-06, 0.99999577)
+bones/31/scale = Vector3(1, 1, 1)
+
+[node name="Gura_Arms" parent="GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="0" unique_id=1159227489]
+layers = 32
+
+[node name="Gura_Bangs" parent="GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="1" unique_id=100087140]
+layers = 32
+
+[node name="Gura_Body" parent="GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="2" unique_id=1594811983]
+layers = 32
+
+[node name="Gura_Collar" parent="GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="3" unique_id=740333434]
+layers = 32
+
+[node name="Gura_Eyes" parent="GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="4" unique_id=142824496]
+layers = 32
+
+[node name="Gura_Fin" parent="GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="5" unique_id=306930845]
+layers = 32
+
+[node name="Gura_Hair" parent="GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="6" unique_id=2049281449]
+layers = 32
+
+[node name="Gura_Hair_Back" parent="GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="7" unique_id=1345237153]
+layers = 32
+
+[node name="Gura_Hair_Back_Sides" parent="GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="8" unique_id=1318571122]
+layers = 32
+
+[node name="Gura_Head" parent="GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="9" unique_id=1029595651]
+layers = 32
+
+[node name="Gura_Hood" parent="GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="10" unique_id=405490538]
+layers = 32
+
+[node name="Gura_Legs" parent="GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="11" unique_id=1810082922]
+layers = 32
+
+[node name="Gura_Mouth" parent="GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="12" unique_id=70139751]
+layers = 32
+
+[node name="Gura_Neck" parent="GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="13" unique_id=1469372255]
+layers = 32
+
+[node name="Gura_String_Left" parent="GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="14" unique_id=1682886271]
+layers = 32
+
+[node name="HatHeadBone" parent="GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="15" unique_id=499739115]
+transform = Transform3D(1, -1.6783333e-10, 1.42108e-13, 1.6764605e-10, 0.99890983, 0.046682514, -7.993606e-12, -0.046682574, 0.99890983, -9.96867e-11, 1.0047114, -0.024277512)
+
+[node name="HatEquipper" parent="GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D/HatHeadBone" index="0" unique_id=1110634359]
+layer_mask = 6
+
+[node name="Gura_String_Right" parent="GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="16" unique_id=1062444497]
+layers = 32
+
+[node name="Gura_Tail" parent="GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="17" unique_id=167550893]
+layers = 32
+
+[node name="Gura_TwinTails" parent="GuraViewport/SubViewport/Gura/GuraModel/Skeleton3D" index="18" unique_id=584742276]
+layers = 32
+
+[node name="AnimationPlayer" parent="GuraViewport/SubViewport/Gura" index="1" unique_id=1511136970]
+process_mode = 3
+callback_mode_process = 0
+autoplay = &"Idle"
+playback_auto_capture_transition_type = 4
+playback_default_blend_time = 0.1
+
+[node name="SpotLight3D" type="SpotLight3D" parent="GuraViewport/SubViewport" unique_id=1427456767]
+transform = Transform3D(0.8853936, -0.41249236, 0.21430862, 0, 0.46103537, 0.88738173, -0.46484202, -0.7856821, 0.40819782, 0.30281395, -22.605894, 0.57677567)
+layers = 32
+light_energy = 2.0
+shadow_enabled = true
+spot_range = 3.3017278
+spot_angle = 18.281252
+
+[node name="OmniLight3D" type="OmniLight3D" parent="GuraViewport/SubViewport" unique_id=550286248 groups=["No Shadows"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.91100013, -23.844572, 1.9456445)
+layers = 32
+light_color = Color(0.9383045, 0.8795144, 0.8379791, 1)
+light_energy = 3.0
+light_cull_mask = 4293918752
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="GuraViewport/SubViewport" unique_id=2050817015 groups=["No Shadows"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9840996, -23.396252, 0.27716792)
+layers = 32
+light_color = Color(0.8946785, 0.8904947, 0.8676657, 1)
+light_energy = 0.5
+light_cull_mask = 4293918752
+omni_attenuation = 0.255
+
+[node name="FaceSettings" type="Node" parent="GuraViewport/SubViewport" unique_id=1570034980]
+script = ExtResource("6_fohd4")
+eyes_node_path = NodePath("../Gura/GuraModel/Skeleton3D/Gura_Eyes")
+mouth_node_path = NodePath("../Gura/GuraModel/Skeleton3D/Gura_Mouth")
+
+[node name="Label" type="Label" parent="." unique_id=1382207895]
+layout_mode = 0
+offset_left = 1032.0
+offset_top = 69.0
+offset_right = 1351.0
+offset_bottom = 156.0
+theme_override_font_sizes/font_size = 64
+text = "шляпы"
+
+[node name="HatGrid" type="GridContainer" parent="." unique_id=1598789715]
+layout_mode = 1
+offset_left = 1022.0
+offset_top = 156.0
+offset_right = 1869.0
+offset_bottom = 815.0
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 26
+columns = 5
+
+[node name="HintLabel" type="Label" parent="." unique_id=410013002]
+modulate = Color(0.049877428, 0.73514515, 0.99999994, 1)
+layout_mode = 0
+offset_left = 1022.0
+offset_top = 864.0
+offset_right = 1542.0
+offset_bottom = 901.0
+theme_override_font_sizes/font_size = 36
+text = "найдена где-то на ферме киары"
+
+[node name="SuggestionLabel" type="Label" parent="." unique_id=1410924344]
+modulate = Color(0.050000012, 0.7308334, 1, 0.4117647)
+layout_mode = 0
+offset_left = 1022.0
+offset_top = 901.0
+offset_right = 1542.0
+offset_bottom = 938.0
+theme_override_font_sizes/font_size = 32
+text = "шляпа от: "
+
+[node name="Panel" type="Panel" parent="." unique_id=1704306137]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.0
+offset_top = -345.0
+offset_right = 690.0
+offset_bottom = 298.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="ExitButton" parent="." unique_id=1084421665 instance=ExtResource("7_7loyy")]
+layout_mode = 0
+offset_left = 1022.0
+offset_top = 992.0
+offset_right = 1687.0
+offset_bottom = 1041.0
+focus_neighbor_left = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+text = "выход"
+
+[node name="PictureRect" type="ColorRect" parent="." unique_id=394557672]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=310740450]
+libraries/ = SubResource("AnimationLibrary_1ohkh")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1072500449]
+volume_db = -5.0
+bus = &"Sound"
+
+[editable path="GuraViewport/SubViewport/hat_camera"]
+[editable path="GuraViewport/SubViewport/Gura"]

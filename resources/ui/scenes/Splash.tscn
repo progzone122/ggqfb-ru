@@ -1,0 +1,420 @@
+[gd_scene load_steps=15 format=3 uid="uid://clwlkaoaun0hg"]
+
+[ext_resource type="PackedScene" uid="uid://bhwm7kqp7sfox" path="res://ui/head.glb" id="2"]
+[ext_resource type="AudioStream" uid="uid://b4qsdwlto2ykc" path="res://audio/sfx/interface/select_005.ogg" id="2_eh3ve"]
+[ext_resource type="Script" uid="uid://ckoyqcsd6sq5y" path="res://ui/scripts/Splash.gd" id="4"]
+[ext_resource type="Texture2D" uid="uid://btj0w4pvw0bhf" path="res://ui/textures/logo_head_diffuse.png" id="4_osdrb"]
+[ext_resource type="FontFile" uid="uid://gq8ag3c2i5bt" path="res://ui/fonts/LexendDeca-Medium.ttf" id="5_3la3r"]
+[ext_resource type="Environment" uid="uid://cpug74a0xigqt" path="res://environments/fortress/E_Fortress.tres" id="5_nfq3d"]
+[ext_resource type="Texture2D" uid="uid://bxng4nnp0yoq2" path="res://ui/textures/peace.png" id="6_kodho"]
+[ext_resource type="FontFile" uid="uid://dkciaasnj8qjw" path="res://ui/fonts/Jua-Regular.ttf" id="7_1bejb"]
+
+[sub_resource type="Animation" id="Animation_734sv"]
+resource_name = "Notice"
+length = 4.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Notice:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 1, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(4.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"fade_out"
+}]
+}
+
+[sub_resource type="Animation" id="1"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewport/head:rotation_degrees:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubViewport/head:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SubViewport/head:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SubViewport/head:scale:z")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../Notice:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../../Splash:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="2"]
+resource_name = "SpinHead"
+length = 2.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewport/head:rotation_degrees:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-90, -0.25, 0, 0.126, 100, 25.221, -0.741387, -1.221, 0.25, 0),
+"times": PackedFloat32Array(0.5, 1.43333)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubViewport/head:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.2, -0.25, 0, 0.25, 0, 1.05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.633333, 1.03333)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SubViewport/head:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.2, -0.25, 0, 0.25, 0, 1.05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.633333, 1.03333)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SubViewport/head:scale:z")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.2, -0.25, 0, 0.25, 0, 1.05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.633333, 1.03333)
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Text:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8, 2.1, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../..")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(2.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"fade_out"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8, 2.1, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0hfmi"]
+resource_name = "Splash"
+length = 3.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Splash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"fade_out"
+}]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../../AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_eh3ve")
+}],
+"times": PackedFloat32Array(0.8)
+}
+tracks/2/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2mx5h"]
+_data = {
+&"Notice": SubResource("Animation_734sv"),
+&"RESET": SubResource("1"),
+&"SpinHead": SubResource("2"),
+&"Splash": SubResource("Animation_0hfmi")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rgb2c"]
+resource_name = "HEAD"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_osdrb")
+metallic_specular = 0.0
+emission_enabled = true
+emission_texture = ExtResource("4_osdrb")
+
+[node name="Splash" type="CanvasLayer"]
+script = ExtResource("4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Control/Content/Head")
+libraries = {
+"": SubResource("AnimationLibrary_2mx5h")
+}
+autoplay = "SpinHead"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0654822, 0.0651245, 0.0859375, 1)
+
+[node name="Content" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Head" type="SubViewportContainer" parent="Control/Content"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 463.0
+offset_top = 353.0
+offset_right = 820.0
+offset_bottom = 710.0
+mouse_filter = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Control/Content/Head"]
+transparent_bg = true
+handle_input_locally = false
+msaa_3d = 3
+size = Vector2i(357, 357)
+render_target_update_mode = 4
+
+[node name="head" parent="Control/Content/Head/SubViewport" instance=ExtResource("2")]
+transform = Transform3D(0.904671, 0, 0.426111, 0, 1, 0, -0.426111, 0, 0.904671, 0, 0, 0)
+
+[node name="Head" parent="Control/Content/Head/SubViewport/head" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.976889, 0.213747, 0, -0.213747, 0.976889, 0, 0, 0)
+layers = 524288
+surface_material_override/0 = SubResource("StandardMaterial3D_rgb2c")
+
+[node name="Camera3D" type="Camera3D" parent="Control/Content/Head/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.697)
+cull_mask = 524288
+environment = ExtResource("5_nfq3d")
+fov = 30.0
+
+[node name="Text" type="Control" parent="Control/Content"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label2" type="Label" parent="Control/Content/Text"]
+layout_mode = 0
+offset_left = 872.0
+offset_top = 465.0
+offset_right = 1073.0
+offset_bottom = 514.0
+theme_override_fonts/font = ExtResource("7_1bejb")
+theme_override_font_sizes/font_size = 40
+text = "игра"
+
+[node name="Label" type="Label" parent="Control/Content/Text"]
+layout_mode = 0
+offset_left = 872.0
+offset_top = 510.0
+offset_right = 1406.0
+offset_bottom = 627.0
+theme_override_fonts/font = ExtResource("7_1bejb")
+theme_override_font_sizes/font_size = 96
+text = "kenny park"
+
+[node name="Notice" type="RichTextLabel" parent="Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("5_3la3r")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Это фанатская работа.
+Автор никак не связан с Hololive или Cover Corp."
+fit_content = true
+autowrap_mode = 0
+
+[node name="Splash" type="Control" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/Splash"]
+layout_mode = 0
+offset_left = 410.0
+offset_top = 360.0
+offset_right = 775.0
+offset_bottom = 725.0
+texture = ExtResource("6_kodho")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RichTextLabel3" type="Label" parent="Control/Splash"]
+layout_mode = 0
+offset_left = 763.0
+offset_top = 501.0
+offset_right = 1439.0
+offset_bottom = 684.0
+theme_override_fonts/font = ExtResource("7_1bejb")
+theme_override_font_sizes/font_size = 72
+text = "a game by kenny park"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Sound"
+
+[editable path="Control/Content/Head/SubViewport/head"]

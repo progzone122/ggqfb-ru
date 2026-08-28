@@ -1,0 +1,221 @@
+[gd_scene format=3 uid="uid://ckintmibwroow"]
+
+[ext_resource type="Theme" uid="uid://cvscydthyenwa" path="res://ui/Theme.tres" id="1_1kfmb"]
+[ext_resource type="Script" uid="uid://d08u6py6n080q" path="res://mechanics_and_systems/hats/hat_notification.gd" id="2_kp4j6"]
+[ext_resource type="Texture2D" uid="uid://bakouqgjn4i88" path="res://ui/textures/Light Beams.png" id="2_ydclf"]
+[ext_resource type="Environment" uid="uid://r4bwl54x1alb" path="res://environments/farm/Farm.tres" id="3_kp4j6"]
+[ext_resource type="PackedScene" uid="uid://dwd7pmanren8g" path="res://mechanics_and_systems/hats/HatEquipper.tscn" id="4_sw32h"]
+
+[sub_resource type="Animation" id="Animation_ydclf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Viewport/SubViewport/Scene/HatEquipper:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.81332344, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.37524578]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1kfmb"]
+resource_name = "pop"
+length = 3.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.39999998, 3, 3.2),
+"transitions": PackedFloat32Array(0.45062515, 0.5358867, 1, 0.8408963, 1),
+"update": 0,
+"values": [Vector2(0.3, 0.3), Vector2(1.1, 1.1), Vector2(1, 1), Vector2(1, 1), Vector2(0.3, 0.3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Viewport/SubViewport/Scene/HatEquipper:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.31415927, 0), Vector3(0, 0.9599311, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.37524578, 1.0471975511965976]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 3, 3.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kp4j6"]
+_data = {
+&"RESET": SubResource("Animation_ydclf"),
+&"pop": SubResource("Animation_1kfmb")
+}
+
+[node name="HatNotification" type="Control" unique_id=1706832404]
+visible = false
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -318.0
+offset_top = 67.0
+offset_right = -62.0
+offset_bottom = 323.0
+grow_horizontal = 0
+pivot_offset = Vector2(126, 126)
+theme = ExtResource("1_1kfmb")
+script = ExtResource("2_kp4j6")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1050850731]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 256.0
+rotation = -0.37524578
+pivot_offset = Vector2(125, 125)
+texture = ExtResource("2_ydclf")
+expand_mode = 1
+
+[node name="Viewport" type="SubViewportContainer" parent="." unique_id=2036986184]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.950012
+offset_top = 9.0
+offset_right = -10.950012
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Viewport" unique_id=529321630]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(234, 238)
+render_target_update_mode = 0
+
+[node name="Scene" type="Node3D" parent="Viewport/SubViewport" unique_id=112719185]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.702857, -27.420654, 4.1968756)
+
+[node name="Camera3D" type="Camera3D" parent="Viewport/SubViewport/Scene" unique_id=2008534407]
+cull_mask = 32
+environment = ExtResource("3_kp4j6")
+fov = 24.3
+
+[node name="HatEquipper" parent="Viewport/SubViewport/Scene" unique_id=247886313 instance=ExtResource("4_sw32h")]
+transform = Transform3D(0.6870874, 0, 0.7265746, 0, 1, 0, -0.7265746, 0, 0.6870874, 0, -1.269, -2.481)
+layer_mask = 6
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=190513868]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -104.0
+offset_top = -14.0
+offset_right = 104.0
+offset_bottom = 245.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0.9084916, 0.6866466, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 3
+bbcode_enabled = true
+text = "[wave freq=10][center]новая шляпа
+
+
+
+
+открыта!"
+fit_content = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1397957008]
+libraries/ = SubResource("AnimationLibrary_kp4j6")

@@ -1,0 +1,84 @@
+[gd_scene load_steps=4 format=3 uid="uid://cl2xr3ngrj7gg"]
+
+[ext_resource type="Script" uid="uid://c0noydvbjj8xu" path="res://ui/scripts/QuitMenu.gd" id="1"]
+[ext_resource type="Theme" uid="uid://cvscydthyenwa" path="res://ui/Theme.tres" id="2"]
+[ext_resource type="PackedScene" uid="uid://bsy1jisb87u0g" path="res://ui/scenes/TextButton.tscn" id="3_mvvvv"]
+
+[node name="QuitToMenuMenu" type="ColorRect"]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource("2")
+color = Color(0, 0, 0, 0.827451)
+script = ExtResource("1")
+default_focus_control = NodePath("Panel/VBoxContainer/HBoxContainer/CancelButton")
+close_button = NodePath("Panel/VBoxContainer/HBoxContainer/CancelButton")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -234.0
+offset_top = -109.0
+offset_right = 235.0
+offset_bottom = 130.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 46
+text = "выйти в меню?"
+
+[node name="SaveTimeLabel" type="Label" parent="Panel/VBoxContainer"]
+modulate = Color(0.451029, 0.70469, 0.887327, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 29
+text = "последнее сохранение: X мин. назад"
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 125
+alignment = 1
+
+[node name="QuitButton" parent="Panel/VBoxContainer/HBoxContainer" instance=ExtResource("3_mvvvv")]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../CancelButton")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath("../CancelButton")
+theme_override_font_sizes/font_size = 36
+text = "выход"
+font_size = 36
+default_color = Color(0.633757, 0.633757, 0.633757, 1)
+
+[node name="CancelButton" parent="Panel/VBoxContainer/HBoxContainer" instance=ExtResource("3_mvvvv")]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../QuitButton")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath("../QuitButton")
+theme_override_font_sizes/font_size = 36
+text = "отмена"
+font_size = 36
+default_color = Color(0.633757, 0.633757, 0.633757, 1)
