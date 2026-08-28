@@ -5,20 +5,39 @@
 ## Требования
 
 - [python3](https://www.python.org/downloads/)
-- [godotpcktool](https://github.com/hhyyrylainen/GodotPckTool)
+- [godotpcktool](https://github.com/hhyyrylainen/GodotPckTool) - входит в состав набора: `tools/godotpcktool` (Linux) и `tools/godotpcktool.exe` (Windows)
 - [godot](https://godotengine.org/) 4.7.x - *только для пересборки шрифтов (`tools/make_fontdata.gd`)*
 
 ## Применение патча
 
-Найти экзешник игры автоматически в директории стима:
+### Найти экзешник игры автоматически в директории стима:
+
+#### Linux:
 ```shell
 ./apply.sh
 ```
 
-Или можно можно указать путь к бинарнику вручую:
+#### Windows:
+```shell
+apply.bat
+```
+
+### Или можно можно указать путь к бинарнику вручую:**
+
+#### Linux:
 ```shell
 ./apply.sh [/путь/к/ggqfb_win.exe]
 ```
+
+#### Windows:
+```bat
+apply.bat "[\путь\к\ggqfb_win.exe]"
+```
+
+Требуется только установленный Python 3 (с галочкой "Add python.exe to PATH" при установке).
+`godotpcktool.exe` входит в состав набора, ничего дополнительно ставить не нужно.
+Если игра стоит не в `%ProgramFiles(x86)%` - передайте путь аргументом.
+Скрипт сохранит оригинал как `ggqfb_win.exe.orig` и заменит exe пропатченным.
 
 ## Что делает скрипт
 1. Вытаскивает вшитый pck из exe (`tools/extract_pck.py`) и распаковывает в `work/extracted` (нетронутая копия будет находится в `work/pristine`),
@@ -38,8 +57,9 @@ resources/                 - переведённые файлы (источни
   globals/                 - спидран-менеджер
   .godot/imported/         - 4 заменённых шрифта (.fontdata)
 assets/fonts/sources/      - исходные .ttf и лицензии OFL
-tools/                     - extract_pck.py, splice_pck.py, make_fontdata.gd
-apply.sh                   - патчинг exe одной командой
+tools/                     - extract_pck.py, splice_pck.py, make_fontdata.gd, godotpcktool.exe (Windows)
+apply.sh                   - патчинг exe одной командой (Linux/macOS)
+apply.bat                  - патчинг exe одной командой (Windows)
 sync_resources.py          - перенос правок из work/extracted обратно в resources/
 ```
 
@@ -53,10 +73,12 @@ sync_resources.py          - перенос правок из work/extracted о�
     ```shell
     python3 sync_resources.py
     ```
+    (Windows: `python sync_resources.py`)
 4. Повторно пропатчите игру: 
     ```shell
     ./apply.sh
     ```
+    (Windows: `apply.bat`)
 
 ### Что нужно знать
 - Ключи персонажей (`Gura:`, `Ame:` и т.д.) не трогать
