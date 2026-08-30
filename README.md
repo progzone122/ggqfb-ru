@@ -1,16 +1,16 @@
 # Русская локализация Gawr Gura Quest for Bread
 
-Набор для патчинга ресурсов игры Gawr Gura Quest for Bread (Godot 4.7.2, вшитый pck в `ggqfb_win.exe`).
+Набор для патчинга ресурсов игры Gawr Gura Quest for Bread (Godot 4.7.2, ресурсы игры в отдельном `ggqfb_win.pck`).
 
 ## Требования
 
-- [python3](https://www.python.org/downloads/)
-- [godotpcktool](https://github.com/hhyyrylainen/GodotPckTool) - входит в состав набора: `tools/godotpcktool` (Linux) и `tools/godotpcktool.exe` (Windows)
+- [python3](https://www.python.org/downloads/) - только для `sync_resources.py`
+- `godotpcktool` - входит в состав набора: `tools/godotpcktool` (Linux) и `tools/godotpcktool.exe` (Windows)
 - [godot](https://godotengine.org/) 4.7.x - *только для пересборки шрифтов (`tools/make_fontdata.gd`)*
 
 ## Применение патча
 
-### Найти экзешник игры автоматически в директории стима:
+Скрипт найдёт `ggqfb_win.pck` игры автоматически в директории Steam:
 
 #### Linux:
 ```shell
@@ -18,51 +18,29 @@
 ```
 
 #### Windows:
-```shell
+```bat
 apply.bat
 ```
 
-### Или можно можно указать путь к бинарнику вручую:**
+Или путь к pck можно указать вручную:
 
 #### Linux:
 ```shell
-./apply.sh [/путь/к/ggqfb_win.exe]
+./apply.sh [/путь/к/ggqfb_win.pck]
 ```
 
 #### Windows:
 ```bat
-apply.bat "[\путь\к\ggqfb_win.exe]"
+apply.bat "C:\путь\к\ggqfb_win.pck"
 ```
 
-Требуется только установленный Python 3 (с галочкой "Add python.exe to PATH" при установке).
-`godotpcktool.exe` входит в состав набора, ничего дополнительно ставить не нужно.
-Если игра стоит не в `%ProgramFiles(x86)%` - передайте путь аргументом.
-Скрипт создаст `ggqfb_win_patched.exe` рядом с оригиналом, не трогая его.
-
-## Запуск через Steam
-Так как файлы ресурсов вшиты в сам бинарник игры, необходимо после его патчинга указать чтобы стим запускал патченную версию, а не оригинальную.
-Если этого не сделать, а просто переименовать бинарник, то любое обновление автоматически перезапишет патченную версию с переводом и вам придется постоянно патчить игру заново.
-
-Необходимо перейти в "Свойства игры" -> "Параметры запуска" и вставить:
-
-Windows:
-```
-"C:\Program Files (x86)\Steam\steamapps\common\Gawr Gura Quest for Bread\ggqfb_win_patched.exe" %command%
-```
-
-Linux:
-```
-bash -c 'exec "${@/ggqfb_win.exe/ggqfb_win_patched.exe}"' -- %command%
-```
-
-> ВНИМАНИЕ! После установки этого параметра запуска, версия игры при запуске у вас будет заморожена и любые обновления игры никак не будут влиять на версию, в которую вы играете.
-> Для обновления просто примените патч заново.
+Скрипт собирает полный pck с переводом и кладёт его на место `ggqfb_win.pck` (оригинал один раз сохраняется как `ggqfb_win.pck.orig`).
 
 ## Что делает скрипт
-1. Вытаскивает вшитый pck из exe (`tools/extract_pck.py`) и распаковывает в `work/extracted` (нетронутая копия будет находится в `work/pristine`),
+1. Распаковывает базовый `ggqfb_win.pck` в `work/extracted` (нетронутая копия будет находится в `work/pristine`),
 2. Копирует поверх распаковки всё из `resources/` (переведённые файлы + шрифты),
-3. Пересобирает pck (формат V4, версия движка 4.7.2),
-4. Вшивает pck в новую копию exe (`tools/splice_pck.py`) и кладёт её рядом как `ggqfb_win_patched.exe`.
+3. Пересобирает полный pck (формат V4, версия движка 4.7.2),
+4. Заменяет файл `ggqfb_win.pck` модифицированной копией.
 
 ## Структура
 
@@ -74,14 +52,14 @@ resources/                 - переведённые файлы (источни
   globals/                 - спидран-менеджер
   .godot/imported/         - 4 заменённых шрифта (.fontdata)
 assets/fonts/sources/      - исходные .ttf и лицензии OFL
-tools/                     - extract_pck.py, splice_pck.py, make_fontdata.gd, godotpcktool.exe (Windows)
-apply.sh                   - патчинг exe одной командой (Linux/macOS)
-apply.bat                  - патчинг exe одной командой (Windows)
+tools/                     - make_fontdata.gd, godotpcktool (Linux) и godotpcktool.exe (Windows)
+apply.sh                   - сборка pck одной командой (Linux/macOS)
+apply.bat                  - сборка pck одной командой (Windows)
 sync_resources.py          - перенос правок из work/extracted обратно в resources/
 ```
 
 ## Правка перевода
-1. Запустите `./apply.sh`. Из экзешника будет вырезан pck и распакован в `work/extracted/`.
+1. Запустите `./apply.sh` - базовый pck будет распакован в `work/extracted/`.
 2. Правьте файлы:
    - диалоги: `work/extracted/dialogue_database/areas/*.gdf` (и `*.txt`)
    - интерфейс: `work/extracted/ui/**/*.tscn`, `mechanics_and_systems/**/*.tscn`, `globals/*.tscn`
@@ -91,7 +69,7 @@ sync_resources.py          - перенос правок из work/extracted о�
     python3 sync_resources.py
     ```
     (Windows: `python sync_resources.py`)
-4. Повторно пропатчите игру: 
+4. Повторно соберите pck: 
     ```shell
     ./apply.sh
     ```
@@ -124,3 +102,8 @@ godot --headless --path . --script tools/make_fontdata.gd -- шрифт.ttf вы
 ```shell
 python3 -m fontTools.varLib.instancer шрифт.ttf wght=700 -o шрифт-bold.ttf
 ```
+
+## Troubleshooting
+
+- Steam при проверке/обновлении файлов может вернуть оригинальный `ggqfb_win.pck` - просто запустите `./apply.sh` ещё раз (оригинал лежит в `ggqfb_win.pck.orig`).
+- Если игра обновится и разработчик изменил файлы, которые мы правим - правки к ним нужно наносить заново (сверить `work/pristine` со старой версией).
